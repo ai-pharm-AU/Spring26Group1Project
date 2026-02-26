@@ -1,0 +1,21 @@
+[project]
+name = "trialproject"
+version = "0.1.0"
+description = "HONR-3987 Group 1 project"
+authors = [
+    {name = "Jothsa",email = "58094796+Jothsa@users.noreply.github.com"}
+]
+requires-python = ">=3.11"
+dependencies = [
+    "openai (>=2.21.0,<3.0.0)",
+    "asyncio (>=4.0.0,<5.0.0)",
+    "dotenv (>=0.9.9,<0.10.0)",
+    "pandas (>=3.0.1,<4.0.0)"
+]
+
+[tool.poetry]
+package-mode = false
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

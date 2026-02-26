@@ -1,0 +1,62 @@
+{
+  "synthea-0": {
+    "summary": "Adult male with a history of chronic intractable migraine (since 2010) and chronic obstructive bronchitis/COPD (since 2022) being managed, with inhaled bronchodilator and ICS/LABA therapy; former smoker with periodic acute viral respiratory/sinus infections. He is overweight (BMI ~28\u201330), has intermittent systolic blood pressure elevations,,         generally acceptable lipid values, and ongoing social stressors including limited social contact and housing concerns."
+  },
+  "synthea-1": {
+    "summary": "18-year-old male with consistent well-child care and up-to-date immunizations, no tobacco use, and generally normal growth and vital signs. Past issues include recurrent childhood gingivitis and dental procedures, occasional respiratory infections and an ankle sprain, and more recently new chronic low back pain with significant functional interference plus some anxiety symptoms managed with screening and cognitive behavioral therapy."
+  },
+  "synthea-2": {
+    "summary": "A 66-year-old white female with longstanding prediabetes and overweight/obesity (BMI ~28\u201330, A1c 5.8\u20136.4%), chronic sinusitis and a history of anemia, tubal ligation and appendectomy; she had symptomatic COVID-19 in 2020 with hypoxemia. She has had episodes of significant anxiety/depression and social isolation, receives regular preventive care and vaccinations, and while most labs/vitals are stable she remains at increased cardiometabolic risk and had a recent foot laceration and rising fall risk in 2025."
+  },
+  "synthea-3": {
+    "summary": "Male infant (born 2025-09-13) has had routine well-child care with age-appropriate immunizations and no allergies or chronic medications; he experienced a viral sinusitis episode in Nov\u2013Dec 2025. Growth measurements show increasing length and weight but a falling weight-for-length percentile to ~9% at the most recent visit, with otherwise normal CBC and routine vitals\u2014overall generally well but weight/growth should be monitored and supported."
+  },
+  "synthea-4": {
+    "summary": "This woman (born 1956) has long-standing essential hypertension and obesity with type 2 diabetes complicated by diabetic kidney disease that required a renal transplant (2008); she is on chronic immunosuppression (tacrolimus), insulin therapy and antihypertensives (amlodipine, hydrochlorothiazide). She receives regular preventive care and immunizations and appears to have generally stable transplant/kidney function, but has ongoing obesity, dental issues and notable psychosocial stressors (history of intimate partner abuse and periods of unemployment)."
+  },
+  "synthea-5": {
+    "summary": "Female infant (born 2025-02-19) seen for regular well-child visits through her first year with no chronic diagnoses, no current medications or allergies, and routine medication-reconciliation entries. Growth and development are appropriate with steadily increasing height and weight percentiles, normal CBC results, stable vital signs, and up-to-date pediatric immunizations."
+  },
+  "synthea-6": {
+    "summary": "A 15-year-old white non-Hispanic male with regular well-child care and up-to-date immunizations (annual influenza, Tdap, HPV, meningococcal, COVID) who has had routine labs that are unremarkable and mental-health screenings showing minimal anxiety/depression. His history includes isolated ankle and wrist sprains (2016, 2019), an episode of acute viral pharyngitis (2020), and recurrent dental disease/gingivitis requiring multiple dental treatments; growth and vitals show a consistently low\u2013normal BMI (about 23rd\u201355th percentile) and no documented allergies."
+  },
+  "synthea-7": {
+    "summary": "Male (b. 1967) with chronic sinusitis and adolescent scoliosis, recurrent bronchitis and persistent dental disease (gingivitis), a long-standing history of overweight (BMI ~27.5 with prior obesity) and intermittent elevated blood pressures (~140\u2013152 mmHg). Recent 2025 labs show new hyperlipidemia (total cholesterol 217 mg/dL, TG 291 mg/dL, LDL 135 mg/dL) treated with simvastatin, along with an elevated serum creatinine on that panel; he is a never-smoker, up to date on immunizations, and has had intermittent psychosocial stress and social isolation."
+  },
+  "synthea-8": {
+    "summary": "Female patient with a history of overweight (BMI ~27\u201329), intermittent elevated blood pressure, and prediabetes (A1c 6.3% in 2021 improving to 5.9% in 2024), with a prior episode of anemia that resolved. She has received routine preventive care (up-to-date immunizations, non-smoker), dental treatment for gingivitis, had a pregnancy in 2022 complicated by an obstetric emergency with postpartum follow-up, and is receiving ongoing prenatal care for a subsequent pregnancy."
+  },
+  "synthea-9": {
+    "summary": "Male born in 1994 with a history of appendectomy and a serious burn in 2020 that required hospitalization, SNF care and multidisciplinary rehabilitation. He has metabolic risk (prediabetes with A1c ~6.1\u20136.3% and BMI rising into the overweight range), recent anemia (Hgb to 11.0 g/dL in Feb 2023), documented unhealthy alcohol use and social stressors (low income, housing worry, social isolation), but is a non-smoker and routinely receives preventive care."
+  },
+  "synthea-10": {
+    "summary": "Female patient with a history of prediabetes (A1c consistently ~5.8\u20136.2), class I obesity (BMI ~29\u201330), and hyperlipidemia on simvastatin, plus recurrent dental disease (gingivitis, fractured/loose fillings), chronic sinusitis, recurrent UTIs and prior tubal ligation. She is a never-smoker, receives routine preventive care and vaccinations, and while most labs are stable her records show intermittent creatinine elevations; overall she has managed chronic cardiometabolic risk factors that require continued monitoring and risk reduction."
+  },
+  "synthea-11": {
+    "summary": "Female patient (b. 1976) with long-standing chronic pain and chronic intractable migraine, recurrent substance use disorder with multiple inpatient rehabilitation admissions and several nonfatal overdoses, culminating in a fatal overdose recorded in 2004. Her history also includes repeated pregnancies (antenatal anemia and a first\u2011trimester miscarriage), social adversity (limited education, unstable housing, intimate\u2011partner violence and later social isolation), allergies to sulfa/penicillin/aspirin, ex\u2011smoking, intermittent eczema/allergic symptoms, and progressive overweight/obesity into adulthood."
+  },
+  "synthea-12": {
+    "summary": "Female adolescent (born 2009) with regular well-child care and up-to-date immunizations who has had intermittent acute respiratory infections (acute bronchitis, viral pharyngitis, viral sinusitis) and recurrent dental disease/gingivitis requiring multiple dental procedures. She has had short courses of acetaminophen and antibiotics, is on combined hormonal contraception, has no recorded allergies, and otherwise appears generally healthy with normal growth, vitals and low depression/anxiety screening scores."
+  },
+  "synthea-13": {
+    "summary": "The patient was an older (born 1947) female with long-standing cardiometabolic disease \u2014 obesity/prediabetes progressing to type 2 diabetes (diagnosed 2014), essential hypertension, dyslipidemia/metabolic syndrome and obstructive sleep apnea \u2014 complicated by ischemic heart disease requiring coronary artery bypass grafting in 2016, ongoing cardiac medications (antiplatelet, statin, beta\u2011blocker, nitrates) and insulin therapy; she was an ex\u2011smoker and had additional issues including transient anemia, a hip fracture, mild CKD and psychosocial stress/isolation. Overall she had high cardiovascular risk and multiple chronic comorbidities and ultimately died of an acute ST\u2011elevation myocardial infarction in 2021."
+  },
+  "synthea-14": {
+    "summary": "Male born in 1979 with a remote appendectomy, past dental disease, recurrent viral upper respiratory infections, prior obesity (BMI \u224830 in 2019, improved to \u224828 by 2025), ex\u2011smoker, and a history of anxiety/stress (GAD\u20117 13 in 2016 that later improved). He was diagnosed with essential hypertension in April 2025 and started on lisinopril and hydrochlorothiazide; he also had an acute Klebsiella cystitis treated with ciprofloxacin in June 2025, is up to date on routine immunizations, and has ongoing cardiometabolic risk factors under outpatient management."
+  },
+  "synthea-15": {
+    "summary": "Female patient (born 1976) with long\u2011standing chronic pain and intractable migraines and a history of dependent drug use with multiple overdoses and inpatient rehab episodes. In recent years she developed hypertension (2024) and diabetes with kidney involvement (microalbuminuria/CKD stage 2, 2025) now treated with lisinopril, hydrochlorothiazide and insulin; she has ongoing social vulnerabilities (limited education, housing concerns, past intimate\u2011partner violence) but remains engaged with outpatient care."
+  },
+  "synthea-16": {
+    "summary": "16-year-old female with regular well-child care and up-to-date immunizations who is generally healthy with normal growth, vitals, and routine labs. She has a history of ADHD treated with methylphenidate and behavioral therapy, episodic mental health screening (PHQ-9 peaked high in 6/2024 but low in 6/2025), recurrent dental disease/gingivitis requiring dental procedures, and several acute infections (E. coli UTI treated with cephalexin, sinusitis, pharyngitis); she is on a combined oral contraceptive and has no reported allergies."
+  },
+  "synthea-17": {
+    "summary": "Female infant born 2025-05-01 with routine well-child visits through 8 months showing steady growth from 4.8 kg and 57.9 cm at birth to 10.4 kg and 75.4 cm by 8 months, with head circumference consistently at the 100th percentile. No chronic conditions, no medications or allergies recorded, normal newborn CBC, and immunizations are up-to-date per the routine pediatric schedule."
+  },
+  "synthea-18": {
+    "summary": "78-year-old female with long-standing severe obesity (BMI ~40\u201343), chronic sinusitis and dental disease (tooth loss/gingivitis/denture care), a history of anxiety/stress, and prior appendectomy. She has hyperlipidemia on simvastatin and borderline glycemic control (A1c historically 5.8\u20136.4, predisease/early diabetes range), is a non-smoker with routine vaccinations, and remains at increased cardiometabolic risk requiring ongoing weight, glucose, lipid, dental and mental-health management."
+  },
+  "synthea-19": {
+    "summary": "61-year-old white female with chronic obesity (BMI ~30) and sleep apnea, recurrent severe anxiety with documented intimate partner abuse and past substance misuse; notable medical history also includes sepsis in 2001, a colon polyp removed in 2019, and extensive dental disease culminating in infections, alveolitis and tooth loss in 2024. She is a never-smoker, up-to-date on vaccinations and receives regular preventive care with generally stable vitals, but has high LDL noted in 2023 and ongoing psychosocial and dental issues that need follow-up."
+  }
+}
