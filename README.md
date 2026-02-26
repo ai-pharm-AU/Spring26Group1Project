@@ -33,7 +33,7 @@ java -jar synthea-with-dependencies.jar -p 20
 
 need to have set to csv output; move the output to w/e folder I said in the code
 
-CUrrently want to copy the synthea to queries file in jsonl format
+Currently want to copy the synthea to queries file in jsonl format
 
 ```bash
 jq -c 'to_entries[] | {id: .key} + .value'   synthea_processed_gpt-5-mini.json > queries.jsonl
