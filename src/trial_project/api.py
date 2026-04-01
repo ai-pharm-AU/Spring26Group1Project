@@ -13,5 +13,8 @@ instructions = "w/e"
 def generate_client():
     return OpenAI() 
 
+def batch_request():
+    pass
+
 #def get_async_response(message)
 
