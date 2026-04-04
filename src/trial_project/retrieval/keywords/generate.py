@@ -64,6 +64,8 @@ if __name__ == "__main__":
     print(f"Generating keywords for patient {patient_id['Id']}")
     keywords = generate_patient_keywords_cached(patient_id['Id'])
     print(f"Keywords for patient {patient_id['Id']}: {keywords}")
+  keywords = load_all_patient_keywords()
+  print(keywords.head())
     # patient_json = get_patient_json(patient_id['Id'], tables_dict=tables_dict)
     # print(f"Patient JSON for patient {patient_id['Id']}: {patient_json}")
     # break

@@ -3,6 +3,8 @@ from trial_project.context import data_dir
 from trial_project.data.patients.process import get_tables_dict
 import json
 
+patients_path = data_dir / "processed_data" / "patients.parquet"
+
 def get_patient_llm_json(patient_id: str) -> str:
 	# TODO actually process maybe
 	patient_json = get_patient_json(patient_id, tables_dict=get_tables_dict())
@@ -10,7 +12,6 @@ def get_patient_llm_json(patient_id: str) -> str:
 
 def get_patient_json(patient_id: str, tables_dict=None) -> dict:
 	"""Load one patient and all related records as a JSON-serializable dict."""
-	patients_path = data_dir / "processed_data" / "patients.parquet"
 	patients_df = pd.read_parquet(patients_path)
 
 	patient_rows = patients_df[patients_df["Id"] == patient_id]
