@@ -5,6 +5,7 @@ import json
 
 patients_path = data_dir / "processed_data" / "patients.parquet"
 
+# TODO this could be a field or saved somewhere
 def get_patient_llm_json(patient_id: str) -> str:
 	# TODO actually process maybe
 	patient_json = get_patient_json(patient_id, tables_dict=get_tables_dict())
