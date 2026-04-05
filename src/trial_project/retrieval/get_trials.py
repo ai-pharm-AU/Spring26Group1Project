@@ -4,13 +4,30 @@ get the relevant trials for a patient based on keywords
 
 import pandas as pd
 from trial_project.context import results_dir
+from trial_project.retrieval.hybrid_fusion import rank_trials_for_conditions
 from trial_project.retrieval.keywords.load import load_all_patient_keywords
 
 eligible_trials_file = results_dir / "eligible_trials.parquet"
 
 
 def get_trials_from_keywords(keywords) -> list[str]:
-  return ["trial1", "trial2", "trial3"] # TODO
+  if keywords is None:
+    return []
+
+  if isinstance(keywords, str):
+    conditions = [keywords]
+  else:
+    conditions = [str(k).strip() for k in keywords if str(k).strip()]
+
+  if not conditions:
+    return []
+
+  return rank_trials_for_conditions(
+    conditions=conditions,
+    bm25_wt=1,
+    medcpt_wt=1,
+    n_results=200,
+  )
 
 def save_trials_for_patient(patient_id, trial_ids):
   # save the trial ids for the patient for later retrieval
