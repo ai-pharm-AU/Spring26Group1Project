@@ -3,7 +3,7 @@ given a patient and a trial, determine if the patient is eligible for the trial
 """
 
 from trial_project.matching.llm import is_patient_eligible_llm
-from trial_project.matching.rule_based import is_patient_excluded_rule_based
+# from trial_project.matching.rule_based import is_patient_excluded_rule_based
 import logging
 from datetime import datetime
 
