@@ -1,5 +1,7 @@
 # Large files
 trial_info.json
+trial_info_all.json
+**/retrieval_cache/*
 
 # General
 .DS_Store

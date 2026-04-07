@@ -138,9 +138,12 @@ def load_corpus_entries(corpus, trials_df=None):
 	if trials_df.empty:
 		raise ValueError("Trials dataframe is empty; cannot build retrieval index.")
 
+	print(f"[hybrid_fusion] Loaded trials dataframe for corpus={corpus} with shape={trials_df.shape}")
+
 	entries = [_build_entry(row, row_idx) for row_idx, (_, row) in enumerate(trials_df.iterrows())]
 	signature = _build_trials_signature(trials_df)
 	cache_key = f"{corpus}_{signature}"
+	print(f"[hybrid_fusion] Built {len(entries)} corpus entries with cache_key={cache_key}")
 	return entries, cache_key
 
 
@@ -207,11 +210,13 @@ def get_bm25_corpus_index(entries, cache_key):
 	corpus_path = retrieval_cache_dir / f"bm25_corpus_{cache_key}.json"
 
 	if corpus_path.exists():
+		print(f"[hybrid_fusion] Loading BM25 cache from {corpus_path}")
 		with open(corpus_path, "r") as f:
 			corpus_data = json.load(f)
 		tokenized_corpus = corpus_data["tokenized_corpus"]
 		corpus_ids = corpus_data["corpus_ids"]
 	else:
+		print(f"[hybrid_fusion] Building BM25 cache at {corpus_path}")
 		tokenized_corpus = []
 		corpus_ids = []
 
@@ -230,8 +235,10 @@ def get_bm25_corpus_index(entries, cache_key):
 		}
 		with open(corpus_path, "w") as f:
 			json.dump(corpus_data, f, indent=2)
+		print(f"[hybrid_fusion] Saved BM25 cache with {len(corpus_ids)} trial ids")
 
 	bm25 = BM25Okapi(tokenized_corpus)
+	print(f"[hybrid_fusion] BM25 index ready for {len(corpus_ids)} trials")
 	return bm25, corpus_ids
 
 
@@ -242,10 +249,12 @@ def get_medcpt_corpus_index(entries, cache_key):
 	device = get_device()
 
 	if corpus_path.exists() and ids_path.exists():
+		print(f"[hybrid_fusion] Loading MedCPT cache from {corpus_path} and {ids_path}")
 		embeds = np.load(corpus_path)
 		with open(ids_path, "r") as f:
 			corpus_ids = json.load(f)
 	else:
+		print(f"[hybrid_fusion] Building MedCPT cache on device={device}")
 		embeds = []
 		corpus_ids = []
 
@@ -273,10 +282,12 @@ def get_medcpt_corpus_index(entries, cache_key):
 		np.save(corpus_path, embeds)
 		with open(ids_path, "w") as f:
 			json.dump(corpus_ids, f, indent=2)
+		print(f"[hybrid_fusion] Saved MedCPT cache for {len(corpus_ids)} trials")
 
 	embeds = np.array(embeds, dtype=np.float32)
 	index = faiss.IndexFlatIP(int(embeds.shape[1]))
 	index.add(embeds)
+	print(f"[hybrid_fusion] MedCPT index ready with embedding shape={embeds.shape}")
 	return index, corpus_ids
 
 
@@ -284,12 +295,14 @@ def _search_bm25(bm25, corpus_ids, conditions, top_k):
 	results = []
 	for condition in conditions:
 		tokens = _tokenize(condition)
+		print(f"[hybrid_fusion] BM25 search condition={condition!r} token_count={len(tokens)} top_k={top_k}")
 		top_ids = bm25.get_top_n(tokens, corpus_ids, n=top_k)
 		results.append(top_ids)
 	return results
 
 
 def _search_medcpt(index, corpus_ids, conditions, top_k, device):
+	print(f"[hybrid_fusion] MedCPT search for {len(conditions)} conditions on device={device} top_k={top_k}")
 	model = AutoModel.from_pretrained("ncbi/MedCPT-Query-Encoder").to(device)
 	tokenizer = AutoTokenizer.from_pretrained("ncbi/MedCPT-Query-Encoder")
 
@@ -307,6 +320,7 @@ def _search_medcpt(index, corpus_ids, conditions, top_k, device):
 	results = []
 	for ind_list in inds:
 		results.append([corpus_ids[ind] for ind in ind_list])
+	print("[hybrid_fusion] MedCPT search completed")
 	return results
 
 
@@ -320,9 +334,11 @@ def rank_trials_for_conditions(
 	trials_df=None,
 ):
 	if not conditions:
+		print("[hybrid_fusion] No conditions provided; returning empty ranking")
 		return []
 
 	device = get_device()
+	print(f"[hybrid_fusion] Ranking {len(conditions)} conditions corpus={corpus} bm25_wt={bm25_wt} medcpt_wt={medcpt_wt} n_results={n_results}")
 	entries, cache_key = load_corpus_entries(corpus, trials_df=trials_df)
 	bm25, bm25_ids = get_bm25_corpus_index(entries, cache_key)
 
@@ -330,6 +346,8 @@ def rank_trials_for_conditions(
 	medcpt_ids = []
 	if medcpt_wt > 0:
 		medcpt, medcpt_ids = get_medcpt_corpus_index(entries, cache_key)
+
+	print(f"[hybrid_fusion] Candidate pools ready bm25_ids={len(bm25_ids)} medcpt_ids={len(medcpt_ids)}")
 
 	bm25_top_lists = _search_bm25(bm25, bm25_ids, conditions, n_results) if bm25_wt > 0 else [[] for _ in conditions]
 	medcpt_top_lists = (
@@ -353,6 +371,7 @@ def rank_trials_for_conditions(
 				)
 
 	sorted_scores = sorted(scores.items(), key=lambda x: -x[1])
+	print(f"[hybrid_fusion] Ranked {len(sorted_scores)} trials from {len(scores)} scored candidates")
 	return [trial_id for trial_id, _ in sorted_scores[:n_results]]
 
 
@@ -369,8 +388,10 @@ def run_hybrid_fusion(
 	output_path=None,
 ):
 	device = get_device()
+	print(f"[hybrid_fusion] Starting hybrid fusion corpus={corpus} q_type={q_type} device={device} k={k} bm25_wt={bm25_wt} medcpt_wt={medcpt_wt} n_results={n_results} keyword_model={keyword_model}")
 	qrels = load_qrels(corpus)
 	keyword_outputs = load_keyword_queries(corpus, keyword_model)
+	print(f"[hybrid_fusion] Loaded keyword outputs for {len(keyword_outputs)} queries; qrels={'present' if qrels is not None else 'absent'}")
 
 	entries, cache_key = load_corpus_entries(corpus, trials_df=trials_df)
 	bm25, bm25_ids = get_bm25_corpus_index(entries, cache_key)
@@ -385,25 +406,32 @@ def run_hybrid_fusion(
 			f"qid2nctids_results_{q_type}_{corpus}_k{k}_bm25wt{bm25_wt}_"
 			f"medcptwt{medcpt_wt}_N{n_results}.json"
 		)
+	print(f"[hybrid_fusion] Output path: {output_path}")
 
 	qid2nctids = {}
 	recalls = []
 	queries_path = load_queries(corpus)
+	print(f"[hybrid_fusion] Query file: {queries_path}")
 
 	with open(queries_path, "r") as f:
-		for line in tqdm.tqdm(f.readlines()):
+		lines = f.readlines()
+		print(f"[hybrid_fusion] Processing {len(lines)} queries")
+		for line_idx, line in enumerate(tqdm.tqdm(lines), start=1):
 			entry = json.loads(line)
 			qid = get_query_id(entry)
 			query_text = get_query_text(entry)
 
 			if qid is None:
+				print(f"[hybrid_fusion] Skipping line {line_idx}: missing qid")
 				continue
 
 			if qrels is not None and qid not in qrels:
+				print(f"[hybrid_fusion] Skipping qid={qid}: not present in qrels")
 				continue
 
 			truth_sum = sum(qrels[qid].values()) if qrels is not None else None
 			conditions = get_query_conditions(q_type, qid, query_text, keyword_outputs)
+			print(f"[hybrid_fusion] qid={qid} conditions={conditions}")
 
 			nctid2score = {}
 			if conditions:
@@ -435,15 +463,18 @@ def run_hybrid_fusion(
 			sorted_scores = sorted(nctid2score.items(), key=lambda x: -x[1])
 			top_nctids = [nctid for nctid, _ in sorted_scores[:n_results]]
 			qid2nctids[qid] = top_nctids
+			print(f"[hybrid_fusion] qid={qid} top_results={top_nctids[:5]}")
 
 			if qrels is not None and truth_sum:
 				actual_sum = sum(qrels[qid].get(nctid, 0) for nctid in top_nctids)
 				recalls.append(actual_sum / truth_sum)
+				print(f"[hybrid_fusion] qid={qid} recall={actual_sum / truth_sum:.4f}")
 
 	if save_output:
 		output_path.parent.mkdir(parents=True, exist_ok=True)
 		with open(output_path, "w") as f:
 			json.dump(qid2nctids, f, indent=2)
+		print(f"[hybrid_fusion] Saved {len(qid2nctids)} query results to {output_path}")
 
 	return {
 		"results": qid2nctids,
@@ -457,8 +488,8 @@ if __name__ == "__main__":
 	q_type = sys.argv[2] if len(sys.argv) > 2 else "summary"
 	k = int(sys.argv[3]) if len(sys.argv) > 3 else 60
 	bm25_wt = int(sys.argv[4]) if len(sys.argv) > 4 else 1
-	medcpt_wt = int(sys.argv[5]) if len(sys.argv) > 5 else 1
-	n_results = int(sys.argv[6]) if len(sys.argv) > 6 else 2000
+	medcpt_wt = int(sys.argv[5]) if len(sys.argv) > 5 else 0 # med cpt causes an error
+	n_results = int(sys.argv[6]) if len(sys.argv) > 6 else 10
 	keyword_model = sys.argv[7] if len(sys.argv) > 7 else "gpt-5-mini"
 
 	output = run_hybrid_fusion(

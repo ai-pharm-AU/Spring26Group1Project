@@ -2,35 +2,45 @@
 load trials
 """
 
+import json
+from functools import lru_cache
+
 import pandas as pd
+
 from trial_project.context import data_dir
 
-trials_path = data_dir / "processed_data" / "trials" / "trials.parquet"
+trials_path = data_dir / "trial_info.json"
+
+
+@lru_cache(maxsize=1)
+def _load_trials_dict() -> dict:
+  with trials_path.open("r", encoding="utf-8") as file:
+    return json.load(file)
 
 def load_trial_ids() -> list:
-  trial_df = load_all_trials()
-  return trial_df["Id"].tolist()
+  return list(_load_trials_dict().keys())
 
-def load_trial(trial_id: str) -> pd.DataFrame:
-  trial_df = load_all_trials()
-  return trial_df[trial_df["Id"] == trial_id]
 
-def load_all_trials() -> pd.DataFrame:
-  return pd.read_parquet(trials_path)
-
-# TODO trial json processed for llm
-def load_trial_json_llm(trial_id: str) -> str:
+def load_trial(trial_id: str) -> dict:
   return get_trial_json(trial_id)
 
+
+def load_all_trials() -> pd.DataFrame:
+  trials = _load_trials_dict()
+  trials_df = pd.DataFrame.from_dict(trials, orient="index")
+  trials_df.index.name = "Id"
+  return trials_df.reset_index()
+
+
+def load_trial_json_llm(trial_id: str) -> str:
+  return json.dumps(get_trial_json(trial_id), ensure_ascii=False)
+
+
 def get_trial_json(trial_id: str) -> dict:
-  # Load one trial and all related records as a JSON-serializable dict
-  output = {id: "trial_1", "trial": {"name": "Trial 1", "description": "This is a trial about testing.", "eligibility_criteria": "Must be over 18."}}
-  return output
-  # trial_df = load_all_trials()
-  # trial_rows = trial_df[trial_df["Id"] == trial_id]
-  # if trial_rows.empty:
-  #   raise ValueError(f"Trial not found: {trial_id}")
-	
-  # trial_data = trial_rows.iloc[0].dropna().to_dict()
-  # output = {"id": trial_id, "trial": trial_data}
-  # return output
+  trials = _load_trials_dict()
+  try:
+    trial = trials[trial_id]
+  except KeyError as exc:
+    raise ValueError(f"Trial not found: {trial_id}") from exc
+
+  return {"id": trial_id, **trial}

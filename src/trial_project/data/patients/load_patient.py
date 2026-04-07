@@ -9,7 +9,17 @@ patients_path = data_dir / "processed_data" / "patients.parquet"
 def get_patient_llm_json(patient_id: str) -> str:
 	# TODO actually process maybe
 	patient_json = get_patient_json(patient_id, tables_dict=get_tables_dict())
-	return json.dumps(patient_json)
+	return json.dumps(_replace_nan_values(patient_json))
+
+
+def _replace_nan_values(value):
+	if isinstance(value, dict):
+		return {key: _replace_nan_values(item) for key, item in value.items()}
+	if isinstance(value, list):
+		return [_replace_nan_values(item) for item in value]
+	if pd.isna(value):
+		return ""
+	return value
 
 def get_patient_json(patient_id: str, tables_dict=None) -> dict:
 	"""Load one patient and all related records as a JSON-serializable dict."""
