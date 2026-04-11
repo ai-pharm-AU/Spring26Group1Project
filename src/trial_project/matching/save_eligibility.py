@@ -32,7 +32,7 @@ def save_eligibility_decision(decision: EligibilityDecision) -> None:
         "exclusion_rule_hit": decision.exclusion_rule_hit,
         "llm_checked": decision.llm_checked,
         "decision_source": decision.decision_source,
-        "reason": decision.reason,
+        "reasoning": decision.reasoning,
         "confidence": decision.confidence,
         "model_name": decision.model_name,
         "evaluated_at": decision.evaluated_at or datetime.utcnow(),
