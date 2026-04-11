@@ -63,19 +63,19 @@ if __name__ == "__main__":
 
         logger.info(f"[{idx + 1}/{total_patients}] Processing patient {patient_id}")
 
-        # Get keywords for this patient
+        # Get keywords for this patient TODO remove this part
         keywords = keywords_dict.get(patient_id)
         if keywords is None or len(keywords) == 0:
             logger.warning(f"No keywords found for patient {patient_id}, skipping")
             continue
 
-        # Get eligible trials based on keywords
-        # try:
-        trial_ids = load_trials_for_patient(patient_id)
-        logger.info(f"Found {len(trial_ids)} eligible trials for patient {patient_id}")
-        # except Exception as e:
-        #     logger.error(f"Error retrieving trials for patient {patient_id}: {e}")
-        #     continue
+        # Get eligible trials
+        try:
+            trial_ids = load_trials_for_patient(patient_id)
+            logger.info(f"Found {len(trial_ids)} eligible trials for patient {patient_id}")
+        except Exception as e:
+            logger.error(f"Error retrieving trials for patient {patient_id}: {e}")
+            continue
 
         # Determine eligibility for each trial
         for trial_id in trial_ids:

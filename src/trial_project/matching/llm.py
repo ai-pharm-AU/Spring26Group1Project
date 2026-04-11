@@ -2,20 +2,20 @@
 llm agents for determining patient trial eligibility
 """
 
-from urllib import response
-
 from trial_project.api import generate_client
 from trial_project.data.patients.evidence import load_patient_evidence
 from trial_project.data.patients.load_patient import get_patient_llm_json
 from trial_project.data.trials.eligibility import get_trial_eligibility_llm
 from trial_project.data.trials.load import load_trial_json_llm
 import json
+
+from trial_project.matching.save_eligibility import EligibilityDecision
 # from agents import Agent, Runner
 
 client = generate_client()
 
 # give patient info as str to avoid having to load and stuff every time
-def is_patient_eligible_llm(patient_id, trial_id):
+def is_patient_eligible_llm(patient_id, trial_id) -> EligibilityDecision:
 
   trial_eligibility = get_trial_eligibility_llm(trial_id)
   patient_evidence = load_patient_evidence(patient_id)
@@ -88,12 +88,7 @@ Return JSON in this exact shape:
       "reasoning": "", 
       "confidence": "high|medium|low" 
     } 
-  ], 
-
-  "hard_stops": [], 
-  "manual_review_flags": [], 
-  "matching_notes": [] 
-
+  ]
 }
  """
 
@@ -105,5 +100,18 @@ Return JSON in this exact shape:
     instructions=prompt,
     input=input
 )
-  return json.loads(response.output_text)
+  result = json.loads(response.output_text)
+  
+  return EligibilityDecision(
+      patient_id=patient_id,
+      trial_id=trial_id,
+      eligible=result["overall_decision"] == "eligible",
+      exclusion_rule_hit=False,
+      llm_checked=True,
+      decision_source="llm",
+      reason=result["overall_rationale"],
+      confidence=result["confidence"],
+      model_name="gpt-5-mini",
+      evaluated_at=None
+  )
   

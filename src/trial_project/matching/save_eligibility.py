@@ -16,13 +16,12 @@ class EligibilityDecision:
     exclusion_rule_hit: bool # maybe make string or w/e
     llm_checked: bool
     decision_source: str   # "rule_based" | "llm" | "hybrid"
-    reason: str | None = None
+    reasoning: str | None = None
     confidence: float | None = None
     model_name: str | None = None
     evaluated_at: datetime | None = None
 
 eligibility_file = results_dir / "eligibility_decisions.parquet"
-
 
 def save_eligibility_decision(decision: EligibilityDecision) -> None:
     """Upsert one patient/trial row into Parquet."""
