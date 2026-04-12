@@ -41,6 +41,14 @@ def get_device():
     return "cuda" if torch.cuda.is_available() else "cpu"
 
 
+def _load_medcpt_tokenizer(model_name):
+    # Fast tokenizers can crash in some environments for pair encoding; prefer slow tokenizer.
+    try:
+        return AutoTokenizer.from_pretrained(model_name, use_fast=False)
+    except TypeError:
+        return AutoTokenizer.from_pretrained(model_name)
+
+
 def _tokenize(text):
     if not text:
         return []
@@ -253,25 +261,28 @@ def get_medcpt_trial_index(entries, cache_key):
         corpus_ids = []
 
         model = AutoModel.from_pretrained("ncbi/MedCPT-Article-Encoder").to(device)
-        tokenizer = AutoTokenizer.from_pretrained("ncbi/MedCPT-Article-Encoder")
+        model.eval()
+        tokenizer = _load_medcpt_tokenizer("ncbi/MedCPT-Article-Encoder")
 
         print("Encoding corpus for MedCPT...")
         for entry in tqdm.tqdm(entries):
+            print(f"[hybrid_fusion] MedCPT encoding trial_id={entry['_id']} title={entry.get('title', '')!r}")
             corpus_ids.append(entry["_id"])
             title = entry.get("title", "")
             text = entry.get("text", "")
 
             with torch.no_grad():
                 encoded = tokenizer(
-                    [[title, text]],
+                    text=[title or ""],
+                    text_pair=[text or ""],
                     truncation=True,
                     padding=True,
                     return_tensors="pt",
                     max_length=512,
-                ).to(device)
+                )
+                encoded = {key: value.to(device) for key, value in encoded.items()}
                 embed = model(**encoded).last_hidden_state[:, 0, :]
                 embeds.append(embed[0].cpu().numpy())
-
         embeds = np.array(embeds, dtype=np.float32)
         np.save(corpus_path, embeds)
         with open(ids_path, "w") as f:
@@ -298,7 +309,8 @@ def _search_bm25(bm25, corpus_ids, conditions, top_k):
 def _search_medcpt(index, corpus_ids, conditions, top_k, device):
     print(f"[hybrid_fusion] MedCPT search for {len(conditions)} conditions on device={device} top_k={top_k}")
     model = AutoModel.from_pretrained("ncbi/MedCPT-Query-Encoder").to(device)
-    tokenizer = AutoTokenizer.from_pretrained("ncbi/MedCPT-Query-Encoder")
+    model.eval()
+    tokenizer = _load_medcpt_tokenizer("ncbi/MedCPT-Query-Encoder")
 
     with torch.no_grad():
         encoded = tokenizer(
@@ -307,7 +319,8 @@ def _search_medcpt(index, corpus_ids, conditions, top_k, device):
             padding=True,
             return_tensors="pt",
             max_length=256,
-        ).to(device)
+        )
+        encoded = {key: value.to(device) for key, value in encoded.items()}
         embeds = model(**encoded).last_hidden_state[:, 0, :].cpu().numpy().astype(np.float32)
         _, inds = index.search(embeds, k=top_k)
 
