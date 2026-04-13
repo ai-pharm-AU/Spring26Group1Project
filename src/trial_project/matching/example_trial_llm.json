@@ -1,0 +1,19 @@
+{
+  "brief_summary": "This protocol is to provide follow-up medical/surgical visits for DCS patients who are long term survivors and may not currently be a participant entered on an active research protocol. No investigational treatments or standard treatments will be administered on this protocol....",
+  "brief_title": "Follow-up Protocol for Patients With Cancer/AIDS/Skin Disease",
+  "diseases": "['Melanoma', 'Ovarian Cancer', 'Prostate Cancer', 'Breast Cancer', 'Lymphoma']",
+  "diseases_list": [
+    "Melanoma",
+    "Ovarian Cancer",
+    "Prostate Cancer",
+    "Breast Cancer",
+    "Lymphoma"
+  ],
+  "drugs": "",
+  "drugs_list": [],
+  "enrollment": "1031.0",
+  "exclusion_criteria": "",
+  "id": "NCT00001503",
+  "inclusion_criteria": "ELIGIBILITY CRITERIA: \n\n Patients of any age who were previously enrolled on a CCR protocol. \n\n Not eligible for or unwilling to participate in an active NCI intramural primary research protocol. \n\n CCR investigator decides it is in the best interests of the patient and the CC for the patient to be seen in follow-up visits at the NIH. \n\n Patient or Legally Authorized Representative (LAR)/guardian is able to provide informed consent.",
+  "phase": ""
+}

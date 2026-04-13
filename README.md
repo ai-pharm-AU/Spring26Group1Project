@@ -63,3 +63,7 @@ java -jar synthea-with-dependencies.jar -p 20
 need to have set to csv output; move the output to w/e folder I said in the code
 
 The retrieval flow now reads patient keywords from `data/processed_data/patient_keywords.parquet` and trial data from the existing loaders, so there is no separate `queries.jsonl` step.
+
+## Synthea Config
+
+only alive patients

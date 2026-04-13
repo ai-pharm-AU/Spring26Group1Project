@@ -39,6 +39,7 @@ def generate_patient_keywords_cached(patient_id: str):
     return load_patient_keywords(patient_id, keywords_df)
   else:
     patient = get_patient_llm_json(patient_id)
+    # print(patient)
     keywords = generate_patient_keywords(patient)
     save_patient_keywords(patient_id, keywords)
     return keywords
@@ -47,10 +48,13 @@ if __name__ == "__main__":
   # load patient ids
   patients_ids = pd.read_parquet(data_dir / "processed_data" / "patients.parquet", columns=["Id"])
   tables_dict = get_tables_dict()
+  count = 0
   for (index, patient_id) in patients_ids.iterrows():
+    count += 1
     print(f"Generating keywords for patient {patient_id['Id']}")
     keywords = generate_patient_keywords_cached(patient_id['Id'])
     print(f"Keywords for patient {patient_id['Id']}: {keywords}")
+    print(f"Generated keywords for {count} patients so far")
   keywords = load_all_patient_keywords()
   print(keywords.head())
     # patient_json = get_patient_json(patient_id['Id'], tables_dict=tables_dict)

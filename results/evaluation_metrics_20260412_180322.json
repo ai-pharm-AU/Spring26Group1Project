@@ -1,0 +1,12 @@
+{
+  "accuracy": 0.1429,
+  "precision": 0.0,
+  "recall": 0.0,
+  "f1": 0.0,
+  "true_positives": 0,
+  "false_positives": 0,
+  "true_negatives": 1,
+  "false_negatives": 6,
+  "total_pairs": 7,
+  "evaluation_timestamp": "2026-04-12T18:03:22.480503"
+}

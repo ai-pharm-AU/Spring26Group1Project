@@ -1,0 +1,3698 @@
+{
+  "allergies": [],
+  "careplans": [
+    {
+      "DESCRIPTION": "Respiratory therapy (procedure)",
+      "START": "2015-03-09",
+      "STOP": "2017-01-18"
+    },
+    {
+      "DESCRIPTION": "Respiratory therapy (procedure)",
+      "START": "2017-08-30",
+      "STOP": "2018-01-24"
+    },
+    {
+      "DESCRIPTION": "Respiratory therapy (procedure)",
+      "START": "2022-04-04",
+      "STOP": "2023-02-22"
+    },
+    {
+      "DESCRIPTION": "Respiratory therapy (procedure)",
+      "START": "2024-04-03",
+      "STOP": "2025-03-05"
+    },
+    {
+      "DESCRIPTION": "Hyperlipidemia clinical management plan (record artifact)",
+      "START": "2025-03-26",
+      "STOP": NaN
+    }
+  ],
+  "conditions": [
+    {
+      "DESCRIPTION": "Chronic sinusitis (disorder)",
+      "START": "1968-11-11",
+      "STOP": NaN
+    },
+    {
+      "DESCRIPTION": "Adolescent idiopathic scoliosis (disorder)",
+      "START": "1977-03-21",
+      "STOP": NaN
+    },
+    {
+      "DESCRIPTION": "Risk activity involvement (finding)",
+      "START": "1984-02-29",
+      "STOP": NaN
+    },
+    {
+      "DESCRIPTION": "Received higher education (finding)",
+      "START": "1985-03-06",
+      "STOP": NaN
+    },
+    {
+      "DESCRIPTION": "Body mass index 30+ - obesity (finding)",
+      "START": "2007-01-24",
+      "STOP": NaN
+    },
+    {
+      "DESCRIPTION": "Stress (finding)",
+      "START": "2007-01-24",
+      "STOP": "2017-01-18"
+    },
+    {
+      "DESCRIPTION": "Unemployed (finding)",
+      "START": "2015-02-11",
+      "STOP": "2017-01-18"
+    },
+    {
+      "DESCRIPTION": "Medication review due (situation)",
+      "START": "2017-01-18",
+      "STOP": "2017-08-23"
+    },
+    {
+      "DESCRIPTION": "Part-time employment (finding)",
+      "START": "2017-01-18",
+      "STOP": "2017-08-23"
+    },
+    {
+      "DESCRIPTION": "Full-time employment (finding)",
+      "START": "2017-08-23",
+      "STOP": "2018-01-24"
+    },
+    {
+      "DESCRIPTION": "Stress (finding)",
+      "START": "2017-08-23",
+      "STOP": "2021-02-10"
+    },
+    {
+      "DESCRIPTION": "Acute bronchitis (disorder)",
+      "START": "2017-08-30",
+      "STOP": "2017-09-07"
+    },
+    {
+      "DESCRIPTION": "Medication review due (situation)",
+      "START": "2018-01-24",
+      "STOP": "2018-01-24"
+    },
+    {
+      "DESCRIPTION": "Unemployed (finding)",
+      "START": "2018-01-24",
+      "STOP": "2019-01-30"
+    },
+    {
+      "DESCRIPTION": "Gingivitis (disorder)",
+      "START": "2018-01-24",
+      "STOP": "2018-02-07"
+    },
+    {
+      "DESCRIPTION": "Medication review due (situation)",
+      "START": "2019-01-30",
+      "STOP": "2021-02-10"
+    },
+    {
+      "DESCRIPTION": "Full-time employment (finding)",
+      "START": "2019-01-30",
+      "STOP": "2022-02-16"
+    },
+    {
+      "DESCRIPTION": "Victim of intimate partner abuse (finding)",
+      "START": "2021-02-10",
+      "STOP": "2022-02-16"
+    },
+    {
+      "DESCRIPTION": "Gingivitis (disorder)",
+      "START": "2021-02-10",
+      "STOP": "2021-02-24"
+    },
+    {
+      "DESCRIPTION": "Medication review due (situation)",
+      "START": "2022-02-16",
+      "STOP": "2022-04-13"
+    },
+    {
+      "DESCRIPTION": "Part-time employment (finding)",
+      "START": "2022-02-16",
+      "STOP": "2022-04-13"
+    },
+    {
+      "DESCRIPTION": "Stress (finding)",
+      "START": "2022-02-16",
+      "STOP": "2022-04-13"
+    },
+    {
+      "DESCRIPTION": "Acute bronchitis (disorder)",
+      "START": "2022-04-04",
+      "STOP": "2022-04-24"
+    },
+    {
+      "DESCRIPTION": "Full-time employment (finding)",
+      "START": "2022-04-13",
+      "STOP": "2024-02-28"
+    },
+    {
+      "DESCRIPTION": "Gingivitis (disorder)",
+      "START": "2022-04-13",
+      "STOP": "2022-04-27"
+    },
+    {
+      "DESCRIPTION": "Medication review due (situation)",
+      "START": "2023-02-22",
+      "STOP": "2024-02-28"
+    },
+    {
+      "DESCRIPTION": "Stress (finding)",
+      "START": "2023-02-22",
+      "STOP": "2024-02-28"
+    },
+    {
+      "DESCRIPTION": "Not in labor force (finding)",
+      "START": "2024-02-28",
+      "STOP": "2024-03-27"
+    },
+    {
+      "DESCRIPTION": "Limited social contact (finding)",
+      "START": "2024-02-28",
+      "STOP": NaN
+    },
+    {
+      "DESCRIPTION": "Gingivitis (disorder)",
+      "START": "2024-02-28",
+      "STOP": "2024-03-13"
+    },
+    {
+      "DESCRIPTION": "Gingival disease (disorder)",
+      "START": "2024-03-13",
+      "STOP": "2024-03-13"
+    },
+    {
+      "DESCRIPTION": "Medication review due (situation)",
+      "START": "2024-03-27",
+      "STOP": NaN
+    },
+    {
+      "DESCRIPTION": "Full-time employment (finding)",
+      "START": "2024-03-27",
+      "STOP": NaN
+    },
+    {
+      "DESCRIPTION": "Social isolation (finding)",
+      "START": "2024-03-27",
+      "STOP": "2025-03-05"
+    },
+    {
+      "DESCRIPTION": "Gingivitis (disorder)",
+      "START": "2024-03-27",
+      "STOP": "2024-04-10"
+    },
+    {
+      "DESCRIPTION": "Acute bronchitis (disorder)",
+      "START": "2024-04-03",
+      "STOP": "2024-04-11"
+    },
+    {
+      "DESCRIPTION": "Hyperlipidemia (disorder)",
+      "START": "2025-03-05",
+      "STOP": NaN
+    },
+    {
+      "DESCRIPTION": "Stress (finding)",
+      "START": "2025-03-05",
+      "STOP": NaN
+    },
+    {
+      "DESCRIPTION": "Viral sinusitis (disorder)",
+      "START": "2025-10-26",
+      "STOP": "2025-11-15"
+    }
+  ],
+  "encounters": [
+    {
+      "DESCRIPTION": "Encounter for symptom (procedure)",
+      "ENCOUNTERCLASS": "ambulatory",
+      "START": "1968-11-11T06:26:30Z",
+      "STOP": "1968-11-11T06:41:30Z"
+    },
+    {
+      "DESCRIPTION": "Follow-up encounter (procedure)",
+      "ENCOUNTERCLASS": "ambulatory",
+      "START": "1977-03-21T15:31:53Z",
+      "STOP": "1977-03-21T15:54:52Z"
+    },
+    {
+      "DESCRIPTION": "Well child visit (procedure)",
+      "ENCOUNTERCLASS": "wellness",
+      "START": "1984-02-29T04:26:30Z",
+      "STOP": "1984-02-29T04:41:30Z"
+    },
+    {
+      "DESCRIPTION": "General examination of patient (procedure)",
+      "ENCOUNTERCLASS": "wellness",
+      "START": "1985-03-06T04:26:30Z",
+      "STOP": "1985-03-06T04:58:16Z"
+    },
+    {
+      "DESCRIPTION": "General examination of patient (procedure)",
+      "ENCOUNTERCLASS": "wellness",
+      "START": "2007-01-24T04:26:30Z",
+      "STOP": "2007-01-24T05:10:24Z"
+    },
+    {
+      "DESCRIPTION": "General examination of patient (procedure)",
+      "ENCOUNTERCLASS": "wellness",
+      "START": "2015-02-11T04:26:30Z",
+      "STOP": "2015-02-11T05:21:29Z"
+    },
+    {
+      "DESCRIPTION": "Encounter for symptom (procedure)",
+      "ENCOUNTERCLASS": "ambulatory",
+      "START": "2015-03-09T22:26:30Z",
+      "STOP": "2015-03-09T22:41:30Z"
+    },
+    {
+      "DESCRIPTION": "General examination of patient (procedure)",
+      "ENCOUNTERCLASS": "wellness",
+      "START": "2017-01-18T04:26:30Z",
+      "STOP": "2017-01-18T05:14:47Z"
+    },
+    {
+      "DESCRIPTION": "Encounter for check up (procedure)",
+      "ENCOUNTERCLASS": "outpatient",
+      "START": "2017-08-23T04:26:30Z",
+      "STOP": "2017-08-23T05:17:07Z"
+    },
+    {
+      "DESCRIPTION": "Encounter for symptom (procedure)",
+      "ENCOUNTERCLASS": "ambulatory",
+      "START": "2017-08-30T04:26:30Z",
+      "STOP": "2017-08-30T04:41:30Z"
+    },
+    {
+      "DESCRIPTION": "General examination of patient (procedure)",
+      "ENCOUNTERCLASS": "wellness",
+      "START": "2018-01-24T04:26:30Z",
+      "STOP": "2018-01-24T04:58:14Z"
+    },
+    {
+      "DESCRIPTION": "Encounter for check up (procedure)",
+      "ENCOUNTERCLASS": "ambulatory",
+      "START": "2018-02-07T04:26:30Z",
+      "STOP": "2018-02-07T07:15:28Z"
+    },
+    {
+      "DESCRIPTION": "General examination of patient (procedure)",
+      "ENCOUNTERCLASS": "wellness",
+      "START": "2019-01-30T04:26:30Z",
+      "STOP": "2019-01-30T05:19:14Z"
+    },
+    {
+      "DESCRIPTION": "General examination of patient (procedure)",
+      "ENCOUNTERCLASS": "wellness",
+      "START": "2020-02-05T04:26:30Z",
+      "STOP": "2020-02-05T04:58:50Z"
+    },
+    {
+      "DESCRIPTION": "General examination of patient (procedure)",
+      "ENCOUNTERCLASS": "wellness",
+      "START": "2021-02-10T04:26:30Z",
+      "STOP": "2021-02-10T05:18:23Z"
+    },
+    {
+      "DESCRIPTION": "Encounter for check up (procedure)",
+      "ENCOUNTERCLASS": "ambulatory",
+      "START": "2021-02-24T04:26:30Z",
+      "STOP": "2021-02-24T06:43:08Z"
+    },
+    {
+      "DESCRIPTION": "Administration of vaccine to produce active immunity (procedure)",
+      "ENCOUNTERCLASS": "outpatient",
+      "START": "2021-04-21T04:26:30Z",
+      "STOP": "2021-04-21T04:41:30Z"
+    },
+    {
+      "DESCRIPTION": "Administration of vaccine to produce active immunity (procedure)",
+      "ENCOUNTERCLASS": "outpatient",
+      "START": "2021-05-12T04:26:30Z",
+      "STOP": "2021-05-12T04:41:30Z"
+    },
+    {
+      "DESCRIPTION": "General examination of patient (procedure)",
+      "ENCOUNTERCLASS": "wellness",
+      "START": "2022-02-16T04:26:30Z",
+      "STOP": "2022-02-16T05:18:29Z"
+    },
+    {
+      "DESCRIPTION": "Encounter for symptom (procedure)",
+      "ENCOUNTERCLASS": "ambulatory",
+      "START": "2022-04-04T07:26:30Z",
+      "STOP": "2022-04-04T07:41:30Z"
+    },
+    {
+      "DESCRIPTION": "Encounter for check up (procedure)",
+      "ENCOUNTERCLASS": "outpatient",
+      "START": "2022-04-13T04:26:30Z",
+      "STOP": "2022-04-13T05:02:33Z"
+    },
+    {
+      "DESCRIPTION": "Encounter for check up (procedure)",
+      "ENCOUNTERCLASS": "ambulatory",
+      "START": "2022-04-27T04:26:30Z",
+      "STOP": "2022-04-27T07:59:57Z"
+    },
+    {
+      "DESCRIPTION": "General examination of patient (procedure)",
+      "ENCOUNTERCLASS": "wellness",
+      "START": "2023-02-22T04:26:30Z",
+      "STOP": "2023-02-22T05:14:07Z"
+    },
+    {
+      "DESCRIPTION": "General examination of patient (procedure)",
+      "ENCOUNTERCLASS": "wellness",
+      "START": "2024-02-28T04:26:30Z",
+      "STOP": "2024-02-28T05:22:34Z"
+    },
+    {
+      "DESCRIPTION": "Encounter for check up (procedure)",
+      "ENCOUNTERCLASS": "ambulatory",
+      "START": "2024-03-13T04:26:30Z",
+      "STOP": "2024-03-13T10:53:46Z"
+    },
+    {
+      "DESCRIPTION": "Encounter for check up (procedure)",
+      "ENCOUNTERCLASS": "outpatient",
+      "START": "2024-03-27T04:26:30Z",
+      "STOP": "2024-03-27T05:05:19Z"
+    },
+    {
+      "DESCRIPTION": "Encounter for symptom (procedure)",
+      "ENCOUNTERCLASS": "ambulatory",
+      "START": "2024-04-03T04:26:30Z",
+      "STOP": "2024-04-03T04:41:30Z"
+    },
+    {
+      "DESCRIPTION": "Encounter for check up (procedure)",
+      "ENCOUNTERCLASS": "ambulatory",
+      "START": "2024-04-10T04:26:30Z",
+      "STOP": "2024-04-10T07:03:33Z"
+    },
+    {
+      "DESCRIPTION": "General examination of patient (procedure)",
+      "ENCOUNTERCLASS": "wellness",
+      "START": "2025-03-05T04:26:30Z",
+      "STOP": "2025-03-05T05:26:20Z"
+    },
+    {
+      "DESCRIPTION": "Follow-up encounter (procedure)",
+      "ENCOUNTERCLASS": "ambulatory",
+      "START": "2025-03-26T04:26:30Z",
+      "STOP": "2025-03-26T04:41:30Z"
+    },
+    {
+      "DESCRIPTION": "Encounter for symptom (procedure)",
+      "ENCOUNTERCLASS": "ambulatory",
+      "START": "2025-10-26T07:26:30Z",
+      "STOP": "2025-10-26T07:41:30Z"
+    }
+  ],
+  "id": "131d62f1-0546-6627-698b-5ef8789c5df1",
+  "immunizations": [
+    {
+      "DATE": "2017-01-18T04:26:30Z",
+      "DESCRIPTION": "zoster vaccine  live"
+    },
+    {
+      "DATE": "2017-01-18T04:26:30Z",
+      "DESCRIPTION": "Influenza  split virus  trivalent  PF"
+    },
+    {
+      "DATE": "2017-08-23T04:26:30Z",
+      "DESCRIPTION": "zoster vaccine  live"
+    },
+    {
+      "DATE": "2017-08-23T04:26:30Z",
+      "DESCRIPTION": "Influenza  split virus  trivalent  PF"
+    },
+    {
+      "DATE": "2018-01-24T04:26:30Z",
+      "DESCRIPTION": "Influenza  split virus  trivalent  PF"
+    },
+    {
+      "DATE": "2018-01-24T04:26:30Z",
+      "DESCRIPTION": "Td (adult)  5 Lf tetanus toxoid  preservative free  adsorbed"
+    },
+    {
+      "DATE": "2019-01-30T04:26:30Z",
+      "DESCRIPTION": "Influenza  split virus  trivalent  PF"
+    },
+    {
+      "DATE": "2020-02-05T04:26:30Z",
+      "DESCRIPTION": "Influenza  split virus  trivalent  PF"
+    },
+    {
+      "DATE": "2021-02-10T04:26:30Z",
+      "DESCRIPTION": "Influenza  split virus  trivalent  PF"
+    },
+    {
+      "DATE": "2021-04-21T04:26:30Z",
+      "DESCRIPTION": "COVID-19  mRNA  LNP-S  PF  30 mcg/0.3 mL dose"
+    },
+    {
+      "DATE": "2021-05-12T04:26:30Z",
+      "DESCRIPTION": "COVID-19  mRNA  LNP-S  PF  30 mcg/0.3 mL dose"
+    },
+    {
+      "DATE": "2022-02-16T04:26:30Z",
+      "DESCRIPTION": "Influenza  split virus  trivalent  PF"
+    },
+    {
+      "DATE": "2023-02-22T04:26:30Z",
+      "DESCRIPTION": "Influenza  split virus  trivalent  PF"
+    },
+    {
+      "DATE": "2024-02-28T04:26:30Z",
+      "DESCRIPTION": "Influenza  split virus  trivalent  PF"
+    },
+    {
+      "DATE": "2025-03-05T04:26:30Z",
+      "DESCRIPTION": "Influenza  split virus  trivalent  PF"
+    }
+  ],
+  "medications": [
+    {
+      "DESCRIPTION": "Acetaminophen 325 MG Oral Tablet",
+      "START": "2017-08-30T04:26:30Z",
+      "STOP": "2017-09-07T04:26:30Z"
+    },
+    {
+      "DESCRIPTION": "sodium fluoride 0.0272 MG/MG Oral Gel",
+      "START": "2018-02-07T06:39:47Z",
+      "STOP": "2018-02-07T06:39:47Z"
+    },
+    {
+      "DESCRIPTION": "Acetaminophen 325 MG Oral Tablet",
+      "START": "2022-04-04T07:31:47Z",
+      "STOP": "2022-04-24T07:31:47Z"
+    },
+    {
+      "DESCRIPTION": "Acetaminophen 325 MG Oral Tablet",
+      "START": "2024-04-03T04:41:24Z",
+      "STOP": "2024-04-11T04:41:24Z"
+    },
+    {
+      "DESCRIPTION": "sodium fluoride 0.0272 MG/MG Oral Gel",
+      "START": "2024-04-10T06:27:39Z",
+      "STOP": "2024-04-10T06:27:39Z"
+    },
+    {
+      "DESCRIPTION": "Simvastatin 10 MG Oral Tablet",
+      "START": "2025-03-26T04:26:30Z",
+      "STOP": NaN
+    }
+  ],
+  "observations": [
+    {
+      "DATE": "2017-01-18T04:26:30Z",
+      "DESCRIPTION": "Body Height",
+      "UNITS": "cm",
+      "VALUE": "173.7"
+    },
+    {
+      "DATE": "2017-01-18T04:26:30Z",
+      "DESCRIPTION": "Pain severity - 0-10 verbal numeric rating [Score] - Reported",
+      "UNITS": "{score}",
+      "VALUE": "4.0"
+    },
+    {
+      "DATE": "2017-01-18T04:26:30Z",
+      "DESCRIPTION": "Body Weight",
+      "UNITS": "kg",
+      "VALUE": "82.9"
+    },
+    {
+      "DATE": "2017-01-18T04:26:30Z",
+      "DESCRIPTION": "Body mass index (BMI) [Ratio]",
+      "UNITS": "kg/m2",
+      "VALUE": "27.5"
+    },
+    {
+      "DATE": "2017-01-18T04:26:30Z",
+      "DESCRIPTION": "Diastolic Blood Pressure",
+      "UNITS": "mm[Hg]",
+      "VALUE": "79.0"
+    },
+    {
+      "DATE": "2017-01-18T04:26:30Z",
+      "DESCRIPTION": "Systolic Blood Pressure",
+      "UNITS": "mm[Hg]",
+      "VALUE": "148.0"
+    },
+    {
+      "DATE": "2017-01-18T04:26:30Z",
+      "DESCRIPTION": "Heart rate",
+      "UNITS": "/min",
+      "VALUE": "97.0"
+    },
+    {
+      "DATE": "2017-01-18T04:26:30Z",
+      "DESCRIPTION": "Respiratory rate",
+      "UNITS": "/min",
+      "VALUE": "15.0"
+    },
+    {
+      "DATE": "2017-01-18T04:26:30Z",
+      "DESCRIPTION": "Cholesterol [Mass/volume] in Serum or Plasma",
+      "UNITS": "mg/dL",
+      "VALUE": "192.2"
+    },
+    {
+      "DATE": "2017-01-18T04:26:30Z",
+      "DESCRIPTION": "Triglyceride [Mass/volume] in Serum or Plasma",
+      "UNITS": "mg/dL",
+      "VALUE": "104.0"
+    },
+    {
+      "DATE": "2017-01-18T04:26:30Z",
+      "DESCRIPTION": "Cholesterol in LDL [Mass/volume] in Serum or Plasma by Direct assay",
+      "UNITS": "mg/dL",
+      "VALUE": "142.7"
+    },
+    {
+      "DATE": "2017-01-18T04:26:30Z",
+      "DESCRIPTION": "Cholesterol in HDL [Mass/volume] in Serum or Plasma",
+      "UNITS": "mg/dL",
+      "VALUE": "28.7"
+    },
+    {
+      "DATE": "2017-01-18T04:26:30Z",
+      "DESCRIPTION": "Tobacco smoking status",
+      "UNITS": NaN,
+      "VALUE": "Never smoked tobacco (finding)"
+    },
+    {
+      "DATE": "2017-01-18T05:14:47Z",
+      "DESCRIPTION": "Within the last year  have you been afraid of your partner or ex-partner",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2017-01-18T05:14:47Z",
+      "DESCRIPTION": "Do you feel physically and emotionally safe where you currently live [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "Yes"
+    },
+    {
+      "DATE": "2017-01-18T05:14:47Z",
+      "DESCRIPTION": "Are you a refugee",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2017-01-18T05:14:47Z",
+      "DESCRIPTION": "Have you spent more than 2 nights in a row in a jail  prison  detention center  or juvenile correctional facility in past 1 year [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2017-01-18T05:14:47Z",
+      "DESCRIPTION": "Stress level",
+      "UNITS": NaN,
+      "VALUE": "Not at all"
+    },
+    {
+      "DATE": "2017-01-18T05:14:47Z",
+      "DESCRIPTION": "How often do you see or talk to people that you care about and feel close to [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "3 to 5 times a week"
+    },
+    {
+      "DATE": "2017-01-18T05:14:47Z",
+      "DESCRIPTION": "Has lack of transportation kept you from medical appointments  meetings  work  or from getting things needed for daily living",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2017-01-18T05:14:47Z",
+      "DESCRIPTION": "Have you or any family members you live with been unable to get any of the following when it was really needed in past 1 year [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "Medicine or Any Health Care (Medical  Dental  Mental Health  Vision)"
+    },
+    {
+      "DATE": "2017-01-18T05:14:47Z",
+      "DESCRIPTION": "What was your best estimate of the total income of all family members from all sources  before taxes  in last year [PhenX]",
+      "UNITS": "/a",
+      "VALUE": "32184"
+    },
+    {
+      "DATE": "2017-01-18T05:14:47Z",
+      "DESCRIPTION": "Primary insurance",
+      "UNITS": NaN,
+      "VALUE": "Private insurance"
+    },
+    {
+      "DATE": "2017-01-18T05:14:47Z",
+      "DESCRIPTION": "Employment status - current",
+      "UNITS": NaN,
+      "VALUE": "Part-time or temporary work"
+    },
+    {
+      "DATE": "2017-01-18T05:14:47Z",
+      "DESCRIPTION": "Highest level of education",
+      "UNITS": NaN,
+      "VALUE": "More than high school"
+    },
+    {
+      "DATE": "2017-01-18T05:14:47Z",
+      "DESCRIPTION": "Address",
+      "UNITS": NaN,
+      "VALUE": "619 Spencer Estate"
+    },
+    {
+      "DATE": "2017-01-18T05:14:47Z",
+      "DESCRIPTION": "Are you worried about losing your housing [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2017-01-18T05:14:47Z",
+      "DESCRIPTION": "Housing status",
+      "UNITS": NaN,
+      "VALUE": "I have housing"
+    },
+    {
+      "DATE": "2017-01-18T05:14:47Z",
+      "DESCRIPTION": "How many people are living or staying at this address [#]",
+      "UNITS": "{#}",
+      "VALUE": "4.0"
+    },
+    {
+      "DATE": "2017-01-18T05:14:47Z",
+      "DESCRIPTION": "Preferred language",
+      "UNITS": NaN,
+      "VALUE": "English"
+    },
+    {
+      "DATE": "2017-01-18T05:14:47Z",
+      "DESCRIPTION": "Discharged from the U.S. Armed Forces",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2017-01-18T05:14:47Z",
+      "DESCRIPTION": "Has season or migrant farm work been your or your family's main source of income at any point in past 2 years [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2017-01-18T05:14:47Z",
+      "DESCRIPTION": "Race",
+      "UNITS": NaN,
+      "VALUE": "White"
+    },
+    {
+      "DATE": "2017-01-18T05:14:47Z",
+      "DESCRIPTION": "Hispanic or Latino",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2017-01-18T05:40:49Z",
+      "DESCRIPTION": "Generalized anxiety disorder 7 item (GAD-7) total score [Reported.PHQ]",
+      "UNITS": "{score}",
+      "VALUE": "4.0"
+    },
+    {
+      "DATE": "2017-01-18T06:20:24Z",
+      "DESCRIPTION": "Patient Health Questionnaire 2 item (PHQ-2) total score [Reported]",
+      "UNITS": "{score}",
+      "VALUE": "2.0"
+    },
+    {
+      "DATE": "2017-08-23T04:26:30Z",
+      "DESCRIPTION": "Body Height",
+      "UNITS": "cm",
+      "VALUE": "173.7"
+    },
+    {
+      "DATE": "2017-08-23T04:26:30Z",
+      "DESCRIPTION": "Pain severity - 0-10 verbal numeric rating [Score] - Reported",
+      "UNITS": "{score}",
+      "VALUE": "3.0"
+    },
+    {
+      "DATE": "2017-08-23T04:26:30Z",
+      "DESCRIPTION": "Body Weight",
+      "UNITS": "kg",
+      "VALUE": "82.9"
+    },
+    {
+      "DATE": "2017-08-23T04:26:30Z",
+      "DESCRIPTION": "Body mass index (BMI) [Ratio]",
+      "UNITS": "kg/m2",
+      "VALUE": "27.5"
+    },
+    {
+      "DATE": "2017-08-23T04:26:30Z",
+      "DESCRIPTION": "Diastolic Blood Pressure",
+      "UNITS": "mm[Hg]",
+      "VALUE": "78.0"
+    },
+    {
+      "DATE": "2017-08-23T04:26:30Z",
+      "DESCRIPTION": "Systolic Blood Pressure",
+      "UNITS": "mm[Hg]",
+      "VALUE": "140.0"
+    },
+    {
+      "DATE": "2017-08-23T04:26:30Z",
+      "DESCRIPTION": "Heart rate",
+      "UNITS": "/min",
+      "VALUE": "61.0"
+    },
+    {
+      "DATE": "2017-08-23T04:26:30Z",
+      "DESCRIPTION": "Respiratory rate",
+      "UNITS": "/min",
+      "VALUE": "14.0"
+    },
+    {
+      "DATE": "2017-08-23T04:26:30Z",
+      "DESCRIPTION": "Tobacco smoking status",
+      "UNITS": NaN,
+      "VALUE": "Never smoked tobacco (finding)"
+    },
+    {
+      "DATE": "2017-08-23T05:17:07Z",
+      "DESCRIPTION": "Within the last year  have you been afraid of your partner or ex-partner",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2017-08-23T05:17:07Z",
+      "DESCRIPTION": "Do you feel physically and emotionally safe where you currently live [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "Yes"
+    },
+    {
+      "DATE": "2017-08-23T05:17:07Z",
+      "DESCRIPTION": "Are you a refugee",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2017-08-23T05:17:07Z",
+      "DESCRIPTION": "Have you spent more than 2 nights in a row in a jail  prison  detention center  or juvenile correctional facility in past 1 year [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2017-08-23T05:17:07Z",
+      "DESCRIPTION": "Stress level",
+      "UNITS": NaN,
+      "VALUE": "A little bit"
+    },
+    {
+      "DATE": "2017-08-23T05:17:07Z",
+      "DESCRIPTION": "How often do you see or talk to people that you care about and feel close to [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "3 to 5 times a week"
+    },
+    {
+      "DATE": "2017-08-23T05:17:07Z",
+      "DESCRIPTION": "Has lack of transportation kept you from medical appointments  meetings  work  or from getting things needed for daily living",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2017-08-23T05:17:07Z",
+      "DESCRIPTION": "Have you or any family members you live with been unable to get any of the following when it was really needed in past 1 year [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "I choose not to answer this question"
+    },
+    {
+      "DATE": "2017-08-23T05:17:07Z",
+      "DESCRIPTION": "What was your best estimate of the total income of all family members from all sources  before taxes  in last year [PhenX]",
+      "UNITS": "/a",
+      "VALUE": "32184"
+    },
+    {
+      "DATE": "2017-08-23T05:17:07Z",
+      "DESCRIPTION": "Primary insurance",
+      "UNITS": NaN,
+      "VALUE": "Private insurance"
+    },
+    {
+      "DATE": "2017-08-23T05:17:07Z",
+      "DESCRIPTION": "Employment status - current",
+      "UNITS": NaN,
+      "VALUE": "Full-time work"
+    },
+    {
+      "DATE": "2017-08-23T05:17:07Z",
+      "DESCRIPTION": "Highest level of education",
+      "UNITS": NaN,
+      "VALUE": "More than high school"
+    },
+    {
+      "DATE": "2017-08-23T05:17:07Z",
+      "DESCRIPTION": "Address",
+      "UNITS": NaN,
+      "VALUE": "619 Spencer Estate"
+    },
+    {
+      "DATE": "2017-08-23T05:17:07Z",
+      "DESCRIPTION": "Are you worried about losing your housing [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2017-08-23T05:17:07Z",
+      "DESCRIPTION": "Housing status",
+      "UNITS": NaN,
+      "VALUE": "I have housing"
+    },
+    {
+      "DATE": "2017-08-23T05:17:07Z",
+      "DESCRIPTION": "How many people are living or staying at this address [#]",
+      "UNITS": "{#}",
+      "VALUE": "4.0"
+    },
+    {
+      "DATE": "2017-08-23T05:17:07Z",
+      "DESCRIPTION": "Preferred language",
+      "UNITS": NaN,
+      "VALUE": "English"
+    },
+    {
+      "DATE": "2017-08-23T05:17:07Z",
+      "DESCRIPTION": "Discharged from the U.S. Armed Forces",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2017-08-23T05:17:07Z",
+      "DESCRIPTION": "Has season or migrant farm work been your or your family's main source of income at any point in past 2 years [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2017-08-23T05:17:07Z",
+      "DESCRIPTION": "Race",
+      "UNITS": NaN,
+      "VALUE": "White"
+    },
+    {
+      "DATE": "2017-08-23T05:17:07Z",
+      "DESCRIPTION": "Hispanic or Latino",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2017-08-23T05:56:10Z",
+      "DESCRIPTION": "Patient Health Questionnaire 2 item (PHQ-2) total score [Reported]",
+      "UNITS": "{score}",
+      "VALUE": "2.0"
+    },
+    {
+      "DATE": "2017-08-23T06:35:48Z",
+      "DESCRIPTION": "Total score [DAST-10]",
+      "UNITS": "{score}",
+      "VALUE": "1.0"
+    },
+    {
+      "DATE": "2018-01-24T04:26:30Z",
+      "DESCRIPTION": "Body Height",
+      "UNITS": "cm",
+      "VALUE": "173.7"
+    },
+    {
+      "DATE": "2018-01-24T04:26:30Z",
+      "DESCRIPTION": "Pain severity - 0-10 verbal numeric rating [Score] - Reported",
+      "UNITS": "{score}",
+      "VALUE": "0.0"
+    },
+    {
+      "DATE": "2018-01-24T04:26:30Z",
+      "DESCRIPTION": "Body Weight",
+      "UNITS": "kg",
+      "VALUE": "82.9"
+    },
+    {
+      "DATE": "2018-01-24T04:26:30Z",
+      "DESCRIPTION": "Body mass index (BMI) [Ratio]",
+      "UNITS": "kg/m2",
+      "VALUE": "27.5"
+    },
+    {
+      "DATE": "2018-01-24T04:26:30Z",
+      "DESCRIPTION": "Diastolic Blood Pressure",
+      "UNITS": "mm[Hg]",
+      "VALUE": "81.0"
+    },
+    {
+      "DATE": "2018-01-24T04:26:30Z",
+      "DESCRIPTION": "Systolic Blood Pressure",
+      "UNITS": "mm[Hg]",
+      "VALUE": "146.0"
+    },
+    {
+      "DATE": "2018-01-24T04:26:30Z",
+      "DESCRIPTION": "Heart rate",
+      "UNITS": "/min",
+      "VALUE": "66.0"
+    },
+    {
+      "DATE": "2018-01-24T04:26:30Z",
+      "DESCRIPTION": "Respiratory rate",
+      "UNITS": "/min",
+      "VALUE": "13.0"
+    },
+    {
+      "DATE": "2018-01-24T04:26:30Z",
+      "DESCRIPTION": "Tobacco smoking status",
+      "UNITS": NaN,
+      "VALUE": "Never smoked tobacco (finding)"
+    },
+    {
+      "DATE": "2018-01-24T04:58:14Z",
+      "DESCRIPTION": "Within the last year  have you been afraid of your partner or ex-partner",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2018-01-24T04:58:14Z",
+      "DESCRIPTION": "Do you feel physically and emotionally safe where you currently live [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "Yes"
+    },
+    {
+      "DATE": "2018-01-24T04:58:14Z",
+      "DESCRIPTION": "Are you a refugee",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2018-01-24T04:58:14Z",
+      "DESCRIPTION": "Have you spent more than 2 nights in a row in a jail  prison  detention center  or juvenile correctional facility in past 1 year [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2018-01-24T04:58:14Z",
+      "DESCRIPTION": "Stress level",
+      "UNITS": NaN,
+      "VALUE": "Somewhat"
+    },
+    {
+      "DATE": "2018-01-24T04:58:14Z",
+      "DESCRIPTION": "How often do you see or talk to people that you care about and feel close to [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "5 or more times a week"
+    },
+    {
+      "DATE": "2018-01-24T04:58:14Z",
+      "DESCRIPTION": "Has lack of transportation kept you from medical appointments  meetings  work  or from getting things needed for daily living",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2018-01-24T04:58:14Z",
+      "DESCRIPTION": "Have you or any family members you live with been unable to get any of the following when it was really needed in past 1 year [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "Food"
+    },
+    {
+      "DATE": "2018-01-24T04:58:14Z",
+      "DESCRIPTION": "What was your best estimate of the total income of all family members from all sources  before taxes  in last year [PhenX]",
+      "UNITS": "/a",
+      "VALUE": "32184"
+    },
+    {
+      "DATE": "2018-01-24T04:58:14Z",
+      "DESCRIPTION": "Primary insurance",
+      "UNITS": NaN,
+      "VALUE": "Private insurance"
+    },
+    {
+      "DATE": "2018-01-24T04:58:14Z",
+      "DESCRIPTION": "Employment status - current",
+      "UNITS": NaN,
+      "VALUE": "Unemployed"
+    },
+    {
+      "DATE": "2018-01-24T04:58:14Z",
+      "DESCRIPTION": "Highest level of education",
+      "UNITS": NaN,
+      "VALUE": "More than high school"
+    },
+    {
+      "DATE": "2018-01-24T04:58:14Z",
+      "DESCRIPTION": "Address",
+      "UNITS": NaN,
+      "VALUE": "619 Spencer Estate"
+    },
+    {
+      "DATE": "2018-01-24T04:58:14Z",
+      "DESCRIPTION": "Are you worried about losing your housing [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2018-01-24T04:58:14Z",
+      "DESCRIPTION": "Housing status",
+      "UNITS": NaN,
+      "VALUE": "I have housing"
+    },
+    {
+      "DATE": "2018-01-24T04:58:14Z",
+      "DESCRIPTION": "How many people are living or staying at this address [#]",
+      "UNITS": "{#}",
+      "VALUE": "4.0"
+    },
+    {
+      "DATE": "2018-01-24T04:58:14Z",
+      "DESCRIPTION": "Preferred language",
+      "UNITS": NaN,
+      "VALUE": "English"
+    },
+    {
+      "DATE": "2018-01-24T04:58:14Z",
+      "DESCRIPTION": "Discharged from the U.S. Armed Forces",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2018-01-24T04:58:14Z",
+      "DESCRIPTION": "Has season or migrant farm work been your or your family's main source of income at any point in past 2 years [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2018-01-24T04:58:14Z",
+      "DESCRIPTION": "Race",
+      "UNITS": NaN,
+      "VALUE": "White"
+    },
+    {
+      "DATE": "2018-01-24T04:58:14Z",
+      "DESCRIPTION": "Hispanic or Latino",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2018-01-24T05:41:02Z",
+      "DESCRIPTION": "Total score [HARK]",
+      "UNITS": "{score}",
+      "VALUE": "0.0"
+    },
+    {
+      "DATE": "2018-01-24T06:15:13Z",
+      "DESCRIPTION": "Patient Health Questionnaire 2 item (PHQ-2) total score [Reported]",
+      "UNITS": "{score}",
+      "VALUE": "1.0"
+    },
+    {
+      "DATE": "2018-01-24T06:46:09Z",
+      "DESCRIPTION": "Total score [AUDIT-C]",
+      "UNITS": "{score}",
+      "VALUE": "3.0"
+    },
+    {
+      "DATE": "2019-01-30T04:26:30Z",
+      "DESCRIPTION": "Body Height",
+      "UNITS": "cm",
+      "VALUE": "173.7"
+    },
+    {
+      "DATE": "2019-01-30T04:26:30Z",
+      "DESCRIPTION": "Pain severity - 0-10 verbal numeric rating [Score] - Reported",
+      "UNITS": "{score}",
+      "VALUE": "1.0"
+    },
+    {
+      "DATE": "2019-01-30T04:26:30Z",
+      "DESCRIPTION": "Body Weight",
+      "UNITS": "kg",
+      "VALUE": "82.9"
+    },
+    {
+      "DATE": "2019-01-30T04:26:30Z",
+      "DESCRIPTION": "Body mass index (BMI) [Ratio]",
+      "UNITS": "kg/m2",
+      "VALUE": "27.5"
+    },
+    {
+      "DATE": "2019-01-30T04:26:30Z",
+      "DESCRIPTION": "Diastolic Blood Pressure",
+      "UNITS": "mm[Hg]",
+      "VALUE": "76.0"
+    },
+    {
+      "DATE": "2019-01-30T04:26:30Z",
+      "DESCRIPTION": "Systolic Blood Pressure",
+      "UNITS": "mm[Hg]",
+      "VALUE": "144.0"
+    },
+    {
+      "DATE": "2019-01-30T04:26:30Z",
+      "DESCRIPTION": "Heart rate",
+      "UNITS": "/min",
+      "VALUE": "79.0"
+    },
+    {
+      "DATE": "2019-01-30T04:26:30Z",
+      "DESCRIPTION": "Respiratory rate",
+      "UNITS": "/min",
+      "VALUE": "16.0"
+    },
+    {
+      "DATE": "2019-01-30T04:26:30Z",
+      "DESCRIPTION": "Leukocytes [#/volume] in Blood by Automated count",
+      "UNITS": "10*3/uL",
+      "VALUE": "6.6"
+    },
+    {
+      "DATE": "2019-01-30T04:26:30Z",
+      "DESCRIPTION": "Erythrocytes [#/volume] in Blood by Automated count",
+      "UNITS": "10*6/uL",
+      "VALUE": "3.9"
+    },
+    {
+      "DATE": "2019-01-30T04:26:30Z",
+      "DESCRIPTION": "Hemoglobin [Mass/volume] in Blood",
+      "UNITS": "g/dL",
+      "VALUE": "13.0"
+    },
+    {
+      "DATE": "2019-01-30T04:26:30Z",
+      "DESCRIPTION": "Hematocrit [Volume Fraction] of Blood by Automated count",
+      "UNITS": "%",
+      "VALUE": "47.0"
+    },
+    {
+      "DATE": "2019-01-30T04:26:30Z",
+      "DESCRIPTION": "MCV [Entitic mean volume] in Red Blood Cells by Automated count",
+      "UNITS": "fL",
+      "VALUE": "89.2"
+    },
+    {
+      "DATE": "2019-01-30T04:26:30Z",
+      "DESCRIPTION": "MCH [Entitic mass] by Automated count",
+      "UNITS": "pg",
+      "VALUE": "31.5"
+    },
+    {
+      "DATE": "2019-01-30T04:26:30Z",
+      "DESCRIPTION": "MCHC [Entitic Mass/volume] in Red Blood Cells by Automated count",
+      "UNITS": "g/dL",
+      "VALUE": "33.5"
+    },
+    {
+      "DATE": "2019-01-30T04:26:30Z",
+      "DESCRIPTION": "Erythrocyte [DistWidth] in Blood by Automated count",
+      "UNITS": "fL",
+      "VALUE": "44.9"
+    },
+    {
+      "DATE": "2019-01-30T04:26:30Z",
+      "DESCRIPTION": "Platelets [#/volume] in Blood by Automated count",
+      "UNITS": "10*3/uL",
+      "VALUE": "331.2"
+    },
+    {
+      "DATE": "2019-01-30T04:26:30Z",
+      "DESCRIPTION": "Platelet distribution width [Entitic volume] in Blood by Automated count",
+      "UNITS": "fL",
+      "VALUE": "489.8"
+    },
+    {
+      "DATE": "2019-01-30T04:26:30Z",
+      "DESCRIPTION": "Platelet [Entitic mean volume] in Blood by Automated count",
+      "UNITS": "fL",
+      "VALUE": "10.8"
+    },
+    {
+      "DATE": "2019-01-30T04:26:30Z",
+      "DESCRIPTION": "Tobacco smoking status",
+      "UNITS": NaN,
+      "VALUE": "Never smoked tobacco (finding)"
+    },
+    {
+      "DATE": "2019-01-30T05:19:14Z",
+      "DESCRIPTION": "Within the last year  have you been afraid of your partner or ex-partner",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2019-01-30T05:19:14Z",
+      "DESCRIPTION": "Do you feel physically and emotionally safe where you currently live [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "Yes"
+    },
+    {
+      "DATE": "2019-01-30T05:19:14Z",
+      "DESCRIPTION": "Are you a refugee",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2019-01-30T05:19:14Z",
+      "DESCRIPTION": "Have you spent more than 2 nights in a row in a jail  prison  detention center  or juvenile correctional facility in past 1 year [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2019-01-30T05:19:14Z",
+      "DESCRIPTION": "Stress level",
+      "UNITS": NaN,
+      "VALUE": "A little bit"
+    },
+    {
+      "DATE": "2019-01-30T05:19:14Z",
+      "DESCRIPTION": "How often do you see or talk to people that you care about and feel close to [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "3 to 5 times a week"
+    },
+    {
+      "DATE": "2019-01-30T05:19:14Z",
+      "DESCRIPTION": "Has lack of transportation kept you from medical appointments  meetings  work  or from getting things needed for daily living",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2019-01-30T05:19:14Z",
+      "DESCRIPTION": "Have you or any family members you live with been unable to get any of the following when it was really needed in past 1 year [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "Medicine or Any Health Care (Medical  Dental  Mental Health  Vision)"
+    },
+    {
+      "DATE": "2019-01-30T05:19:14Z",
+      "DESCRIPTION": "What was your best estimate of the total income of all family members from all sources  before taxes  in last year [PhenX]",
+      "UNITS": "/a",
+      "VALUE": "32184"
+    },
+    {
+      "DATE": "2019-01-30T05:19:14Z",
+      "DESCRIPTION": "Primary insurance",
+      "UNITS": NaN,
+      "VALUE": "Private insurance"
+    },
+    {
+      "DATE": "2019-01-30T05:19:14Z",
+      "DESCRIPTION": "Employment status - current",
+      "UNITS": NaN,
+      "VALUE": "Full-time work"
+    },
+    {
+      "DATE": "2019-01-30T05:19:14Z",
+      "DESCRIPTION": "Highest level of education",
+      "UNITS": NaN,
+      "VALUE": "More than high school"
+    },
+    {
+      "DATE": "2019-01-30T05:19:14Z",
+      "DESCRIPTION": "Address",
+      "UNITS": NaN,
+      "VALUE": "619 Spencer Estate"
+    },
+    {
+      "DATE": "2019-01-30T05:19:14Z",
+      "DESCRIPTION": "Are you worried about losing your housing [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2019-01-30T05:19:14Z",
+      "DESCRIPTION": "Housing status",
+      "UNITS": NaN,
+      "VALUE": "I have housing"
+    },
+    {
+      "DATE": "2019-01-30T05:19:14Z",
+      "DESCRIPTION": "How many people are living or staying at this address [#]",
+      "UNITS": "{#}",
+      "VALUE": "4.0"
+    },
+    {
+      "DATE": "2019-01-30T05:19:14Z",
+      "DESCRIPTION": "Preferred language",
+      "UNITS": NaN,
+      "VALUE": "English"
+    },
+    {
+      "DATE": "2019-01-30T05:19:14Z",
+      "DESCRIPTION": "Discharged from the U.S. Armed Forces",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2019-01-30T05:19:14Z",
+      "DESCRIPTION": "Has season or migrant farm work been your or your family's main source of income at any point in past 2 years [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2019-01-30T05:19:14Z",
+      "DESCRIPTION": "Race",
+      "UNITS": NaN,
+      "VALUE": "White"
+    },
+    {
+      "DATE": "2019-01-30T05:19:14Z",
+      "DESCRIPTION": "Hispanic or Latino",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2019-01-30T05:37:44Z",
+      "DESCRIPTION": "Generalized anxiety disorder 7 item (GAD-7) total score [Reported.PHQ]",
+      "UNITS": "{score}",
+      "VALUE": "4.0"
+    },
+    {
+      "DATE": "2019-01-30T06:18:24Z",
+      "DESCRIPTION": "Total score [HARK]",
+      "UNITS": "{score}",
+      "VALUE": "0.0"
+    },
+    {
+      "DATE": "2019-01-30T07:00:54Z",
+      "DESCRIPTION": "Patient Health Questionnaire 2 item (PHQ-2) total score [Reported]",
+      "UNITS": "{score}",
+      "VALUE": "2.0"
+    },
+    {
+      "DATE": "2020-02-05T04:26:30Z",
+      "DESCRIPTION": "Body Height",
+      "UNITS": "cm",
+      "VALUE": "173.7"
+    },
+    {
+      "DATE": "2020-02-05T04:26:30Z",
+      "DESCRIPTION": "Pain severity - 0-10 verbal numeric rating [Score] - Reported",
+      "UNITS": "{score}",
+      "VALUE": "2.0"
+    },
+    {
+      "DATE": "2020-02-05T04:26:30Z",
+      "DESCRIPTION": "Body Weight",
+      "UNITS": "kg",
+      "VALUE": "82.9"
+    },
+    {
+      "DATE": "2020-02-05T04:26:30Z",
+      "DESCRIPTION": "Body mass index (BMI) [Ratio]",
+      "UNITS": "kg/m2",
+      "VALUE": "27.5"
+    },
+    {
+      "DATE": "2020-02-05T04:26:30Z",
+      "DESCRIPTION": "Diastolic Blood Pressure",
+      "UNITS": "mm[Hg]",
+      "VALUE": "76.0"
+    },
+    {
+      "DATE": "2020-02-05T04:26:30Z",
+      "DESCRIPTION": "Systolic Blood Pressure",
+      "UNITS": "mm[Hg]",
+      "VALUE": "139.0"
+    },
+    {
+      "DATE": "2020-02-05T04:26:30Z",
+      "DESCRIPTION": "Heart rate",
+      "UNITS": "/min",
+      "VALUE": "65.0"
+    },
+    {
+      "DATE": "2020-02-05T04:26:30Z",
+      "DESCRIPTION": "Respiratory rate",
+      "UNITS": "/min",
+      "VALUE": "13.0"
+    },
+    {
+      "DATE": "2020-02-05T04:26:30Z",
+      "DESCRIPTION": "Cholesterol [Mass/volume] in Serum or Plasma",
+      "UNITS": "mg/dL",
+      "VALUE": "184.6"
+    },
+    {
+      "DATE": "2020-02-05T04:26:30Z",
+      "DESCRIPTION": "Triglyceride [Mass/volume] in Serum or Plasma",
+      "UNITS": "mg/dL",
+      "VALUE": "140.8"
+    },
+    {
+      "DATE": "2020-02-05T04:26:30Z",
+      "DESCRIPTION": "Cholesterol in LDL [Mass/volume] in Serum or Plasma by Direct assay",
+      "UNITS": "mg/dL",
+      "VALUE": "127.4"
+    },
+    {
+      "DATE": "2020-02-05T04:26:30Z",
+      "DESCRIPTION": "Cholesterol in HDL [Mass/volume] in Serum or Plasma",
+      "UNITS": "mg/dL",
+      "VALUE": "29.1"
+    },
+    {
+      "DATE": "2020-02-05T04:26:30Z",
+      "DESCRIPTION": "Tobacco smoking status",
+      "UNITS": NaN,
+      "VALUE": "Never smoked tobacco (finding)"
+    },
+    {
+      "DATE": "2020-02-05T04:58:50Z",
+      "DESCRIPTION": "Within the last year  have you been afraid of your partner or ex-partner",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2020-02-05T04:58:50Z",
+      "DESCRIPTION": "Do you feel physically and emotionally safe where you currently live [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "Yes"
+    },
+    {
+      "DATE": "2020-02-05T04:58:50Z",
+      "DESCRIPTION": "Are you a refugee",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2020-02-05T04:58:50Z",
+      "DESCRIPTION": "Have you spent more than 2 nights in a row in a jail  prison  detention center  or juvenile correctional facility in past 1 year [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2020-02-05T04:58:50Z",
+      "DESCRIPTION": "Stress level",
+      "UNITS": NaN,
+      "VALUE": "A little bit"
+    },
+    {
+      "DATE": "2020-02-05T04:58:50Z",
+      "DESCRIPTION": "How often do you see or talk to people that you care about and feel close to [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "5 or more times a week"
+    },
+    {
+      "DATE": "2020-02-05T04:58:50Z",
+      "DESCRIPTION": "Has lack of transportation kept you from medical appointments  meetings  work  or from getting things needed for daily living",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2020-02-05T04:58:50Z",
+      "DESCRIPTION": "Have you or any family members you live with been unable to get any of the following when it was really needed in past 1 year [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "I choose not to answer this question"
+    },
+    {
+      "DATE": "2020-02-05T04:58:50Z",
+      "DESCRIPTION": "What was your best estimate of the total income of all family members from all sources  before taxes  in last year [PhenX]",
+      "UNITS": "/a",
+      "VALUE": "32184"
+    },
+    {
+      "DATE": "2020-02-05T04:58:50Z",
+      "DESCRIPTION": "Primary insurance",
+      "UNITS": NaN,
+      "VALUE": "Private insurance"
+    },
+    {
+      "DATE": "2020-02-05T04:58:50Z",
+      "DESCRIPTION": "Employment status - current",
+      "UNITS": NaN,
+      "VALUE": "Full-time work"
+    },
+    {
+      "DATE": "2020-02-05T04:58:50Z",
+      "DESCRIPTION": "Highest level of education",
+      "UNITS": NaN,
+      "VALUE": "More than high school"
+    },
+    {
+      "DATE": "2020-02-05T04:58:50Z",
+      "DESCRIPTION": "Address",
+      "UNITS": NaN,
+      "VALUE": "619 Spencer Estate"
+    },
+    {
+      "DATE": "2020-02-05T04:58:50Z",
+      "DESCRIPTION": "Are you worried about losing your housing [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2020-02-05T04:58:50Z",
+      "DESCRIPTION": "Housing status",
+      "UNITS": NaN,
+      "VALUE": "I have housing"
+    },
+    {
+      "DATE": "2020-02-05T04:58:50Z",
+      "DESCRIPTION": "How many people are living or staying at this address [#]",
+      "UNITS": "{#}",
+      "VALUE": "4.0"
+    },
+    {
+      "DATE": "2020-02-05T04:58:50Z",
+      "DESCRIPTION": "Preferred language",
+      "UNITS": NaN,
+      "VALUE": "English"
+    },
+    {
+      "DATE": "2020-02-05T04:58:50Z",
+      "DESCRIPTION": "Discharged from the U.S. Armed Forces",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2020-02-05T04:58:50Z",
+      "DESCRIPTION": "Has season or migrant farm work been your or your family's main source of income at any point in past 2 years [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2020-02-05T04:58:50Z",
+      "DESCRIPTION": "Race",
+      "UNITS": NaN,
+      "VALUE": "White"
+    },
+    {
+      "DATE": "2020-02-05T04:58:50Z",
+      "DESCRIPTION": "Hispanic or Latino",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2020-02-05T05:22:50Z",
+      "DESCRIPTION": "Generalized anxiety disorder 7 item (GAD-7) total score [Reported.PHQ]",
+      "UNITS": "{score}",
+      "VALUE": "1.0"
+    },
+    {
+      "DATE": "2020-02-05T05:58:42Z",
+      "DESCRIPTION": "Patient Health Questionnaire 2 item (PHQ-2) total score [Reported]",
+      "UNITS": "{score}",
+      "VALUE": "1.0"
+    },
+    {
+      "DATE": "2021-02-10T04:26:30Z",
+      "DESCRIPTION": "Body Height",
+      "UNITS": "cm",
+      "VALUE": "173.7"
+    },
+    {
+      "DATE": "2021-02-10T04:26:30Z",
+      "DESCRIPTION": "Pain severity - 0-10 verbal numeric rating [Score] - Reported",
+      "UNITS": "{score}",
+      "VALUE": "1.0"
+    },
+    {
+      "DATE": "2021-02-10T04:26:30Z",
+      "DESCRIPTION": "Body Weight",
+      "UNITS": "kg",
+      "VALUE": "82.9"
+    },
+    {
+      "DATE": "2021-02-10T04:26:30Z",
+      "DESCRIPTION": "Body mass index (BMI) [Ratio]",
+      "UNITS": "kg/m2",
+      "VALUE": "27.5"
+    },
+    {
+      "DATE": "2021-02-10T04:26:30Z",
+      "DESCRIPTION": "Diastolic Blood Pressure",
+      "UNITS": "mm[Hg]",
+      "VALUE": "76.0"
+    },
+    {
+      "DATE": "2021-02-10T04:26:30Z",
+      "DESCRIPTION": "Systolic Blood Pressure",
+      "UNITS": "mm[Hg]",
+      "VALUE": "147.0"
+    },
+    {
+      "DATE": "2021-02-10T04:26:30Z",
+      "DESCRIPTION": "Heart rate",
+      "UNITS": "/min",
+      "VALUE": "64.0"
+    },
+    {
+      "DATE": "2021-02-10T04:26:30Z",
+      "DESCRIPTION": "Respiratory rate",
+      "UNITS": "/min",
+      "VALUE": "13.0"
+    },
+    {
+      "DATE": "2021-02-10T04:26:30Z",
+      "DESCRIPTION": "Tobacco smoking status",
+      "UNITS": NaN,
+      "VALUE": "Never smoked tobacco (finding)"
+    },
+    {
+      "DATE": "2021-02-10T05:18:23Z",
+      "DESCRIPTION": "Within the last year  have you been afraid of your partner or ex-partner",
+      "UNITS": NaN,
+      "VALUE": "Yes"
+    },
+    {
+      "DATE": "2021-02-10T05:18:23Z",
+      "DESCRIPTION": "Do you feel physically and emotionally safe where you currently live [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "Yes"
+    },
+    {
+      "DATE": "2021-02-10T05:18:23Z",
+      "DESCRIPTION": "Are you a refugee",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2021-02-10T05:18:23Z",
+      "DESCRIPTION": "Have you spent more than 2 nights in a row in a jail  prison  detention center  or juvenile correctional facility in past 1 year [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2021-02-10T05:18:23Z",
+      "DESCRIPTION": "Stress level",
+      "UNITS": NaN,
+      "VALUE": "Not at all"
+    },
+    {
+      "DATE": "2021-02-10T05:18:23Z",
+      "DESCRIPTION": "How often do you see or talk to people that you care about and feel close to [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "3 to 5 times a week"
+    },
+    {
+      "DATE": "2021-02-10T05:18:23Z",
+      "DESCRIPTION": "Has lack of transportation kept you from medical appointments  meetings  work  or from getting things needed for daily living",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2021-02-10T05:18:23Z",
+      "DESCRIPTION": "Have you or any family members you live with been unable to get any of the following when it was really needed in past 1 year [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "Food"
+    },
+    {
+      "DATE": "2021-02-10T05:18:23Z",
+      "DESCRIPTION": "What was your best estimate of the total income of all family members from all sources  before taxes  in last year [PhenX]",
+      "UNITS": "/a",
+      "VALUE": "32184"
+    },
+    {
+      "DATE": "2021-02-10T05:18:23Z",
+      "DESCRIPTION": "Primary insurance",
+      "UNITS": NaN,
+      "VALUE": "Private insurance"
+    },
+    {
+      "DATE": "2021-02-10T05:18:23Z",
+      "DESCRIPTION": "Employment status - current",
+      "UNITS": NaN,
+      "VALUE": "Full-time work"
+    },
+    {
+      "DATE": "2021-02-10T05:18:23Z",
+      "DESCRIPTION": "Highest level of education",
+      "UNITS": NaN,
+      "VALUE": "More than high school"
+    },
+    {
+      "DATE": "2021-02-10T05:18:23Z",
+      "DESCRIPTION": "Address",
+      "UNITS": NaN,
+      "VALUE": "619 Spencer Estate"
+    },
+    {
+      "DATE": "2021-02-10T05:18:23Z",
+      "DESCRIPTION": "Are you worried about losing your housing [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2021-02-10T05:18:23Z",
+      "DESCRIPTION": "Housing status",
+      "UNITS": NaN,
+      "VALUE": "I have housing"
+    },
+    {
+      "DATE": "2021-02-10T05:18:23Z",
+      "DESCRIPTION": "How many people are living or staying at this address [#]",
+      "UNITS": "{#}",
+      "VALUE": "4.0"
+    },
+    {
+      "DATE": "2021-02-10T05:18:23Z",
+      "DESCRIPTION": "Preferred language",
+      "UNITS": NaN,
+      "VALUE": "English"
+    },
+    {
+      "DATE": "2021-02-10T05:18:23Z",
+      "DESCRIPTION": "Discharged from the U.S. Armed Forces",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2021-02-10T05:18:23Z",
+      "DESCRIPTION": "Has season or migrant farm work been your or your family's main source of income at any point in past 2 years [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2021-02-10T05:18:23Z",
+      "DESCRIPTION": "Race",
+      "UNITS": NaN,
+      "VALUE": "White"
+    },
+    {
+      "DATE": "2021-02-10T05:18:23Z",
+      "DESCRIPTION": "Hispanic or Latino",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2021-02-10T05:55:42Z",
+      "DESCRIPTION": "Patient Health Questionnaire 2 item (PHQ-2) total score [Reported]",
+      "UNITS": "{score}",
+      "VALUE": "1.0"
+    },
+    {
+      "DATE": "2021-02-10T06:34:50Z",
+      "DESCRIPTION": "Total score [AUDIT-C]",
+      "UNITS": "{score}",
+      "VALUE": "0.0"
+    },
+    {
+      "DATE": "2022-02-16T04:26:30Z",
+      "DESCRIPTION": "Body Height",
+      "UNITS": "cm",
+      "VALUE": "173.7"
+    },
+    {
+      "DATE": "2022-02-16T04:26:30Z",
+      "DESCRIPTION": "Pain severity - 0-10 verbal numeric rating [Score] - Reported",
+      "UNITS": "{score}",
+      "VALUE": "1.0"
+    },
+    {
+      "DATE": "2022-02-16T04:26:30Z",
+      "DESCRIPTION": "Body Weight",
+      "UNITS": "kg",
+      "VALUE": "82.9"
+    },
+    {
+      "DATE": "2022-02-16T04:26:30Z",
+      "DESCRIPTION": "Body mass index (BMI) [Ratio]",
+      "UNITS": "kg/m2",
+      "VALUE": "27.5"
+    },
+    {
+      "DATE": "2022-02-16T04:26:30Z",
+      "DESCRIPTION": "Diastolic Blood Pressure",
+      "UNITS": "mm[Hg]",
+      "VALUE": "74.0"
+    },
+    {
+      "DATE": "2022-02-16T04:26:30Z",
+      "DESCRIPTION": "Systolic Blood Pressure",
+      "UNITS": "mm[Hg]",
+      "VALUE": "148.0"
+    },
+    {
+      "DATE": "2022-02-16T04:26:30Z",
+      "DESCRIPTION": "Heart rate",
+      "UNITS": "/min",
+      "VALUE": "95.0"
+    },
+    {
+      "DATE": "2022-02-16T04:26:30Z",
+      "DESCRIPTION": "Respiratory rate",
+      "UNITS": "/min",
+      "VALUE": "14.0"
+    },
+    {
+      "DATE": "2022-02-16T04:26:30Z",
+      "DESCRIPTION": "Tobacco smoking status",
+      "UNITS": NaN,
+      "VALUE": "Never smoked tobacco (finding)"
+    },
+    {
+      "DATE": "2022-02-16T05:18:29Z",
+      "DESCRIPTION": "Within the last year  have you been afraid of your partner or ex-partner",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2022-02-16T05:18:29Z",
+      "DESCRIPTION": "Do you feel physically and emotionally safe where you currently live [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "Yes"
+    },
+    {
+      "DATE": "2022-02-16T05:18:29Z",
+      "DESCRIPTION": "Are you a refugee",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2022-02-16T05:18:29Z",
+      "DESCRIPTION": "Have you spent more than 2 nights in a row in a jail  prison  detention center  or juvenile correctional facility in past 1 year [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2022-02-16T05:18:29Z",
+      "DESCRIPTION": "Stress level",
+      "UNITS": NaN,
+      "VALUE": "Quite a bit"
+    },
+    {
+      "DATE": "2022-02-16T05:18:29Z",
+      "DESCRIPTION": "How often do you see or talk to people that you care about and feel close to [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "5 or more times a week"
+    },
+    {
+      "DATE": "2022-02-16T05:18:29Z",
+      "DESCRIPTION": "Has lack of transportation kept you from medical appointments  meetings  work  or from getting things needed for daily living",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2022-02-16T05:18:29Z",
+      "DESCRIPTION": "Have you or any family members you live with been unable to get any of the following when it was really needed in past 1 year [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "Medicine or Any Health Care (Medical  Dental  Mental Health  Vision)"
+    },
+    {
+      "DATE": "2022-02-16T05:18:29Z",
+      "DESCRIPTION": "What was your best estimate of the total income of all family members from all sources  before taxes  in last year [PhenX]",
+      "UNITS": "/a",
+      "VALUE": "32184"
+    },
+    {
+      "DATE": "2022-02-16T05:18:29Z",
+      "DESCRIPTION": "Primary insurance",
+      "UNITS": NaN,
+      "VALUE": "Private insurance"
+    },
+    {
+      "DATE": "2022-02-16T05:18:29Z",
+      "DESCRIPTION": "Employment status - current",
+      "UNITS": NaN,
+      "VALUE": "Part-time or temporary work"
+    },
+    {
+      "DATE": "2022-02-16T05:18:29Z",
+      "DESCRIPTION": "Highest level of education",
+      "UNITS": NaN,
+      "VALUE": "More than high school"
+    },
+    {
+      "DATE": "2022-02-16T05:18:29Z",
+      "DESCRIPTION": "Address",
+      "UNITS": NaN,
+      "VALUE": "619 Spencer Estate"
+    },
+    {
+      "DATE": "2022-02-16T05:18:29Z",
+      "DESCRIPTION": "Are you worried about losing your housing [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2022-02-16T05:18:29Z",
+      "DESCRIPTION": "Housing status",
+      "UNITS": NaN,
+      "VALUE": "I have housing"
+    },
+    {
+      "DATE": "2022-02-16T05:18:29Z",
+      "DESCRIPTION": "How many people are living or staying at this address [#]",
+      "UNITS": "{#}",
+      "VALUE": "4.0"
+    },
+    {
+      "DATE": "2022-02-16T05:18:29Z",
+      "DESCRIPTION": "Preferred language",
+      "UNITS": NaN,
+      "VALUE": "English"
+    },
+    {
+      "DATE": "2022-02-16T05:18:29Z",
+      "DESCRIPTION": "Discharged from the U.S. Armed Forces",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2022-02-16T05:18:29Z",
+      "DESCRIPTION": "Has season or migrant farm work been your or your family's main source of income at any point in past 2 years [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2022-02-16T05:18:29Z",
+      "DESCRIPTION": "Race",
+      "UNITS": NaN,
+      "VALUE": "White"
+    },
+    {
+      "DATE": "2022-02-16T05:18:29Z",
+      "DESCRIPTION": "Hispanic or Latino",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2022-02-16T05:58:17Z",
+      "DESCRIPTION": "Total score [AUDIT-C]",
+      "UNITS": "{score}",
+      "VALUE": "0.0"
+    },
+    {
+      "DATE": "2022-04-13T04:26:30Z",
+      "DESCRIPTION": "Body Height",
+      "UNITS": "cm",
+      "VALUE": "173.7"
+    },
+    {
+      "DATE": "2022-04-13T04:26:30Z",
+      "DESCRIPTION": "Pain severity - 0-10 verbal numeric rating [Score] - Reported",
+      "UNITS": "{score}",
+      "VALUE": "3.0"
+    },
+    {
+      "DATE": "2022-04-13T04:26:30Z",
+      "DESCRIPTION": "Body Weight",
+      "UNITS": "kg",
+      "VALUE": "82.9"
+    },
+    {
+      "DATE": "2022-04-13T04:26:30Z",
+      "DESCRIPTION": "Body mass index (BMI) [Ratio]",
+      "UNITS": "kg/m2",
+      "VALUE": "27.5"
+    },
+    {
+      "DATE": "2022-04-13T04:26:30Z",
+      "DESCRIPTION": "Diastolic Blood Pressure",
+      "UNITS": "mm[Hg]",
+      "VALUE": "80.0"
+    },
+    {
+      "DATE": "2022-04-13T04:26:30Z",
+      "DESCRIPTION": "Systolic Blood Pressure",
+      "UNITS": "mm[Hg]",
+      "VALUE": "147.0"
+    },
+    {
+      "DATE": "2022-04-13T04:26:30Z",
+      "DESCRIPTION": "Heart rate",
+      "UNITS": "/min",
+      "VALUE": "78.0"
+    },
+    {
+      "DATE": "2022-04-13T04:26:30Z",
+      "DESCRIPTION": "Respiratory rate",
+      "UNITS": "/min",
+      "VALUE": "12.0"
+    },
+    {
+      "DATE": "2022-04-13T04:26:30Z",
+      "DESCRIPTION": "Tobacco smoking status",
+      "UNITS": NaN,
+      "VALUE": "Never smoked tobacco (finding)"
+    },
+    {
+      "DATE": "2022-04-13T05:02:33Z",
+      "DESCRIPTION": "Within the last year  have you been afraid of your partner or ex-partner",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2022-04-13T05:02:33Z",
+      "DESCRIPTION": "Do you feel physically and emotionally safe where you currently live [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "Yes"
+    },
+    {
+      "DATE": "2022-04-13T05:02:33Z",
+      "DESCRIPTION": "Are you a refugee",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2022-04-13T05:02:33Z",
+      "DESCRIPTION": "Have you spent more than 2 nights in a row in a jail  prison  detention center  or juvenile correctional facility in past 1 year [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2022-04-13T05:02:33Z",
+      "DESCRIPTION": "Stress level",
+      "UNITS": NaN,
+      "VALUE": "Not at all"
+    },
+    {
+      "DATE": "2022-04-13T05:02:33Z",
+      "DESCRIPTION": "How often do you see or talk to people that you care about and feel close to [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "5 or more times a week"
+    },
+    {
+      "DATE": "2022-04-13T05:02:33Z",
+      "DESCRIPTION": "Has lack of transportation kept you from medical appointments  meetings  work  or from getting things needed for daily living",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2022-04-13T05:02:33Z",
+      "DESCRIPTION": "Have you or any family members you live with been unable to get any of the following when it was really needed in past 1 year [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "Medicine or Any Health Care (Medical  Dental  Mental Health  Vision)"
+    },
+    {
+      "DATE": "2022-04-13T05:02:33Z",
+      "DESCRIPTION": "What was your best estimate of the total income of all family members from all sources  before taxes  in last year [PhenX]",
+      "UNITS": "/a",
+      "VALUE": "32184"
+    },
+    {
+      "DATE": "2022-04-13T05:02:33Z",
+      "DESCRIPTION": "Primary insurance",
+      "UNITS": NaN,
+      "VALUE": "Private insurance"
+    },
+    {
+      "DATE": "2022-04-13T05:02:33Z",
+      "DESCRIPTION": "Employment status - current",
+      "UNITS": NaN,
+      "VALUE": "Full-time work"
+    },
+    {
+      "DATE": "2022-04-13T05:02:33Z",
+      "DESCRIPTION": "Highest level of education",
+      "UNITS": NaN,
+      "VALUE": "More than high school"
+    },
+    {
+      "DATE": "2022-04-13T05:02:33Z",
+      "DESCRIPTION": "Address",
+      "UNITS": NaN,
+      "VALUE": "619 Spencer Estate"
+    },
+    {
+      "DATE": "2022-04-13T05:02:33Z",
+      "DESCRIPTION": "Are you worried about losing your housing [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2022-04-13T05:02:33Z",
+      "DESCRIPTION": "Housing status",
+      "UNITS": NaN,
+      "VALUE": "I have housing"
+    },
+    {
+      "DATE": "2022-04-13T05:02:33Z",
+      "DESCRIPTION": "How many people are living or staying at this address [#]",
+      "UNITS": "{#}",
+      "VALUE": "4.0"
+    },
+    {
+      "DATE": "2022-04-13T05:02:33Z",
+      "DESCRIPTION": "Preferred language",
+      "UNITS": NaN,
+      "VALUE": "English"
+    },
+    {
+      "DATE": "2022-04-13T05:02:33Z",
+      "DESCRIPTION": "Discharged from the U.S. Armed Forces",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2022-04-13T05:02:33Z",
+      "DESCRIPTION": "Has season or migrant farm work been your or your family's main source of income at any point in past 2 years [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2022-04-13T05:02:33Z",
+      "DESCRIPTION": "Race",
+      "UNITS": NaN,
+      "VALUE": "White"
+    },
+    {
+      "DATE": "2022-04-13T05:02:33Z",
+      "DESCRIPTION": "Hispanic or Latino",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2022-04-13T05:38:36Z",
+      "DESCRIPTION": "Total score [HARK]",
+      "UNITS": "{score}",
+      "VALUE": "0.0"
+    },
+    {
+      "DATE": "2022-04-13T06:14:40Z",
+      "DESCRIPTION": "Patient Health Questionnaire 2 item (PHQ-2) total score [Reported]",
+      "UNITS": "{score}",
+      "VALUE": "0.0"
+    },
+    {
+      "DATE": "2022-04-13T06:54:20Z",
+      "DESCRIPTION": "Total score [AUDIT-C]",
+      "UNITS": "{score}",
+      "VALUE": "2.0"
+    },
+    {
+      "DATE": "2023-02-22T04:26:30Z",
+      "DESCRIPTION": "Body Height",
+      "UNITS": "cm",
+      "VALUE": "173.7"
+    },
+    {
+      "DATE": "2023-02-22T04:26:30Z",
+      "DESCRIPTION": "Pain severity - 0-10 verbal numeric rating [Score] - Reported",
+      "UNITS": "{score}",
+      "VALUE": "1.0"
+    },
+    {
+      "DATE": "2023-02-22T04:26:30Z",
+      "DESCRIPTION": "Body Weight",
+      "UNITS": "kg",
+      "VALUE": "82.9"
+    },
+    {
+      "DATE": "2023-02-22T04:26:30Z",
+      "DESCRIPTION": "Body mass index (BMI) [Ratio]",
+      "UNITS": "kg/m2",
+      "VALUE": "27.5"
+    },
+    {
+      "DATE": "2023-02-22T04:26:30Z",
+      "DESCRIPTION": "Diastolic Blood Pressure",
+      "UNITS": "mm[Hg]",
+      "VALUE": "77.0"
+    },
+    {
+      "DATE": "2023-02-22T04:26:30Z",
+      "DESCRIPTION": "Systolic Blood Pressure",
+      "UNITS": "mm[Hg]",
+      "VALUE": "139.0"
+    },
+    {
+      "DATE": "2023-02-22T04:26:30Z",
+      "DESCRIPTION": "Heart rate",
+      "UNITS": "/min",
+      "VALUE": "82.0"
+    },
+    {
+      "DATE": "2023-02-22T04:26:30Z",
+      "DESCRIPTION": "Respiratory rate",
+      "UNITS": "/min",
+      "VALUE": "12.0"
+    },
+    {
+      "DATE": "2023-02-22T04:26:30Z",
+      "DESCRIPTION": "Cholesterol [Mass/volume] in Serum or Plasma",
+      "UNITS": "mg/dL",
+      "VALUE": "156.1"
+    },
+    {
+      "DATE": "2023-02-22T04:26:30Z",
+      "DESCRIPTION": "Triglyceride [Mass/volume] in Serum or Plasma",
+      "UNITS": "mg/dL",
+      "VALUE": "112.4"
+    },
+    {
+      "DATE": "2023-02-22T04:26:30Z",
+      "DESCRIPTION": "Cholesterol in LDL [Mass/volume] in Serum or Plasma by Direct assay",
+      "UNITS": "mg/dL",
+      "VALUE": "102.3"
+    },
+    {
+      "DATE": "2023-02-22T04:26:30Z",
+      "DESCRIPTION": "Cholesterol in HDL [Mass/volume] in Serum or Plasma",
+      "UNITS": "mg/dL",
+      "VALUE": "31.3"
+    },
+    {
+      "DATE": "2023-02-22T04:26:30Z",
+      "DESCRIPTION": "Tobacco smoking status",
+      "UNITS": NaN,
+      "VALUE": "Never smoked tobacco (finding)"
+    },
+    {
+      "DATE": "2023-02-22T05:14:07Z",
+      "DESCRIPTION": "Within the last year  have you been afraid of your partner or ex-partner",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2023-02-22T05:14:07Z",
+      "DESCRIPTION": "Do you feel physically and emotionally safe where you currently live [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "Yes"
+    },
+    {
+      "DATE": "2023-02-22T05:14:07Z",
+      "DESCRIPTION": "Are you a refugee",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2023-02-22T05:14:07Z",
+      "DESCRIPTION": "Have you spent more than 2 nights in a row in a jail  prison  detention center  or juvenile correctional facility in past 1 year [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2023-02-22T05:14:07Z",
+      "DESCRIPTION": "Stress level",
+      "UNITS": NaN,
+      "VALUE": "Very much"
+    },
+    {
+      "DATE": "2023-02-22T05:14:07Z",
+      "DESCRIPTION": "How often do you see or talk to people that you care about and feel close to [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "3 to 5 times a week"
+    },
+    {
+      "DATE": "2023-02-22T05:14:07Z",
+      "DESCRIPTION": "Has lack of transportation kept you from medical appointments  meetings  work  or from getting things needed for daily living",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2023-02-22T05:14:07Z",
+      "DESCRIPTION": "Have you or any family members you live with been unable to get any of the following when it was really needed in past 1 year [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "I choose not to answer this question"
+    },
+    {
+      "DATE": "2023-02-22T05:14:07Z",
+      "DESCRIPTION": "What was your best estimate of the total income of all family members from all sources  before taxes  in last year [PhenX]",
+      "UNITS": "/a",
+      "VALUE": "32184"
+    },
+    {
+      "DATE": "2023-02-22T05:14:07Z",
+      "DESCRIPTION": "Primary insurance",
+      "UNITS": NaN,
+      "VALUE": "Private insurance"
+    },
+    {
+      "DATE": "2023-02-22T05:14:07Z",
+      "DESCRIPTION": "Employment status - current",
+      "UNITS": NaN,
+      "VALUE": "Full-time work"
+    },
+    {
+      "DATE": "2023-02-22T05:14:07Z",
+      "DESCRIPTION": "Highest level of education",
+      "UNITS": NaN,
+      "VALUE": "More than high school"
+    },
+    {
+      "DATE": "2023-02-22T05:14:07Z",
+      "DESCRIPTION": "Address",
+      "UNITS": NaN,
+      "VALUE": "619 Spencer Estate"
+    },
+    {
+      "DATE": "2023-02-22T05:14:07Z",
+      "DESCRIPTION": "Are you worried about losing your housing [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2023-02-22T05:14:07Z",
+      "DESCRIPTION": "Housing status",
+      "UNITS": NaN,
+      "VALUE": "I have housing"
+    },
+    {
+      "DATE": "2023-02-22T05:14:07Z",
+      "DESCRIPTION": "How many people are living or staying at this address [#]",
+      "UNITS": "{#}",
+      "VALUE": "4.0"
+    },
+    {
+      "DATE": "2023-02-22T05:14:07Z",
+      "DESCRIPTION": "Preferred language",
+      "UNITS": NaN,
+      "VALUE": "English"
+    },
+    {
+      "DATE": "2023-02-22T05:14:07Z",
+      "DESCRIPTION": "Discharged from the U.S. Armed Forces",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2023-02-22T05:14:07Z",
+      "DESCRIPTION": "Has season or migrant farm work been your or your family's main source of income at any point in past 2 years [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2023-02-22T05:14:07Z",
+      "DESCRIPTION": "Race",
+      "UNITS": NaN,
+      "VALUE": "White"
+    },
+    {
+      "DATE": "2023-02-22T05:14:07Z",
+      "DESCRIPTION": "Hispanic or Latino",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2023-02-22T05:38:58Z",
+      "DESCRIPTION": "Generalized anxiety disorder 7 item (GAD-7) total score [Reported.PHQ]",
+      "UNITS": "{score}",
+      "VALUE": "3.0"
+    },
+    {
+      "DATE": "2023-02-22T06:20:07Z",
+      "DESCRIPTION": "Patient Health Questionnaire 2 item (PHQ-2) total score [Reported]",
+      "UNITS": "{score}",
+      "VALUE": "1.0"
+    },
+    {
+      "DATE": "2023-02-22T06:55:59Z",
+      "DESCRIPTION": "Total score [AUDIT-C]",
+      "UNITS": "{score}",
+      "VALUE": "3.0"
+    },
+    {
+      "DATE": "2024-02-28T04:26:30Z",
+      "DESCRIPTION": "Body Height",
+      "UNITS": "cm",
+      "VALUE": "173.7"
+    },
+    {
+      "DATE": "2024-02-28T04:26:30Z",
+      "DESCRIPTION": "Pain severity - 0-10 verbal numeric rating [Score] - Reported",
+      "UNITS": "{score}",
+      "VALUE": "4.0"
+    },
+    {
+      "DATE": "2024-02-28T04:26:30Z",
+      "DESCRIPTION": "Body Weight",
+      "UNITS": "kg",
+      "VALUE": "82.9"
+    },
+    {
+      "DATE": "2024-02-28T04:26:30Z",
+      "DESCRIPTION": "Body mass index (BMI) [Ratio]",
+      "UNITS": "kg/m2",
+      "VALUE": "27.5"
+    },
+    {
+      "DATE": "2024-02-28T04:26:30Z",
+      "DESCRIPTION": "Diastolic Blood Pressure",
+      "UNITS": "mm[Hg]",
+      "VALUE": "74.0"
+    },
+    {
+      "DATE": "2024-02-28T04:26:30Z",
+      "DESCRIPTION": "Systolic Blood Pressure",
+      "UNITS": "mm[Hg]",
+      "VALUE": "140.0"
+    },
+    {
+      "DATE": "2024-02-28T04:26:30Z",
+      "DESCRIPTION": "Heart rate",
+      "UNITS": "/min",
+      "VALUE": "76.0"
+    },
+    {
+      "DATE": "2024-02-28T04:26:30Z",
+      "DESCRIPTION": "Respiratory rate",
+      "UNITS": "/min",
+      "VALUE": "13.0"
+    },
+    {
+      "DATE": "2024-02-28T04:26:30Z",
+      "DESCRIPTION": "Leukocytes [#/volume] in Blood by Automated count",
+      "UNITS": "10*3/uL",
+      "VALUE": "8.6"
+    },
+    {
+      "DATE": "2024-02-28T04:26:30Z",
+      "DESCRIPTION": "Erythrocytes [#/volume] in Blood by Automated count",
+      "UNITS": "10*6/uL",
+      "VALUE": "4.3"
+    },
+    {
+      "DATE": "2024-02-28T04:26:30Z",
+      "DESCRIPTION": "Hemoglobin [Mass/volume] in Blood",
+      "UNITS": "g/dL",
+      "VALUE": "13.7"
+    },
+    {
+      "DATE": "2024-02-28T04:26:30Z",
+      "DESCRIPTION": "Hematocrit [Volume Fraction] of Blood by Automated count",
+      "UNITS": "%",
+      "VALUE": "35.5"
+    },
+    {
+      "DATE": "2024-02-28T04:26:30Z",
+      "DESCRIPTION": "MCV [Entitic mean volume] in Red Blood Cells by Automated count",
+      "UNITS": "fL",
+      "VALUE": "89.8"
+    },
+    {
+      "DATE": "2024-02-28T04:26:30Z",
+      "DESCRIPTION": "MCH [Entitic mass] by Automated count",
+      "UNITS": "pg",
+      "VALUE": "30.3"
+    },
+    {
+      "DATE": "2024-02-28T04:26:30Z",
+      "DESCRIPTION": "MCHC [Entitic Mass/volume] in Red Blood Cells by Automated count",
+      "UNITS": "g/dL",
+      "VALUE": "34.2"
+    },
+    {
+      "DATE": "2024-02-28T04:26:30Z",
+      "DESCRIPTION": "Erythrocyte [DistWidth] in Blood by Automated count",
+      "UNITS": "fL",
+      "VALUE": "40.3"
+    },
+    {
+      "DATE": "2024-02-28T04:26:30Z",
+      "DESCRIPTION": "Platelets [#/volume] in Blood by Automated count",
+      "UNITS": "10*3/uL",
+      "VALUE": "337.4"
+    },
+    {
+      "DATE": "2024-02-28T04:26:30Z",
+      "DESCRIPTION": "Platelet distribution width [Entitic volume] in Blood by Automated count",
+      "UNITS": "fL",
+      "VALUE": "344.2"
+    },
+    {
+      "DATE": "2024-02-28T04:26:30Z",
+      "DESCRIPTION": "Platelet [Entitic mean volume] in Blood by Automated count",
+      "UNITS": "fL",
+      "VALUE": "9.8"
+    },
+    {
+      "DATE": "2024-02-28T04:26:30Z",
+      "DESCRIPTION": "Tobacco smoking status",
+      "UNITS": NaN,
+      "VALUE": "Never smoked tobacco (finding)"
+    },
+    {
+      "DATE": "2024-02-28T05:22:34Z",
+      "DESCRIPTION": "Within the last year  have you been afraid of your partner or ex-partner",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2024-02-28T05:22:34Z",
+      "DESCRIPTION": "Do you feel physically and emotionally safe where you currently live [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "Yes"
+    },
+    {
+      "DATE": "2024-02-28T05:22:34Z",
+      "DESCRIPTION": "Are you a refugee",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2024-02-28T05:22:34Z",
+      "DESCRIPTION": "Have you spent more than 2 nights in a row in a jail  prison  detention center  or juvenile correctional facility in past 1 year [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2024-02-28T05:22:34Z",
+      "DESCRIPTION": "Stress level",
+      "UNITS": NaN,
+      "VALUE": "Not at all"
+    },
+    {
+      "DATE": "2024-02-28T05:22:34Z",
+      "DESCRIPTION": "How often do you see or talk to people that you care about and feel close to [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "1 or 2 times a week"
+    },
+    {
+      "DATE": "2024-02-28T05:22:34Z",
+      "DESCRIPTION": "Has lack of transportation kept you from medical appointments  meetings  work  or from getting things needed for daily living",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2024-02-28T05:22:34Z",
+      "DESCRIPTION": "Have you or any family members you live with been unable to get any of the following when it was really needed in past 1 year [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "Clothing"
+    },
+    {
+      "DATE": "2024-02-28T05:22:34Z",
+      "DESCRIPTION": "What was your best estimate of the total income of all family members from all sources  before taxes  in last year [PhenX]",
+      "UNITS": "/a",
+      "VALUE": "32184"
+    },
+    {
+      "DATE": "2024-02-28T05:22:34Z",
+      "DESCRIPTION": "Primary insurance",
+      "UNITS": NaN,
+      "VALUE": "Private insurance"
+    },
+    {
+      "DATE": "2024-02-28T05:22:34Z",
+      "DESCRIPTION": "Employment status - current",
+      "UNITS": NaN,
+      "VALUE": "Otherwise unemployed but not seeking work (ex: student  retired  disabled  unpaid primary care giver)"
+    },
+    {
+      "DATE": "2024-02-28T05:22:34Z",
+      "DESCRIPTION": "Highest level of education",
+      "UNITS": NaN,
+      "VALUE": "More than high school"
+    },
+    {
+      "DATE": "2024-02-28T05:22:34Z",
+      "DESCRIPTION": "Address",
+      "UNITS": NaN,
+      "VALUE": "619 Spencer Estate"
+    },
+    {
+      "DATE": "2024-02-28T05:22:34Z",
+      "DESCRIPTION": "Are you worried about losing your housing [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2024-02-28T05:22:34Z",
+      "DESCRIPTION": "Housing status",
+      "UNITS": NaN,
+      "VALUE": "I have housing"
+    },
+    {
+      "DATE": "2024-02-28T05:22:34Z",
+      "DESCRIPTION": "How many people are living or staying at this address [#]",
+      "UNITS": "{#}",
+      "VALUE": "4.0"
+    },
+    {
+      "DATE": "2024-02-28T05:22:34Z",
+      "DESCRIPTION": "Preferred language",
+      "UNITS": NaN,
+      "VALUE": "English"
+    },
+    {
+      "DATE": "2024-02-28T05:22:34Z",
+      "DESCRIPTION": "Discharged from the U.S. Armed Forces",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2024-02-28T05:22:34Z",
+      "DESCRIPTION": "Has season or migrant farm work been your or your family's main source of income at any point in past 2 years [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2024-02-28T05:22:34Z",
+      "DESCRIPTION": "Race",
+      "UNITS": NaN,
+      "VALUE": "White"
+    },
+    {
+      "DATE": "2024-02-28T05:22:34Z",
+      "DESCRIPTION": "Hispanic or Latino",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2024-02-28T05:48:10Z",
+      "DESCRIPTION": "Generalized anxiety disorder 7 item (GAD-7) total score [Reported.PHQ]",
+      "UNITS": "{score}",
+      "VALUE": "2.0"
+    },
+    {
+      "DATE": "2024-02-28T06:22:43Z",
+      "DESCRIPTION": "Patient Health Questionnaire 2 item (PHQ-2) total score [Reported]",
+      "UNITS": "{score}",
+      "VALUE": "2.0"
+    },
+    {
+      "DATE": "2024-02-28T07:00:51Z",
+      "DESCRIPTION": "Total score [DAST-10]",
+      "UNITS": "{score}",
+      "VALUE": "0.0"
+    },
+    {
+      "DATE": "2024-03-27T04:26:30Z",
+      "DESCRIPTION": "Body Height",
+      "UNITS": "cm",
+      "VALUE": "173.7"
+    },
+    {
+      "DATE": "2024-03-27T04:26:30Z",
+      "DESCRIPTION": "Pain severity - 0-10 verbal numeric rating [Score] - Reported",
+      "UNITS": "{score}",
+      "VALUE": "0.0"
+    },
+    {
+      "DATE": "2024-03-27T04:26:30Z",
+      "DESCRIPTION": "Body Weight",
+      "UNITS": "kg",
+      "VALUE": "82.9"
+    },
+    {
+      "DATE": "2024-03-27T04:26:30Z",
+      "DESCRIPTION": "Body mass index (BMI) [Ratio]",
+      "UNITS": "kg/m2",
+      "VALUE": "27.5"
+    },
+    {
+      "DATE": "2024-03-27T04:26:30Z",
+      "DESCRIPTION": "Diastolic Blood Pressure",
+      "UNITS": "mm[Hg]",
+      "VALUE": "87.0"
+    },
+    {
+      "DATE": "2024-03-27T04:26:30Z",
+      "DESCRIPTION": "Systolic Blood Pressure",
+      "UNITS": "mm[Hg]",
+      "VALUE": "138.0"
+    },
+    {
+      "DATE": "2024-03-27T04:26:30Z",
+      "DESCRIPTION": "Heart rate",
+      "UNITS": "/min",
+      "VALUE": "67.0"
+    },
+    {
+      "DATE": "2024-03-27T04:26:30Z",
+      "DESCRIPTION": "Respiratory rate",
+      "UNITS": "/min",
+      "VALUE": "15.0"
+    },
+    {
+      "DATE": "2024-03-27T04:26:30Z",
+      "DESCRIPTION": "Tobacco smoking status",
+      "UNITS": NaN,
+      "VALUE": "Never smoked tobacco (finding)"
+    },
+    {
+      "DATE": "2024-03-27T05:05:19Z",
+      "DESCRIPTION": "Within the last year  have you been afraid of your partner or ex-partner",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2024-03-27T05:05:19Z",
+      "DESCRIPTION": "Do you feel physically and emotionally safe where you currently live [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "Yes"
+    },
+    {
+      "DATE": "2024-03-27T05:05:19Z",
+      "DESCRIPTION": "Are you a refugee",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2024-03-27T05:05:19Z",
+      "DESCRIPTION": "Have you spent more than 2 nights in a row in a jail  prison  detention center  or juvenile correctional facility in past 1 year [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2024-03-27T05:05:19Z",
+      "DESCRIPTION": "Stress level",
+      "UNITS": NaN,
+      "VALUE": "Not at all"
+    },
+    {
+      "DATE": "2024-03-27T05:05:19Z",
+      "DESCRIPTION": "How often do you see or talk to people that you care about and feel close to [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "Less than once a week"
+    },
+    {
+      "DATE": "2024-03-27T05:05:19Z",
+      "DESCRIPTION": "Has lack of transportation kept you from medical appointments  meetings  work  or from getting things needed for daily living",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2024-03-27T05:05:19Z",
+      "DESCRIPTION": "Have you or any family members you live with been unable to get any of the following when it was really needed in past 1 year [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "I choose not to answer this question"
+    },
+    {
+      "DATE": "2024-03-27T05:05:19Z",
+      "DESCRIPTION": "What was your best estimate of the total income of all family members from all sources  before taxes  in last year [PhenX]",
+      "UNITS": "/a",
+      "VALUE": "32184"
+    },
+    {
+      "DATE": "2024-03-27T05:05:19Z",
+      "DESCRIPTION": "Primary insurance",
+      "UNITS": NaN,
+      "VALUE": "Private insurance"
+    },
+    {
+      "DATE": "2024-03-27T05:05:19Z",
+      "DESCRIPTION": "Employment status - current",
+      "UNITS": NaN,
+      "VALUE": "Full-time work"
+    },
+    {
+      "DATE": "2024-03-27T05:05:19Z",
+      "DESCRIPTION": "Highest level of education",
+      "UNITS": NaN,
+      "VALUE": "More than high school"
+    },
+    {
+      "DATE": "2024-03-27T05:05:19Z",
+      "DESCRIPTION": "Address",
+      "UNITS": NaN,
+      "VALUE": "619 Spencer Estate"
+    },
+    {
+      "DATE": "2024-03-27T05:05:19Z",
+      "DESCRIPTION": "Are you worried about losing your housing [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2024-03-27T05:05:19Z",
+      "DESCRIPTION": "Housing status",
+      "UNITS": NaN,
+      "VALUE": "I have housing"
+    },
+    {
+      "DATE": "2024-03-27T05:05:19Z",
+      "DESCRIPTION": "How many people are living or staying at this address [#]",
+      "UNITS": "{#}",
+      "VALUE": "4.0"
+    },
+    {
+      "DATE": "2024-03-27T05:05:19Z",
+      "DESCRIPTION": "Preferred language",
+      "UNITS": NaN,
+      "VALUE": "English"
+    },
+    {
+      "DATE": "2024-03-27T05:05:19Z",
+      "DESCRIPTION": "Discharged from the U.S. Armed Forces",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2024-03-27T05:05:19Z",
+      "DESCRIPTION": "Has season or migrant farm work been your or your family's main source of income at any point in past 2 years [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2024-03-27T05:05:19Z",
+      "DESCRIPTION": "Race",
+      "UNITS": NaN,
+      "VALUE": "White"
+    },
+    {
+      "DATE": "2024-03-27T05:05:19Z",
+      "DESCRIPTION": "Hispanic or Latino",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2024-03-27T05:44:03Z",
+      "DESCRIPTION": "Patient Health Questionnaire 2 item (PHQ-2) total score [Reported]",
+      "UNITS": "{score}",
+      "VALUE": "1.0"
+    },
+    {
+      "DATE": "2024-03-27T06:19:54Z",
+      "DESCRIPTION": "Total score [DAST-10]",
+      "UNITS": "{score}",
+      "VALUE": "2.0"
+    },
+    {
+      "DATE": "2025-03-05T04:26:30Z",
+      "DESCRIPTION": "Cholesterol [Mass/volume] in Serum or Plasma",
+      "UNITS": "mg/dL",
+      "VALUE": "217.3"
+    },
+    {
+      "DATE": "2025-03-05T04:26:30Z",
+      "DESCRIPTION": "Triglyceride [Mass/volume] in Serum or Plasma",
+      "UNITS": "mg/dL",
+      "VALUE": "290.7"
+    },
+    {
+      "DATE": "2025-03-05T04:26:30Z",
+      "DESCRIPTION": "Cholesterol in LDL [Mass/volume] in Serum or Plasma by Direct assay",
+      "UNITS": "mg/dL",
+      "VALUE": "135.0"
+    },
+    {
+      "DATE": "2025-03-05T04:26:30Z",
+      "DESCRIPTION": "Cholesterol in HDL [Mass/volume] in Serum or Plasma",
+      "UNITS": "mg/dL",
+      "VALUE": "36.0"
+    },
+    {
+      "DATE": "2025-03-05T04:26:30Z",
+      "DESCRIPTION": "Glucose [Mass/volume] in Blood",
+      "UNITS": "mg/dL",
+      "VALUE": "92.2"
+    },
+    {
+      "DATE": "2025-03-05T04:26:30Z",
+      "DESCRIPTION": "Urea nitrogen [Mass/volume] in Blood",
+      "UNITS": "mg/dL",
+      "VALUE": "12.0"
+    },
+    {
+      "DATE": "2025-03-05T04:26:30Z",
+      "DESCRIPTION": "Creatinine [Mass/volume] in Blood",
+      "UNITS": "mg/dL",
+      "VALUE": "2.8"
+    },
+    {
+      "DATE": "2025-03-05T04:26:30Z",
+      "DESCRIPTION": "Calcium [Mass/volume] in Blood",
+      "UNITS": "mg/dL",
+      "VALUE": "9.9"
+    },
+    {
+      "DATE": "2025-03-05T04:26:30Z",
+      "DESCRIPTION": "Sodium [Moles/volume] in Blood",
+      "UNITS": "mmol/L",
+      "VALUE": "138.7"
+    },
+    {
+      "DATE": "2025-03-05T04:26:30Z",
+      "DESCRIPTION": "Potassium [Moles/volume] in Blood",
+      "UNITS": "mmol/L",
+      "VALUE": "4.2"
+    },
+    {
+      "DATE": "2025-03-05T04:26:30Z",
+      "DESCRIPTION": "Chloride [Moles/volume] in Blood",
+      "UNITS": "mmol/L",
+      "VALUE": "104.7"
+    },
+    {
+      "DATE": "2025-03-05T04:26:30Z",
+      "DESCRIPTION": "Carbon dioxide  total [Moles/volume] in Blood",
+      "UNITS": "mmol/L",
+      "VALUE": "21.9"
+    },
+    {
+      "DATE": "2025-03-05T04:26:30Z",
+      "DESCRIPTION": "Glomerular filtration rate [Volume Rate/Area] in Serum or Plasma by Creatinine-based formula (MDRD)/1.73 sq M",
+      "UNITS": "mL/min",
+      "VALUE": "77.7"
+    },
+    {
+      "DATE": "2025-03-05T04:26:30Z",
+      "DESCRIPTION": "Protein [Mass/volume] in Serum or Plasma",
+      "UNITS": "g/dL",
+      "VALUE": "6.7"
+    },
+    {
+      "DATE": "2025-03-05T04:26:30Z",
+      "DESCRIPTION": "Albumin [Mass/volume] in Serum or Plasma",
+      "UNITS": "g/dL",
+      "VALUE": "4.3"
+    },
+    {
+      "DATE": "2025-03-05T04:26:30Z",
+      "DESCRIPTION": "Globulin [Mass/volume] in Serum by calculation",
+      "UNITS": "g/L",
+      "VALUE": "2.6"
+    },
+    {
+      "DATE": "2025-03-05T04:26:30Z",
+      "DESCRIPTION": "Bilirubin.total [Mass/volume] in Serum or Plasma",
+      "UNITS": "mg/dL",
+      "VALUE": "1.1"
+    },
+    {
+      "DATE": "2025-03-05T04:26:30Z",
+      "DESCRIPTION": "Alkaline phosphatase [Enzymatic activity/volume] in Serum or Plasma",
+      "UNITS": "U/L",
+      "VALUE": "139.4"
+    },
+    {
+      "DATE": "2025-03-05T04:26:30Z",
+      "DESCRIPTION": "Alanine aminotransferase [Enzymatic activity/volume] in Serum or Plasma",
+      "UNITS": "U/L",
+      "VALUE": "48.4"
+    },
+    {
+      "DATE": "2025-03-05T04:26:30Z",
+      "DESCRIPTION": "Aspartate aminotransferase [Enzymatic activity/volume] in Serum or Plasma",
+      "UNITS": "U/L",
+      "VALUE": "11.0"
+    },
+    {
+      "DATE": "2025-03-05T04:26:30Z",
+      "DESCRIPTION": "Body Height",
+      "UNITS": "cm",
+      "VALUE": "173.7"
+    },
+    {
+      "DATE": "2025-03-05T04:26:30Z",
+      "DESCRIPTION": "Pain severity - 0-10 verbal numeric rating [Score] - Reported",
+      "UNITS": "{score}",
+      "VALUE": "4.0"
+    },
+    {
+      "DATE": "2025-03-05T04:26:30Z",
+      "DESCRIPTION": "Body Weight",
+      "UNITS": "kg",
+      "VALUE": "82.9"
+    },
+    {
+      "DATE": "2025-03-05T04:26:30Z",
+      "DESCRIPTION": "Body mass index (BMI) [Ratio]",
+      "UNITS": "kg/m2",
+      "VALUE": "27.5"
+    },
+    {
+      "DATE": "2025-03-05T04:26:30Z",
+      "DESCRIPTION": "Diastolic Blood Pressure",
+      "UNITS": "mm[Hg]",
+      "VALUE": "80.0"
+    },
+    {
+      "DATE": "2025-03-05T04:26:30Z",
+      "DESCRIPTION": "Systolic Blood Pressure",
+      "UNITS": "mm[Hg]",
+      "VALUE": "152.0"
+    },
+    {
+      "DATE": "2025-03-05T04:26:30Z",
+      "DESCRIPTION": "Heart rate",
+      "UNITS": "/min",
+      "VALUE": "66.0"
+    },
+    {
+      "DATE": "2025-03-05T04:26:30Z",
+      "DESCRIPTION": "Respiratory rate",
+      "UNITS": "/min",
+      "VALUE": "15.0"
+    },
+    {
+      "DATE": "2025-03-05T04:26:30Z",
+      "DESCRIPTION": "Tobacco smoking status",
+      "UNITS": NaN,
+      "VALUE": "Never smoked tobacco (finding)"
+    },
+    {
+      "DATE": "2025-03-05T05:26:20Z",
+      "DESCRIPTION": "Within the last year  have you been afraid of your partner or ex-partner",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2025-03-05T05:26:20Z",
+      "DESCRIPTION": "Do you feel physically and emotionally safe where you currently live [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "Yes"
+    },
+    {
+      "DATE": "2025-03-05T05:26:20Z",
+      "DESCRIPTION": "Are you a refugee",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2025-03-05T05:26:20Z",
+      "DESCRIPTION": "Have you spent more than 2 nights in a row in a jail  prison  detention center  or juvenile correctional facility in past 1 year [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2025-03-05T05:26:20Z",
+      "DESCRIPTION": "Stress level",
+      "UNITS": NaN,
+      "VALUE": "Somewhat"
+    },
+    {
+      "DATE": "2025-03-05T05:26:20Z",
+      "DESCRIPTION": "How often do you see or talk to people that you care about and feel close to [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "3 to 5 times a week"
+    },
+    {
+      "DATE": "2025-03-05T05:26:20Z",
+      "DESCRIPTION": "Has lack of transportation kept you from medical appointments  meetings  work  or from getting things needed for daily living",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2025-03-05T05:26:20Z",
+      "DESCRIPTION": "Have you or any family members you live with been unable to get any of the following when it was really needed in past 1 year [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "Utilities"
+    },
+    {
+      "DATE": "2025-03-05T05:26:20Z",
+      "DESCRIPTION": "What was your best estimate of the total income of all family members from all sources  before taxes  in last year [PhenX]",
+      "UNITS": "/a",
+      "VALUE": "32184"
+    },
+    {
+      "DATE": "2025-03-05T05:26:20Z",
+      "DESCRIPTION": "Primary insurance",
+      "UNITS": NaN,
+      "VALUE": "Private insurance"
+    },
+    {
+      "DATE": "2025-03-05T05:26:20Z",
+      "DESCRIPTION": "Employment status - current",
+      "UNITS": NaN,
+      "VALUE": "Full-time work"
+    },
+    {
+      "DATE": "2025-03-05T05:26:20Z",
+      "DESCRIPTION": "Highest level of education",
+      "UNITS": NaN,
+      "VALUE": "More than high school"
+    },
+    {
+      "DATE": "2025-03-05T05:26:20Z",
+      "DESCRIPTION": "Address",
+      "UNITS": NaN,
+      "VALUE": "619 Spencer Estate"
+    },
+    {
+      "DATE": "2025-03-05T05:26:20Z",
+      "DESCRIPTION": "Are you worried about losing your housing [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2025-03-05T05:26:20Z",
+      "DESCRIPTION": "Housing status",
+      "UNITS": NaN,
+      "VALUE": "I have housing"
+    },
+    {
+      "DATE": "2025-03-05T05:26:20Z",
+      "DESCRIPTION": "How many people are living or staying at this address [#]",
+      "UNITS": "{#}",
+      "VALUE": "4.0"
+    },
+    {
+      "DATE": "2025-03-05T05:26:20Z",
+      "DESCRIPTION": "Preferred language",
+      "UNITS": NaN,
+      "VALUE": "English"
+    },
+    {
+      "DATE": "2025-03-05T05:26:20Z",
+      "DESCRIPTION": "Discharged from the U.S. Armed Forces",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2025-03-05T05:26:20Z",
+      "DESCRIPTION": "Has season or migrant farm work been your or your family's main source of income at any point in past 2 years [PRAPARE]",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2025-03-05T05:26:20Z",
+      "DESCRIPTION": "Race",
+      "UNITS": NaN,
+      "VALUE": "White"
+    },
+    {
+      "DATE": "2025-03-05T05:26:20Z",
+      "DESCRIPTION": "Hispanic or Latino",
+      "UNITS": NaN,
+      "VALUE": "No"
+    },
+    {
+      "DATE": "2025-03-05T06:01:23Z",
+      "DESCRIPTION": "Patient Health Questionnaire 2 item (PHQ-2) total score [Reported]",
+      "UNITS": "{score}",
+      "VALUE": "0.0"
+    },
+    {
+      "DATE": "2025-03-05T06:37:44Z",
+      "DESCRIPTION": "Total score [AUDIT-C]",
+      "UNITS": "{score}",
+      "VALUE": "3.0"
+    },
+    {
+      "DATE": "2016-01-18T04:26:30Z",
+      "DESCRIPTION": "QALY",
+      "UNITS": "a",
+      "VALUE": "47.3"
+    },
+    {
+      "DATE": "2017-01-18T04:26:30Z",
+      "DESCRIPTION": "QALY",
+      "UNITS": "a",
+      "VALUE": "48.3"
+    },
+    {
+      "DATE": "2018-01-18T04:26:30Z",
+      "DESCRIPTION": "QALY",
+      "UNITS": "a",
+      "VALUE": "49.3"
+    },
+    {
+      "DATE": "2019-01-18T04:26:30Z",
+      "DESCRIPTION": "QALY",
+      "UNITS": "a",
+      "VALUE": "50.3"
+    },
+    {
+      "DATE": "2020-01-18T04:26:30Z",
+      "DESCRIPTION": "QALY",
+      "UNITS": "a",
+      "VALUE": "51.3"
+    },
+    {
+      "DATE": "2021-01-18T04:26:30Z",
+      "DESCRIPTION": "QALY",
+      "UNITS": "a",
+      "VALUE": "52.3"
+    },
+    {
+      "DATE": "2022-01-18T04:26:30Z",
+      "DESCRIPTION": "QALY",
+      "UNITS": "a",
+      "VALUE": "53.3"
+    },
+    {
+      "DATE": "2023-01-18T04:26:30Z",
+      "DESCRIPTION": "QALY",
+      "UNITS": "a",
+      "VALUE": "54.3"
+    },
+    {
+      "DATE": "2024-01-18T04:26:30Z",
+      "DESCRIPTION": "QALY",
+      "UNITS": "a",
+      "VALUE": "55.3"
+    },
+    {
+      "DATE": "2025-01-18T04:26:30Z",
+      "DESCRIPTION": "QALY",
+      "UNITS": "a",
+      "VALUE": "56.3"
+    },
+    {
+      "DATE": "2026-01-18T04:26:30Z",
+      "DESCRIPTION": "QALY",
+      "UNITS": "a",
+      "VALUE": "57.3"
+    },
+    {
+      "DATE": "2016-01-18T04:26:30Z",
+      "DESCRIPTION": "DALY",
+      "UNITS": "a",
+      "VALUE": "0.7"
+    },
+    {
+      "DATE": "2017-01-18T04:26:30Z",
+      "DESCRIPTION": "DALY",
+      "UNITS": "a",
+      "VALUE": "0.7"
+    },
+    {
+      "DATE": "2018-01-18T04:26:30Z",
+      "DESCRIPTION": "DALY",
+      "UNITS": "a",
+      "VALUE": "0.7"
+    },
+    {
+      "DATE": "2019-01-18T04:26:30Z",
+      "DESCRIPTION": "DALY",
+      "UNITS": "a",
+      "VALUE": "0.7"
+    },
+    {
+      "DATE": "2020-01-18T04:26:30Z",
+      "DESCRIPTION": "DALY",
+      "UNITS": "a",
+      "VALUE": "0.7"
+    },
+    {
+      "DATE": "2021-01-18T04:26:30Z",
+      "DESCRIPTION": "DALY",
+      "UNITS": "a",
+      "VALUE": "0.7"
+    },
+    {
+      "DATE": "2022-01-18T04:26:30Z",
+      "DESCRIPTION": "DALY",
+      "UNITS": "a",
+      "VALUE": "0.7"
+    },
+    {
+      "DATE": "2023-01-18T04:26:30Z",
+      "DESCRIPTION": "DALY",
+      "UNITS": "a",
+      "VALUE": "0.7"
+    },
+    {
+      "DATE": "2024-01-18T04:26:30Z",
+      "DESCRIPTION": "DALY",
+      "UNITS": "a",
+      "VALUE": "0.7"
+    },
+    {
+      "DATE": "2025-01-18T04:26:30Z",
+      "DESCRIPTION": "DALY",
+      "UNITS": "a",
+      "VALUE": "0.7"
+    },
+    {
+      "DATE": "2026-01-18T04:26:30Z",
+      "DESCRIPTION": "DALY",
+      "UNITS": "a",
+      "VALUE": "0.7"
+    },
+    {
+      "DATE": "2016-01-18T04:26:30Z",
+      "DESCRIPTION": "QOLS",
+      "UNITS": "{score}",
+      "VALUE": "1.0"
+    },
+    {
+      "DATE": "2017-01-18T04:26:30Z",
+      "DESCRIPTION": "QOLS",
+      "UNITS": "{score}",
+      "VALUE": "1.0"
+    },
+    {
+      "DATE": "2018-01-18T04:26:30Z",
+      "DESCRIPTION": "QOLS",
+      "UNITS": "{score}",
+      "VALUE": "1.0"
+    },
+    {
+      "DATE": "2019-01-18T04:26:30Z",
+      "DESCRIPTION": "QOLS",
+      "UNITS": "{score}",
+      "VALUE": "1.0"
+    },
+    {
+      "DATE": "2020-01-18T04:26:30Z",
+      "DESCRIPTION": "QOLS",
+      "UNITS": "{score}",
+      "VALUE": "1.0"
+    },
+    {
+      "DATE": "2021-01-18T04:26:30Z",
+      "DESCRIPTION": "QOLS",
+      "UNITS": "{score}",
+      "VALUE": "1.0"
+    },
+    {
+      "DATE": "2022-01-18T04:26:30Z",
+      "DESCRIPTION": "QOLS",
+      "UNITS": "{score}",
+      "VALUE": "1.0"
+    },
+    {
+      "DATE": "2023-01-18T04:26:30Z",
+      "DESCRIPTION": "QOLS",
+      "UNITS": "{score}",
+      "VALUE": "1.0"
+    },
+    {
+      "DATE": "2024-01-18T04:26:30Z",
+      "DESCRIPTION": "QOLS",
+      "UNITS": "{score}",
+      "VALUE": "1.0"
+    },
+    {
+      "DATE": "2025-01-18T04:26:30Z",
+      "DESCRIPTION": "QOLS",
+      "UNITS": "{score}",
+      "VALUE": "1.0"
+    },
+    {
+      "DATE": "2026-01-18T04:26:30Z",
+      "DESCRIPTION": "QOLS",
+      "UNITS": "{score}",
+      "VALUE": "1.0"
+    }
+  ],
+  "patient": {
+    "BIRTHDATE": "1967-01-18",
+    "ETHNICITY": "nonhispanic",
+    "GENDER": "M",
+    "Id": "131d62f1-0546-6627-698b-5ef8789c5df1",
+    "RACE": "white"
+  },
+  "procedures": [
+    {
+      "DESCRIPTION": "Assessment of health and social care needs (procedure)"
+    },
+    {
+      "DESCRIPTION": "Assessment of anxiety (procedure)"
+    },
+    {
+      "DESCRIPTION": "Depression screening (procedure)"
+    },
+    {
+      "DESCRIPTION": "Depression screening (procedure)"
+    },
+    {
+      "DESCRIPTION": "Medication reconciliation (procedure)"
+    },
+    {
+      "DESCRIPTION": "Assessment of health and social care needs (procedure)"
+    },
+    {
+      "DESCRIPTION": "Depression screening (procedure)"
+    },
+    {
+      "DESCRIPTION": "Depression screening (procedure)"
+    },
+    {
+      "DESCRIPTION": "Assessment of substance use (procedure)"
+    },
+    {
+      "DESCRIPTION": "Screening for drug abuse (procedure)"
+    },
+    {
+      "DESCRIPTION": "Medication reconciliation (procedure)"
+    },
+    {
+      "DESCRIPTION": "Assessment of health and social care needs (procedure)"
+    },
+    {
+      "DESCRIPTION": "Screening for domestic abuse (procedure)"
+    },
+    {
+      "DESCRIPTION": "Depression screening (procedure)"
+    },
+    {
+      "DESCRIPTION": "Depression screening (procedure)"
+    },
+    {
+      "DESCRIPTION": "Assessment of substance use (procedure)"
+    },
+    {
+      "DESCRIPTION": "Assessment using Alcohol Use Disorders Identification Test - Consumption (procedure)"
+    },
+    {
+      "DESCRIPTION": "Patient referral for dental care (procedure)"
+    },
+    {
+      "DESCRIPTION": "Dental consultation and report (procedure)"
+    },
+    {
+      "DESCRIPTION": "Dental care (regime/therapy)"
+    },
+    {
+      "DESCRIPTION": "Removal of supragingival plaque and calculus from all teeth using dental instrument (procedure)"
+    },
+    {
+      "DESCRIPTION": "Removal of subgingival plaque and calculus from all teeth using dental instrument (procedure)"
+    },
+    {
+      "DESCRIPTION": "Dental plain X-ray bitewing (procedure)"
+    },
+    {
+      "DESCRIPTION": "Examination of gingivae (procedure)"
+    },
+    {
+      "DESCRIPTION": "Dental fluoride treatment (procedure)"
+    },
+    {
+      "DESCRIPTION": "Oral health education (procedure)"
+    },
+    {
+      "DESCRIPTION": "Assessment of health and social care needs (procedure)"
+    },
+    {
+      "DESCRIPTION": "Assessment of anxiety (procedure)"
+    },
+    {
+      "DESCRIPTION": "Screening for domestic abuse (procedure)"
+    },
+    {
+      "DESCRIPTION": "Depression screening (procedure)"
+    },
+    {
+      "DESCRIPTION": "Depression screening (procedure)"
+    },
+    {
+      "DESCRIPTION": "Assessment of health and social care needs (procedure)"
+    },
+    {
+      "DESCRIPTION": "Assessment of anxiety (procedure)"
+    },
+    {
+      "DESCRIPTION": "Depression screening (procedure)"
+    },
+    {
+      "DESCRIPTION": "Depression screening (procedure)"
+    },
+    {
+      "DESCRIPTION": "Medication reconciliation (procedure)"
+    },
+    {
+      "DESCRIPTION": "Assessment of health and social care needs (procedure)"
+    },
+    {
+      "DESCRIPTION": "Depression screening (procedure)"
+    },
+    {
+      "DESCRIPTION": "Depression screening (procedure)"
+    },
+    {
+      "DESCRIPTION": "Assessment of substance use (procedure)"
+    },
+    {
+      "DESCRIPTION": "Assessment using Alcohol Use Disorders Identification Test - Consumption (procedure)"
+    },
+    {
+      "DESCRIPTION": "Patient referral for dental care (procedure)"
+    },
+    {
+      "DESCRIPTION": "Dental consultation and report (procedure)"
+    },
+    {
+      "DESCRIPTION": "Dental care (regime/therapy)"
+    },
+    {
+      "DESCRIPTION": "Removal of supragingival plaque and calculus from all teeth using dental instrument (procedure)"
+    },
+    {
+      "DESCRIPTION": "Removal of subgingival plaque and calculus from all teeth using dental instrument (procedure)"
+    },
+    {
+      "DESCRIPTION": "Examination of gingivae (procedure)"
+    },
+    {
+      "DESCRIPTION": "Oral health education (procedure)"
+    },
+    {
+      "DESCRIPTION": "Assessment of health and social care needs (procedure)"
+    },
+    {
+      "DESCRIPTION": "Assessment of substance use (procedure)"
+    },
+    {
+      "DESCRIPTION": "Assessment using Alcohol Use Disorders Identification Test - Consumption (procedure)"
+    },
+    {
+      "DESCRIPTION": "Sputum examination (procedure)"
+    },
+    {
+      "DESCRIPTION": "Medication reconciliation (procedure)"
+    },
+    {
+      "DESCRIPTION": "Assessment of health and social care needs (procedure)"
+    },
+    {
+      "DESCRIPTION": "Screening for domestic abuse (procedure)"
+    },
+    {
+      "DESCRIPTION": "Depression screening (procedure)"
+    },
+    {
+      "DESCRIPTION": "Depression screening (procedure)"
+    },
+    {
+      "DESCRIPTION": "Assessment of substance use (procedure)"
+    },
+    {
+      "DESCRIPTION": "Assessment using Alcohol Use Disorders Identification Test - Consumption (procedure)"
+    },
+    {
+      "DESCRIPTION": "Patient referral for dental care (procedure)"
+    },
+    {
+      "DESCRIPTION": "Dental consultation and report (procedure)"
+    },
+    {
+      "DESCRIPTION": "Dental care (regime/therapy)"
+    },
+    {
+      "DESCRIPTION": "Removal of supragingival plaque and calculus from all teeth using dental instrument (procedure)"
+    },
+    {
+      "DESCRIPTION": "Removal of subgingival plaque and calculus from all teeth using dental instrument (procedure)"
+    },
+    {
+      "DESCRIPTION": "Examination of gingivae (procedure)"
+    },
+    {
+      "DESCRIPTION": "Oral health education (procedure)"
+    },
+    {
+      "DESCRIPTION": "Assessment of health and social care needs (procedure)"
+    },
+    {
+      "DESCRIPTION": "Assessment of anxiety (procedure)"
+    },
+    {
+      "DESCRIPTION": "Depression screening (procedure)"
+    },
+    {
+      "DESCRIPTION": "Depression screening (procedure)"
+    },
+    {
+      "DESCRIPTION": "Assessment of substance use (procedure)"
+    },
+    {
+      "DESCRIPTION": "Assessment using Alcohol Use Disorders Identification Test - Consumption (procedure)"
+    },
+    {
+      "DESCRIPTION": "Medication reconciliation (procedure)"
+    },
+    {
+      "DESCRIPTION": "Assessment of health and social care needs (procedure)"
+    },
+    {
+      "DESCRIPTION": "Assessment of anxiety (procedure)"
+    },
+    {
+      "DESCRIPTION": "Depression screening (procedure)"
+    },
+    {
+      "DESCRIPTION": "Depression screening (procedure)"
+    },
+    {
+      "DESCRIPTION": "Assessment of substance use (procedure)"
+    },
+    {
+      "DESCRIPTION": "Screening for drug abuse (procedure)"
+    },
+    {
+      "DESCRIPTION": "Patient referral for dental care (procedure)"
+    },
+    {
+      "DESCRIPTION": "Dental consultation and report (procedure)"
+    },
+    {
+      "DESCRIPTION": "Dental care (regime/therapy)"
+    },
+    {
+      "DESCRIPTION": "Removal of supragingival plaque and calculus from all teeth using dental instrument (procedure)"
+    },
+    {
+      "DESCRIPTION": "Removal of subgingival plaque and calculus from all teeth using dental instrument (procedure)"
+    },
+    {
+      "DESCRIPTION": "Examination of gingivae (procedure)"
+    },
+    {
+      "DESCRIPTION": "Dental surgical procedure (procedure)"
+    },
+    {
+      "DESCRIPTION": "Dental application of desensitizing medicament (procedure)"
+    },
+    {
+      "DESCRIPTION": "Gingivectomy or gingivoplasty  per tooth (procedure)"
+    },
+    {
+      "DESCRIPTION": "Postoperative care for dental procedure (regime/therapy)"
+    },
+    {
+      "DESCRIPTION": "Oral health education (procedure)"
+    },
+    {
+      "DESCRIPTION": "Assessment of health and social care needs (procedure)"
+    },
+    {
+      "DESCRIPTION": "Depression screening (procedure)"
+    },
+    {
+      "DESCRIPTION": "Depression screening (procedure)"
+    },
+    {
+      "DESCRIPTION": "Assessment of substance use (procedure)"
+    },
+    {
+      "DESCRIPTION": "Screening for drug abuse (procedure)"
+    },
+    {
+      "DESCRIPTION": "Patient referral for dental care (procedure)"
+    },
+    {
+      "DESCRIPTION": "Measurement of respiratory function (procedure)"
+    },
+    {
+      "DESCRIPTION": "Dental consultation and report (procedure)"
+    },
+    {
+      "DESCRIPTION": "Dental care (regime/therapy)"
+    },
+    {
+      "DESCRIPTION": "Removal of supragingival plaque and calculus from all teeth using dental instrument (procedure)"
+    },
+    {
+      "DESCRIPTION": "Removal of subgingival plaque and calculus from all teeth using dental instrument (procedure)"
+    },
+    {
+      "DESCRIPTION": "Examination of gingivae (procedure)"
+    },
+    {
+      "DESCRIPTION": "Dental fluoride treatment (procedure)"
+    },
+    {
+      "DESCRIPTION": "Oral health education (procedure)"
+    },
+    {
+      "DESCRIPTION": "Assessment of health and social care needs (procedure)"
+    },
+    {
+      "DESCRIPTION": "Depression screening (procedure)"
+    },
+    {
+      "DESCRIPTION": "Depression screening (procedure)"
+    },
+    {
+      "DESCRIPTION": "Assessment of substance use (procedure)"
+    },
+    {
+      "DESCRIPTION": "Assessment using Alcohol Use Disorders Identification Test - Consumption (procedure)"
+    }
+  ]
+}
