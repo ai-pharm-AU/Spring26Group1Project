@@ -38,7 +38,7 @@ DISEASE_COLUMNS = ["conditions", "condition", "disease", "diseases", "diseases_l
 
 
 def get_device():
-    return "cuda" if torch.cuda.is_available() else "cpu"
+    return "cuda" if torch.cuda.is_available() else ( "mps" if torch.backends.mps.is_available() else "cpu" )
 
 
 def _load_medcpt_tokenizer(model_name):
@@ -494,7 +494,7 @@ def run_hybrid_fusion(
 if __name__ == "__main__":
     k = int(sys.argv[1]) if len(sys.argv) > 1 else 60
     bm25_wt = int(sys.argv[2]) if len(sys.argv) > 2 else 1
-    medcpt_wt = int(sys.argv[3]) if len(sys.argv) > 3 else 0  # med cpt causes an error
+    medcpt_wt = int(sys.argv[3]) if len(sys.argv) > 3 else 1
     n_results = int(sys.argv[4]) if len(sys.argv) > 4 else 10
 
     output = run_hybrid_fusion(
