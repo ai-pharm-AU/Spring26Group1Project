@@ -12,14 +12,14 @@ AGE_REFERENCE_DATE = pd.Timestamp("2026-04-13")
 # make sure age years is in w/e df cols thing bc not in keep fields
 KEEP_FIELDS = {
     "patients": ["Id", "BIRTHDATE", "GENDER", "RACE", "ETHNICITY"],
-    "encounters": ["PATIENT", "START", "STOP", "ENCOUNTERCLASS", "DESCRIPTION", "REASONDESCRIPTION"],
-    "conditions": ["PATIENT", "START", "STOP", "DESCRIPTION"],
-    "medications": ["PATIENT", "START", "STOP", "DESCRIPTION"],
-    "observations": ["PATIENT", "DATE", "DESCRIPTION", "VALUE", "UNITS"],
-    "procedures": ["PATIENT", "DATE", "DESCRIPTION"],
-    "allergies": ["PATIENT", "START", "STOP", "DESCRIPTION"],
-    "immunizations": ["PATIENT", "DATE", "DESCRIPTION"],
-    "careplans": ["PATIENT", "START", "STOP", "DESCRIPTION"]
+    "encounters": ["Id", "PATIENT", "START", "STOP", "ENCOUNTERCLASS", "DESCRIPTION", "REASONDESCRIPTION"],
+    "conditions": ["PATIENT", "ENCOUNTER", "START", "STOP", "DESCRIPTION"],
+    "medications": ["PATIENT", "ENCOUNTER", "START", "STOP", "DESCRIPTION"],
+    "observations": ["PATIENT", "ENCOUNTER", "DATE", "DESCRIPTION", "VALUE", "UNITS"],
+    "procedures": ["PATIENT", "ENCOUNTER", "DATE", "DESCRIPTION"],
+    "allergies": ["PATIENT", "ENCOUNTER", "START", "STOP", "DESCRIPTION"],
+    "immunizations": ["PATIENT", "ENCOUNTER", "DATE", "DESCRIPTION"],
+    "careplans": ["PATIENT", "ENCOUNTER", "START", "STOP", "DESCRIPTION"]
 }
 
 EXCLUDED_ENCOUNTER_CLASSES = {"wellness", "ambulatory"}
@@ -84,9 +84,18 @@ def get_tables_dict():
         file_path = out_dir / f"{name}.parquet"
 
         if file_path.exists():
-            tables_dict[name] = pd.read_parquet(file_path)
+            table_df = pd.read_parquet(file_path)
+            tables_dict[name] = table_df
 
     return tables_dict
+
+
+def _filter_by_encounter_ids(df: pd.DataFrame, encounter_ids: set[str] | None) -> pd.DataFrame:
+    if encounter_ids is None or "ENCOUNTER" not in df.columns:
+        return df
+
+    encounter_values = df["ENCOUNTER"].astype("string")
+    return df[encounter_values.isna() | encounter_values.isin(encounter_ids)]
 
 def load_synthea_tables(n_patients=None):
     # ---- LOAD PATIENTS ----
@@ -102,6 +111,7 @@ def load_synthea_tables(n_patients=None):
 
     # ---- LOAD AND FILTER OTHER TABLES ----
     tables = {}
+    encounter_ids = None
 
     for name in KEEP_FIELDS:
         if name == "patients":
@@ -131,11 +141,17 @@ def load_synthea_tables(n_patients=None):
                 ~df["DESCRIPTION"].str.strip().isin(EXCLUDED_CONDITION_DESCRIPTIONS)
             ]
 
+        if name != "encounters":
+            df = _filter_by_encounter_ids(df, encounter_ids)
+
         # Keep only desired columns (if they exist)
         cols = [c for c in KEEP_FIELDS[name] if c in df.columns]
         df = df[cols]
 
         tables[name] = df
+
+        if name == "encounters" and "Id" in df.columns:
+            encounter_ids = set(df["Id"].dropna().astype(str))
 
     return patients, tables
 
