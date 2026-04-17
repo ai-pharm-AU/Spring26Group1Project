@@ -2,6 +2,7 @@
 given a patient and a trial, determine if the patient is eligible for the trial
 """
 
+import argparse
 from trial_project.matching.llm import is_patient_eligible_llm
 # from trial_project.matching.rule_based import is_patient_excluded_rule_based
 import logging
@@ -16,19 +17,42 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
-def determine_eligibility(patient_id, trial_id):
+def determine_eligibility(patient_id, trial_id, model_name: str = "gpt-5-mini"):
   # returns True if patient is eligible for trial, False otherwise
   # rule_based_result = is_patient_excluded_rule_based(patient_id, trial_id)
   # if rule_based_result.eligible == False:
   #   return rule_based_result
   # otherwise check with llm
-  return is_patient_eligible_llm(patient_id, trial_id)
+    return is_patient_eligible_llm(patient_id, trial_id, model_name=model_name)
 
 
-if __name__ == "__main__":
+def main() -> int:
     """
     Load all patients, retrieve eligible trials, determine eligibility, and save results.
     """
+    parser = argparse.ArgumentParser(
+        description="Determine patient-trial eligibility and persist results"
+    )
+    conflict_group = parser.add_mutually_exclusive_group()
+    conflict_group.add_argument(
+        "--overwrite",
+        action="store_true",
+        help="Overwrite existing rows with the same patient_id, trial_id, and model_name",
+    )
+    conflict_group.add_argument(
+        "--skip-existing",
+        action="store_true",
+        help="Skip existing rows with the same patient_id, trial_id, and model_name (default)",
+    )
+    parser.add_argument(
+        "--model-name",
+        default="gpt-5-mini",
+        help="LLM model name to use for eligibility evaluation (default: gpt-5-mini)",
+    )
+    args = parser.parse_args()
+
+    conflict_policy = "overwrite" if args.overwrite else "skip"
+
     # Load all patients
     logger.info("Loading all patients...")
     patients_df = load_all_patients()
@@ -53,7 +77,9 @@ if __name__ == "__main__":
 
     # Process each patient
     total_patients = len(patients_df)
-    total_evaluations = 0
+    written_evaluations = 0
+    skipped_evaluations = 0
+    failed_evaluations = 0
 
     for idx, patient_row in patients_df.iterrows():
         patient_id = patient_row.get("Id") or patient_row.get("id")
@@ -80,7 +106,11 @@ if __name__ == "__main__":
         # Determine eligibility for each trial
         for trial_id in trial_ids:
             try:
-                result = determine_eligibility(patient_id, trial_id)
+                result = determine_eligibility(
+                    patient_id,
+                    trial_id,
+                    model_name=args.model_name,
+                )
                 
                 # Parse the LLM response
                 if isinstance(result, dict):
@@ -103,19 +133,38 @@ if __name__ == "__main__":
                     exclusion_rule_hit=False,  # Can be updated if rule_based is used
                     llm_checked=True,
                     decision_source=decision_source,
-                    reason=reason,
+                    reasoning=reason,
                     confidence=confidence,
-                    model_name="gpt-5-mini",
+                    model_name=args.model_name,
                     evaluated_at=datetime.utcnow()
                 )
 
-                save_eligibility_decision(decision)
-                total_evaluations += 1
-                logger.debug(f"Saved eligibility decision for patient {patient_id} and trial {trial_id}")
+                was_saved = save_eligibility_decision(
+                    decision,
+                    conflict_policy=conflict_policy,
+                )
+                if was_saved:
+                    written_evaluations += 1
+                    logger.debug(f"Saved eligibility decision for patient {patient_id} and trial {trial_id}")
+                else:
+                    skipped_evaluations += 1
+                    logger.debug(
+                        f"Skipped existing eligibility decision for patient {patient_id} and trial {trial_id}"
+                    )
 
             except Exception as e:
-                raise e
+                failed_evaluations += 1
                 logger.error(f"Error determining eligibility for patient {patient_id} and trial {trial_id}: {e}")
                 continue
 
-    logger.info(f"Completed! Evaluated {total_evaluations} patient-trial pairs")
+    logger.info(
+        "Completed! Written: %s, Skipped existing: %s, Failed: %s",
+        written_evaluations,
+        skipped_evaluations,
+        failed_evaluations,
+    )
+    return 0 if failed_evaluations == 0 else 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

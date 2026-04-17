@@ -3,21 +3,74 @@ llm agents for determining patient trial eligibility
 """
 
 from trial_project.api import generate_client
-from trial_project.data.patients.evidence import load_patient_evidence
+from trial_project.data.patients.evidence.generate_evidence import load_patient_evidence
 from trial_project.data.patients.load_patient import get_patient_llm_json
-from trial_project.data.trials.eligibility import get_trial_eligibility_llm
+from trial_project.data.trials.eligibility_verification import get_trial_eligibility_verification
 from trial_project.data.trials.load import load_trial_json_llm
-import json
+from pydantic import BaseModel, ConfigDict, Field
+from typing import Annotated, Literal
 
 from trial_project.matching.save_eligibility import EligibilityDecision
 # from agents import Agent, Runner
 
 client = generate_client()
 
-# give patient info as str to avoid having to load and stuff every time
-def is_patient_eligible_llm(patient_id, trial_id) -> EligibilityDecision:
 
-  trial_eligibility = get_trial_eligibility_llm(trial_id)
+class MatchedPatientEvidence(BaseModel):
+  source_index: Literal[
+    "demographics",
+    "condition_index",
+    "medication_index",
+    "procedure_index",
+    "observation_index",
+    "encounter_index",
+  ]
+  normalized_name: str
+  original_text: str
+  date: str
+  value: str
+  units: str
+
+
+class CriterionMatch(BaseModel):
+  criterion_id: str
+  criterion_type: Literal["inclusion", "exclusion"]
+  criterion_text: str
+  status: Literal[
+    "meets",
+    "does_not_meet",
+    "insufficient_evidence",
+    "excluded",
+    "not_excluded",
+  ]
+  matched_patient_evidence: list[MatchedPatientEvidence] = Field(default_factory=list)
+  possible_proxies: list[str] = Field(default_factory=list)
+  missing_but_needed: list[str] = Field(default_factory=list)
+  reasoning: str
+  confidence: Annotated[float, Field(ge=0.0, le=1.0, multiple_of=0.1)]
+
+
+class TrialEligibilityLLMResult(BaseModel):
+  model_config = ConfigDict(extra="forbid")
+
+  trial_id: str
+  patient_id: str
+  overall_decision: Literal["eligible", "ineligible", "indeterminate"]
+  overall_rationale: str
+  criterion_matches: list[CriterionMatch] = Field(default_factory=list)
+
+# give patient info as str to avoid having to load and stuff every time
+def is_patient_eligible_llm(
+  patient_id,
+  trial_id,
+  model_name: str = "gpt-5-mini",
+) -> EligibilityDecision:
+
+  trial_eligibility = get_trial_eligibility_verification(
+    trial_id=trial_id,
+    model_name=model_name,
+    use_cache=True,
+  )
   patient_evidence = load_patient_evidence(patient_id)
 
   prompt = """
@@ -86,7 +139,7 @@ Return JSON in this exact shape:
       "possible_proxies": [], 
       "missing_but_needed": [], 
       "reasoning": "", 
-      "confidence": "high|medium|low" 
+      "confidence": 0.0 
     } 
   ]
 }
@@ -96,22 +149,23 @@ Return JSON in this exact shape:
 
   client = generate_client()
   response = client.responses.create(
-    model="gpt-5-mini",
+    model=model_name,
     instructions=prompt,
     input=input
 )
-  result = json.loads(response.output_text)
+  result = TrialEligibilityLLMResult.model_validate_json(response.output_text)
+  print(response.output_text)
   
   return EligibilityDecision(
       patient_id=patient_id,
       trial_id=trial_id,
-      eligible=result["overall_decision"] == "eligible",
+      eligible=result.overall_decision == "eligible",
       exclusion_rule_hit=False,
       llm_checked=True,
       decision_source="llm",
-      reason=result["overall_rationale"],
-      confidence=result["confidence"],
-      model_name="gpt-5-mini",
+      reasoning=result.overall_rationale,
+      # confidence=result["confidence"],
+        model_name=model_name,
       evaluated_at=None
   )
   

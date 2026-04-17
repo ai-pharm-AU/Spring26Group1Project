@@ -6,6 +6,7 @@ from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
 import pandas as pd
+from filelock import FileLock
 from trial_project.context import results_dir
 
 @dataclass
@@ -23,8 +24,20 @@ class EligibilityDecision:
 
 eligibility_file = results_dir / "eligibility_decisions.parquet"
 
-def save_eligibility_decision(decision: EligibilityDecision) -> None:
-    """Upsert one patient/trial row into Parquet."""
+def _normalize_model_name(model_name: str | None) -> str:
+    if model_name is None or pd.isna(model_name):
+        return ""
+    return str(model_name)
+
+
+def save_eligibility_decision(
+    decision: EligibilityDecision,
+    conflict_policy: str = "skip",
+) -> bool:
+    """Persist one row with model-aware conflict handling; return True when row is written."""
+    if conflict_policy not in {"skip", "overwrite"}:
+        raise ValueError("conflict_policy must be one of: skip, overwrite")
+
     row = {
         "patient_id": decision.patient_id,
         "trial_id": decision.trial_id,
@@ -39,21 +52,35 @@ def save_eligibility_decision(decision: EligibilityDecision) -> None:
     }
 
     expected_columns = list(row.keys())
+    
+    # Use file locking to prevent concurrent writes from corrupting the parquet file
+    lock_file = eligibility_file.parent / (eligibility_file.stem + ".lock")
+    with FileLock(str(lock_file)):
+        if eligibility_file.exists():
+            df = pd.read_parquet(eligibility_file)
+        else:
+            df = pd.DataFrame(columns=expected_columns)
 
-    if eligibility_file.exists():
-        df = pd.read_parquet(eligibility_file)
-    else:
-        df = pd.DataFrame(columns=expected_columns)
+        for col in expected_columns:
+            if col not in df.columns:
+                df[col] = None
 
-    for col in expected_columns:
-        if col not in df.columns:
-            df[col] = None
+        model_key = _normalize_model_name(decision.model_name)
+        existing_model_key = df["model_name"].apply(_normalize_model_name)
+        mask = (
+            (df["patient_id"] == decision.patient_id)
+            & (df["trial_id"] == decision.trial_id)
+            & (existing_model_key == model_key)
+        )
 
-    mask = (df["patient_id"] == decision.patient_id) & (df["trial_id"] == decision.trial_id)
-    df = df.loc[~mask]
+        if conflict_policy == "skip" and mask.any():
+            return False
 
-    df = pd.concat([df, pd.DataFrame([row])], ignore_index=True)
-    df.to_parquet(eligibility_file, index=False)
+        df = df.loc[~mask]
+
+        df = pd.concat([df, pd.DataFrame([row])], ignore_index=True)
+        df.to_parquet(eligibility_file, index=False)
+        return True
 
 def load_eligibility_decision(patient_id: str, trial_id: str) -> EligibilityDecision | None:
     """Return one decision if present."""

@@ -1,11 +1,10 @@
 import json
-
 import pandas as pd
 from pandas import DataFrame
-
 from trial_project.api import generate_client
 from trial_project.context import data_dir
 from trial_project.data.patients.load_patient import get_patient_llm_json
+from trial_project.data.patients.evidence.schema import PatientEvidence
 
 evidence_path = data_dir / "processed_data" / "patient_evidence.parquet"
 
@@ -65,8 +64,7 @@ def save_patient_evidence(patient_id: str, patient_evidence: str) -> None:
   evidence_df.to_parquet(evidence_path, index=False)
 
 
-def _patient_evidence_prompt() -> str:
-  return """You are extracting a reusable patient evidence profile from one Synthea patient record.
+patient_evidence_prompt = """You are extracting a reusable patient evidence profile from one Synthea patient record.
 
 Goal:
 
@@ -108,95 +106,10 @@ Instructions:
 9. Create a reusable patient evidence profile that can be matched to many trials.
 10. Return JSON only.
 
-Return JSON in this exact shape:
-
-{
-  "patient_id": "",
-  "demographics": {
-    "birthdate": "",
-    "sex": "",
-    "race": "",
-    "ethnicity": "",
-    "derived_age_if_needed_at_match_time": true
-  },
-
-  "condition_index": [
-    {
-      "normalized_condition": "",
-      "original_text": "",
-      "start_date": "",
-      "end_date": "",
-      "status": "active|historical|unknown",
-      "synonyms": []
-    }
-  ],
-
-  "medication_index": [
-    {
-      "normalized_medication": "",
-      "original_text": "",
-      "start_date": "",
-      "end_date": "",
-      "status": "current|past|unknown",
-      "drug_class_if_clear": "",
-      "synonyms": []
-    }
-  ],
-
-  "procedure_index": [
-    {
-      "normalized_procedure": "",
-      "original_text": "",
-      "date_or_start": "",
-      "end_date": "",
-      "synonyms": []
-    }
-  ],
-
-  "observation_index": [
-    {
-      "category": "body_size|blood_pressure|renal|hepatic|hematology|metabolic|cardiac|smoking|social|other",
-      "normalized_name": "",
-      "original_text": "",
-      "value": "",
-      "units": "",
-      "date": "",
-      "interpretation_if_explicit": ""
-    }
-  ],
-
-  "encounter_index": [
-    {
-      "encounter_class": "",
-      "description": "",
-      "start_date": "",
-      "end_date": ""
-    }
-  ],
-
-  "evidence_flags": {
-    "has_performance_status": false,
-    "has_qtc": false,
-    "has_histology": false,
-    "has_biomarkers": false,
-    "has_nyha": false,
-    "has_lvef": false,
-    "has_child_pugh": false,
-    "has_pregnancy_lactation_evidence": false
-  },
-
-  "missingness_notes": [],
-  "patient_summary": {
-    "major_conditions": [],
-    "major_medications": [],
-    "major_recent_labs_or_vitals": [],
-    "important_unknowns": []
-  }
-}
+Use the provided JSON schema for output shape and constraints.
 
 Input:
 
-{{patient_record_json}}
 """
 
 
@@ -205,12 +118,14 @@ def generate_patient_evidence(patient_id: str) -> str:
   client = generate_client()
   patient_record_json = get_patient_llm_json(patient_id)
 
-  response = client.responses.create(
+  response = client.responses.parse(
     model="gpt-5-mini",
-    instructions=_patient_evidence_prompt(),
+    instructions=patient_evidence_prompt,
     input=patient_record_json,
+    text_format=PatientEvidence
   )
-  return response.output_text
+  validated = PatientEvidence.model_validate_json(response.output_text)
+  return json.dumps(validated.model_dump(), ensure_ascii=True)
 
 
 def get_patient_evidence(patient_id: str) -> str:
@@ -221,21 +136,7 @@ def get_patient_evidence(patient_id: str) -> str:
     return existing
 
   patient_evidence = generate_patient_evidence(patient_id)
-  try:
-    normalized_evidence = json.dumps(json.loads(patient_evidence), ensure_ascii=True)
-  except json.JSONDecodeError:
-    normalized_evidence = patient_evidence
-
-  save_patient_evidence(patient_id, normalized_evidence)
-  return normalized_evidence
+  save_patient_evidence(patient_id, patient_evidence)
+  return patient_evidence
 
 
-if __name__ == "__main__":
-  patients_path = data_dir / "processed_data" / "patients.parquet"
-  patients_df = pd.read_parquet(patients_path, columns=["Id"])
-
-  for _, patient_row in patients_df.iterrows():
-    patient_id = patient_row["Id"]
-    print(f"Processing patient {patient_id}")
-    patient_evidence = get_patient_evidence(patient_id)
-    print(f"Patient evidence for {patient_id}: {patient_evidence}")

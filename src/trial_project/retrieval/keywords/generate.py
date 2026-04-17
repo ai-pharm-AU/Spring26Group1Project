@@ -3,8 +3,8 @@ generate keywords for patient
 should be cached etc
 """
 import pandas as pd
-from pandas import Series
-from trial_project.data.patients.load_patient import get_patient_llm_json, get_tables_dict
+from trial_project.data.patients.load_patient import get_tables_dict
+from trial_project.data.patients.evidence.verify.llm import get_patient_evidence_verification
 from trial_project.retrieval.keywords.llm import get_keywords
 from trial_project.api import generate_client
 from trial_project.context import data_dir
@@ -38,9 +38,8 @@ def generate_patient_keywords_cached(patient_id: str):
   if load_patient_keywords(patient_id, keywords_df) is not None:
     return load_patient_keywords(patient_id, keywords_df)
   else:
-    patient = get_patient_llm_json(patient_id)
-    # print(patient)
-    keywords = generate_patient_keywords(patient)
+    patient_evidence = get_patient_evidence_verification(patient_id)
+    keywords = generate_patient_keywords(patient_evidence)
     save_patient_keywords(patient_id, keywords)
     return keywords
 
