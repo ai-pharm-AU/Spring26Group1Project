@@ -1,119 +1,107 @@
-"""Utilities to build and filter patient-trial labeling queues."""
+"""Load patient-trial matched pairs from retrieval outputs or subset files."""
 
 from __future__ import annotations
 
 import json
 from pathlib import Path
+from typing import Any
 
-import numpy as np
 import pandas as pd
 
 from trial_project.context import results_dir
 
-matched_pairs_file = results_dir / "eligible_trials.parquet"
+eligible_trials_file = results_dir / "eligible_trials.parquet"
 
 
-def _normalize_trial_ids(value: object) -> list[str]:
+def _normalize_string(value: Any) -> str:
+    if value is None or pd.isna(value):
+        return ""
+    return str(value).strip()
+
+
+def _normalize_trial_ids(value: Any) -> list[str]:
     if value is None:
         return []
-    if isinstance(value, np.ndarray):
-        return [str(v).strip() for v in value if str(v).strip()]
-    if isinstance(value, pd.Series):
-        return [str(v).strip() for v in value.tolist() if str(v).strip()]
+
     if isinstance(value, (list, tuple, set)):
-        return [str(v).strip() for v in value if str(v).strip()]
+        return [_normalize_string(item) for item in value if _normalize_string(item)]
+
+    if hasattr(value, "tolist"):
+        try:
+            return _normalize_trial_ids(value.tolist())
+        except Exception:
+            pass
+
     if isinstance(value, str):
         stripped = value.strip()
         if not stripped:
             return []
-        # Handle stringified list payloads in case parquet round-tripping changed type.
+
         if stripped.startswith("[") and stripped.endswith("]"):
             try:
                 parsed = json.loads(stripped)
-                return _normalize_trial_ids(parsed)
+                if isinstance(parsed, list):
+                    return _normalize_trial_ids(parsed)
             except json.JSONDecodeError:
                 pass
+
+        if "," in stripped:
+            return [item.strip() for item in stripped.split(",") if item.strip()]
+
         return [stripped]
-    if pd.notna(value):
-        return [str(value).strip()]
-    return []
+
+    return [_normalize_string(value)] if _normalize_string(value) else []
 
 
-def load_matched_pairs(source_path: str | Path | None = None) -> pd.DataFrame:
-    source = Path(source_path) if source_path else matched_pairs_file
-    if not source.exists():
-        raise FileNotFoundError(f"Matched pairs file not found: {source}")
-
-    df = pd.read_parquet(source)
-    if "patient_id" not in df.columns or "trial_ids" not in df.columns:
-        raise ValueError(f"Expected columns patient_id and trial_ids in: {source}")
-
-    rows: list[dict[str, str]] = []
-    for _, row in df.iterrows():
-        patient_id = str(row["patient_id"]).strip()
-        if not patient_id:
-            continue
-        for trial_id in _normalize_trial_ids(row["trial_ids"]):
-            rows.append({"patient_id": patient_id, "trial_id": trial_id})
-
-    out = pd.DataFrame(rows, columns=["patient_id", "trial_id"])
-    if out.empty:
-        return out
-    out = out.drop_duplicates(subset=["patient_id", "trial_id"])
-    return out.sort_values(["patient_id", "trial_id"]).reset_index(drop=True)
-
-
-def parse_patient_ids(raw_patient_ids: str | None) -> set[str]:
-    if not raw_patient_ids:
-        return set()
-    return {token.strip() for token in raw_patient_ids.split(",") if token.strip()}
-
-
-def load_pairs_subset_file(pairs_file: str | Path) -> pd.DataFrame:
-    path = Path(pairs_file)
+def _load_pairs_source(path: Path) -> pd.DataFrame:
     if not path.exists():
-        raise FileNotFoundError(f"Pairs subset file not found: {path}")
+        raise FileNotFoundError(f"Matched pairs source not found: {path}")
 
-    if path.suffix.lower() == ".parquet":
-        subset_df = pd.read_parquet(path)
-    elif path.suffix.lower() == ".csv":
-        subset_df = pd.read_csv(path)
+    suffix = path.suffix.lower()
+    if suffix == ".parquet":
+        return pd.read_parquet(path)
+    if suffix == ".csv":
+        return pd.read_csv(path)
+
+    raise ValueError("Matched pairs source must be a .parquet or .csv file")
+
+
+def _to_pair_rows(df: pd.DataFrame) -> pd.DataFrame:
+    if {"patient_id", "trial_id"}.issubset(df.columns):
+        pairs_df = df[["patient_id", "trial_id"]].copy()
+    elif {"patient_id", "trial_ids"}.issubset(df.columns):
+        expanded = df[["patient_id", "trial_ids"]].copy()
+        expanded["trial_ids"] = expanded["trial_ids"].apply(_normalize_trial_ids)
+        pairs_df = expanded.explode("trial_ids", ignore_index=True)
+        pairs_df = pairs_df.rename(columns={"trial_ids": "trial_id"})
+        pairs_df = pairs_df[["patient_id", "trial_id"]]
     else:
-        raise ValueError("Pairs subset file must be .csv or .parquet")
+        raise ValueError(
+            "Matched pairs source must contain either (patient_id, trial_id) "
+            "or (patient_id, trial_ids) columns"
+        )
 
-    required = {"patient_id", "trial_id"}
-    if not required.issubset(set(subset_df.columns)):
-        raise ValueError("Pairs subset file must include patient_id and trial_id columns")
+    pairs_df["patient_id"] = pairs_df["patient_id"].apply(_normalize_string)
+    pairs_df["trial_id"] = pairs_df["trial_id"].apply(_normalize_string)
 
-    subset_df = subset_df[["patient_id", "trial_id"]].copy()
-    subset_df["patient_id"] = subset_df["patient_id"].astype(str).str.strip()
-    subset_df["trial_id"] = subset_df["trial_id"].astype(str).str.strip()
-    subset_df = subset_df[(subset_df["patient_id"] != "") & (subset_df["trial_id"] != "")]
-    return subset_df.drop_duplicates(subset=["patient_id", "trial_id"])
+    pairs_df = pairs_df[
+        (pairs_df["patient_id"] != "") & (pairs_df["trial_id"] != "")
+    ].copy()
+    pairs_df = pairs_df.drop_duplicates(subset=["patient_id", "trial_id"], keep="first")
+    return pairs_df.reset_index(drop=True)
 
 
-def filter_pairs(
-    matched_pairs: pd.DataFrame,
-    patient_ids: set[str] | None = None,
-    subset_pairs_df: pd.DataFrame | None = None,
-) -> tuple[pd.DataFrame, int]:
-    filtered = matched_pairs.copy()
+def load_matched_pairs(
+    matched_pairs_source: str | Path | None = None,
+) -> pd.DataFrame:
+    """Load normalized patient-trial matched pairs.
 
-    if patient_ids:
-        filtered = filtered[filtered["patient_id"].isin(patient_ids)]
+    Args:
+        matched_pairs_source: Optional .parquet/.csv path. Defaults to retrieval output.
 
-    dropped_unmatched = 0
-    if subset_pairs_df is not None:
-        candidate_keys = set(zip(filtered["patient_id"], filtered["trial_id"]))
-        requested_keys = set(zip(subset_pairs_df["patient_id"], subset_pairs_df["trial_id"]))
-        valid_keys = requested_keys & candidate_keys
-        dropped_unmatched = len(requested_keys - valid_keys)
-
-        filtered = pd.DataFrame(valid_keys, columns=["patient_id", "trial_id"])
-
-    if filtered.empty:
-        return filtered, dropped_unmatched
-
-    filtered = filtered.drop_duplicates(subset=["patient_id", "trial_id"])
-    filtered = filtered.sort_values(["patient_id", "trial_id"]).reset_index(drop=True)
-    return filtered, dropped_unmatched
+    Returns:
+        DataFrame with columns: patient_id, trial_id.
+    """
+    source_path = Path(matched_pairs_source) if matched_pairs_source else eligible_trials_file
+    source_df = _load_pairs_source(source_path)
+    return _to_pair_rows(source_df)

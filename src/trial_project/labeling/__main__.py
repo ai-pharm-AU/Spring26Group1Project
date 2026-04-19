@@ -1,5 +1,6 @@
-from trial_project.labeling.cli import main
+"""Entry point for labeling module."""
 
+from trial_project.labeling.cli import main
 
 if __name__ == "__main__":
     main()

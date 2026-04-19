@@ -1,5 +1,6 @@
 import argparse
 import json
+from pathlib import Path
 from typing import Any, Literal
 
 import pandas as pd
@@ -9,7 +10,8 @@ from pydantic import BaseModel, ConfigDict, Field
 from trial_project.api import generate_client
 from trial_project.context import data_dir
 from trial_project.data.trials.eligibility import get_trial_eligibility_llm
-from trial_project.data.trials.load import load_trial_ids, load_trial_json_llm
+from trial_project.data.trials.load import load_trial_json_llm
+from trial_project.labeling.pairs import load_matched_pairs
 
 verification_path = data_dir / "processed_data" / "trials" / "eligibility_verification.parquet"
 
@@ -90,6 +92,69 @@ class ContradictoryTrialEvidence(BaseModel):
    raw_evidence: list[RawTrialEvidence] = Field(default_factory=list)
 
 
+class TrialContext(BaseModel):
+   model_config = ConfigDict(extra="forbid")
+
+   diseases_list: list[str] = Field(default_factory=list)
+   drugs_list: list[str] = Field(default_factory=list)
+   brief_summary_short: str = ""
+
+
+class ParsingNotes(BaseModel):
+   model_config = ConfigDict(extra="forbid")
+
+   format_issues: list[str] = Field(default_factory=list)
+   mixed_polarity_issues: list[str] = Field(default_factory=list)
+   substudy_or_arm_issues: list[str] = Field(default_factory=list)
+   other_ambiguities: list[str] = Field(default_factory=list)
+
+
+class ConceptGroups(BaseModel):
+   model_config = ConfigDict(extra="forbid")
+
+   disease_or_condition: list[str] = Field(default_factory=list)
+   severity_or_stage: list[str] = Field(default_factory=list)
+   symptoms_signs: list[str] = Field(default_factory=list)
+   demographics: list[str] = Field(default_factory=list)
+   organ_function: list[str] = Field(default_factory=list)
+   comorbidities: list[str] = Field(default_factory=list)
+   prior_therapy: list[str] = Field(default_factory=list)
+   concomitant_medications: list[str] = Field(default_factory=list)
+   biomarkers_genetics: list[str] = Field(default_factory=list)
+   pregnancy_lactation: list[str] = Field(default_factory=list)
+   physiologic_parameters: list[str] = Field(default_factory=list)
+   procedures: list[str] = Field(default_factory=list)
+   logistics_or_followup: list[str] = Field(default_factory=list)
+   temporal_constraints: list[str] = Field(default_factory=list)
+   numeric_constraints: list[str] = Field(default_factory=list)
+
+
+class AtomicCriterion(BaseModel):
+   model_config = ConfigDict(extra="forbid")
+
+   criterion_id: str = ""
+   criterion_type: Literal["inclusion", "exclusion"] = "inclusion"
+   criterion_text: str = ""
+   normalized_requirement: str = ""
+   concept_groups: ConceptGroups = Field(default_factory=ConceptGroups)
+   synonyms: list[str] = Field(default_factory=list)
+   structured_terms: list[str] = Field(default_factory=list)
+   required_patient_evidence: list[str] = Field(default_factory=list)
+   low_matchability_fields: list[str] = Field(default_factory=list)
+   notes: list[str] = Field(default_factory=list)
+
+
+class CorrectedTrialEligibility(BaseModel):
+   model_config = ConfigDict(extra="forbid")
+
+   trial_id: str = ""
+   brief_title: str = ""
+   phase: str = ""
+   trial_context: TrialContext = Field(default_factory=TrialContext)
+   parsing_notes: ParsingNotes = Field(default_factory=ParsingNotes)
+   atomic_criteria: list[AtomicCriterion] = Field(default_factory=list)
+
+
 class TrialEligibilityVerification(BaseModel):
    model_config = ConfigDict(extra="forbid")
 
@@ -103,7 +168,7 @@ class TrialEligibilityVerification(BaseModel):
    overall_verification_summary: str = ""
    fit_for_trial_eligibility_review: bool = False
    fit_for_trial_eligibility_review_explanation: str = ""
-   corrected_trial_eligibility: dict[str, Any] = Field(default_factory=dict)
+   corrected_trial_eligibility: CorrectedTrialEligibility = Field(default_factory=CorrectedTrialEligibility)
    claim_reviews: list[TrialClaimReview] = Field(default_factory=list)
    omitted_relevant_evidence: list[OmittedRelevantTrialEvidence] = Field(default_factory=list)
    unsupported_or_problematic_claims: list[str] = Field(default_factory=list)
@@ -288,7 +353,7 @@ def generate_trial_eligibility_verification(
    )
    validated = TrialEligibilityVerification.model_validate_json(response.output_text)
    verification_json = json.dumps(validated.model_dump(), ensure_ascii=True)
-   corrected_json = json.dumps(validated.corrected_trial_eligibility, ensure_ascii=True)
+   corrected_json = json.dumps(validated.corrected_trial_eligibility.model_dump(), ensure_ascii=True)
    return verification_json, corrected_json
 
 
@@ -316,13 +381,34 @@ def get_trial_eligibility_verification(
    return corrected
 
 
+def _load_matched_trial_ids(
+   matched_pairs_source: str | Path | None = None,
+) -> list[str]:
+   try:
+      matched_pairs = load_matched_pairs(matched_pairs_source)
+   except FileNotFoundError:
+      return []
+
+   if matched_pairs.empty:
+      return []
+
+   trial_ids = matched_pairs["trial_id"].dropna().astype(str).str.strip()
+   trial_ids = trial_ids[trial_ids != ""]
+   return sorted(trial_ids.unique().tolist())
+
+
 def generate_and_verify_all_trials(
    model_name: str = "gpt-5-mini",
    use_cache: bool = True,
    continue_on_error: bool = False,
+   matched_pairs_source: str | Path | None = None,
 ) -> tuple[int, int]:
-   """Generate and verify trial eligibility evidence for every known trial ID."""
-   trial_ids = load_trial_ids()
+   """Generate and verify trial eligibility evidence for matched trial IDs only."""
+   trial_ids = _load_matched_trial_ids(matched_pairs_source)
+   if not trial_ids:
+      print("No matched trial pairs found; skipping trial eligibility verification generation.")
+      return 0, 0
+
    total = len(trial_ids)
 
    succeeded = 0
@@ -349,7 +435,7 @@ def generate_and_verify_all_trials(
 
 def parse_args() -> argparse.Namespace:
    parser = argparse.ArgumentParser(
-      description="Generate and verify eligibility extraction for all trials.",
+      description="Generate and verify eligibility extraction for matched trials.",
    )
    parser.add_argument(
       "--model-name",
@@ -366,6 +452,11 @@ def parse_args() -> argparse.Namespace:
       action="store_true",
       help="Continue processing remaining trials when one fails.",
    )
+   parser.add_argument(
+      "--matched-pairs-file",
+      default=None,
+      help="Matched patient-trial parquet used to select trial IDs.",
+   )
    return parser.parse_args()
 
 
@@ -375,6 +466,7 @@ def main() -> int:
       model_name=args.model_name,
       use_cache=not args.no_cache,
       continue_on_error=args.continue_on_error,
+      matched_pairs_source=args.matched_pairs_file,
    )
    return 0 if failed == 0 else 1
 
