@@ -17,6 +17,7 @@ verification_path = data_dir / "processed_data" / "trials" / "eligibility_verifi
 
 _VERIFICATION_COLUMNS = [
    "trial_id",
+   "model_name",
    "trial_eligibility_verification",
    "corrected_trial_eligibility",
 ]
@@ -181,6 +182,12 @@ def _empty_verification_frame() -> DataFrame:
    return DataFrame(columns=_VERIFICATION_COLUMNS)
 
 
+def _normalize_model_name(model_name: str | None) -> str:
+   if model_name is None or pd.isna(model_name):
+      return ""
+   return str(model_name).strip()
+
+
 def load_all_trial_eligibility_verification() -> DataFrame:
    """Load all cached trial eligibility verification rows."""
    if not verification_path.exists():
@@ -195,13 +202,19 @@ def load_all_trial_eligibility_verification() -> DataFrame:
 
 def load_trial_eligibility_verification(
    trial_id: str,
+   model_name: str | None,
    verification_df: DataFrame | None = None,
 ) -> str | None:
-   """Load cached corrected trial eligibility JSON text for one trial."""
+   """Load cached corrected trial eligibility JSON text for one trial/model."""
    if verification_df is None:
       verification_df = load_all_trial_eligibility_verification()
 
-   trial_rows = verification_df[verification_df["trial_id"] == trial_id]
+   model_key = _normalize_model_name(model_name)
+   existing_model_key = verification_df["model_name"].apply(_normalize_model_name)
+   trial_rows = verification_df[
+      (verification_df["trial_id"] == trial_id)
+      & (existing_model_key == model_key)
+   ]
    if trial_rows.empty:
       return None
 
@@ -214,19 +227,26 @@ def load_trial_eligibility_verification(
 
 def save_trial_eligibility_verification(
    trial_id: str,
+   model_name: str | None,
    trial_eligibility_verification: str,
    corrected_trial_eligibility: str,
 ) -> None:
-   """Upsert one trial eligibility verification row into the parquet cache."""
+   """Upsert one trial/model eligibility verification row into the parquet cache."""
    verification_df = load_all_trial_eligibility_verification()
 
    for col in _VERIFICATION_COLUMNS:
       if col not in verification_df.columns:
          verification_df[col] = pd.NA
 
-   mask = verification_df["trial_id"] == trial_id
+   model_key = _normalize_model_name(model_name)
+   existing_model_key = verification_df["model_name"].apply(_normalize_model_name)
+   mask = (
+      (verification_df["trial_id"] == trial_id)
+      & (existing_model_key == model_key)
+   )
    new_row = {
       "trial_id": trial_id,
+      "model_name": model_key,
       "trial_eligibility_verification": trial_eligibility_verification,
       "corrected_trial_eligibility": corrected_trial_eligibility,
    }
@@ -365,7 +385,11 @@ def get_trial_eligibility_verification(
    """Return corrected trial eligibility JSON text (cached when available)."""
    if use_cache:
       verification_df = load_all_trial_eligibility_verification()
-      existing = load_trial_eligibility_verification(trial_id, verification_df)
+      existing = load_trial_eligibility_verification(
+         trial_id=trial_id,
+         model_name=model_name,
+         verification_df=verification_df,
+      )
       if existing is not None:
          return existing
 
@@ -375,6 +399,7 @@ def get_trial_eligibility_verification(
    )
    save_trial_eligibility_verification(
       trial_id=trial_id,
+      model_name=model_name,
       trial_eligibility_verification=verification,
       corrected_trial_eligibility=corrected,
    )

@@ -48,7 +48,10 @@ def _load_cached_criterion_result(
     trial_id: str,
     criterion_model_name: str,
 ) -> TrialEligibilityLLMResult | None:
-    trial_eligibility_json = load_trial_eligibility_verification(trial_id)
+    trial_eligibility_json = load_trial_eligibility_verification(
+        trial_id=trial_id,
+        model_name=criterion_model_name,
+    )
     expected_criterion_ids = _expected_criterion_ids(trial_eligibility_json)
     if not expected_criterion_ids:
         return None
