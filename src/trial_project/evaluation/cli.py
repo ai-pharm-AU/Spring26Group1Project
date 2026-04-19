@@ -7,8 +7,9 @@ import logging
 from pathlib import Path
 
 from trial_project.evaluation.metrics import (
-    compare_decisions,
+    compare_decisions_with_mismatches,
     print_metrics_report,
+    print_mismatch_report,
     save_metrics,
 )
 
@@ -24,7 +25,13 @@ def build_parser() -> argparse.ArgumentParser:
         "--model-name",
         type=str,
         default="gpt-5-mini",
-        help="Model name to filter eligibility decisions (default: gpt-5-mini).",
+        help="Overall model name to filter eligibility decisions (default: gpt-5-mini).",
+    )
+    parser.add_argument(
+        "--criteria-model",
+        type=str,
+        default=None,
+        help="Criteria model name to filter eligibility decisions (default: None, meaning no criteria model filtering).",
     )
     parser.add_argument(
         "--output-dir",
@@ -59,10 +66,15 @@ def main() -> None:
     )
 
     try:
-        logger.info(f"Starting evaluation with model_name='{args.model_name}'")
+        logger.info(
+            f"Starting evaluation with model_name='{args.model_name}'"
+            + (f" and criteria_model='{args.criteria_model}'" if args.criteria_model else "")
+        )
 
         # Compute metrics
-        metrics = compare_decisions(model_name=args.model_name)
+        metrics, mismatches = compare_decisions_with_mismatches(
+            model_name=args.model_name, criteria_model=args.criteria_model
+        )
 
         # Determine output path
         output_path = None
@@ -82,6 +94,7 @@ def main() -> None:
 
         # Print report
         print_metrics_report(metrics)
+        print_mismatch_report(mismatches)
         logger.info(f"Evaluation completed successfully. Results saved to {saved_path}")
 
     except ValueError as e:

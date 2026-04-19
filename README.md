@@ -27,32 +27,49 @@ poetry run python -m trial_project.summarize_synthea sythea gpt-5-mini
 
 ### Manual Labeling Tool
 
-The labeling tool shows full patient and trial JSON for matched patient-trial pairs and asks for a manual label.
-Labels are saved to `results/manual_labels.parquet` and the tool is resumable by default.
+The labeling workflow has two steps:
 
-Run from the `src` directory:
+1. Export matched patient-trial pairs to CSV for manual labeling.
+2. Import the labeled CSV into parquet for evaluation.
 
-```bash
-poetry run python -m trial_project.labeling --all
-```
+Run from the `src` directory.
 
-Subset by patient IDs:
+Export all matched pairs to CSV (includes `patient_json` and `trial_json`):
 
 ```bash
-poetry run python -m trial_project.labeling --patient-ids "patient-1,patient-2"
+poetry run python -m trial_project.labeling export --output-csv ../results/manual_labeling_export.csv
 ```
 
-Subset by explicit pairs file (`.csv` or `.parquet` with `patient_id`, `trial_id`):
+Subset export by patient IDs:
 
 ```bash
-poetry run python -m trial_project.labeling --pairs-file ../data/processed_data/pairs_subset.csv
+poetry run python -m trial_project.labeling export --patient-ids "patient-1,patient-2"
 ```
 
-Disable resume mode if you want to relabel already-labeled pairs:
+Subset export by explicit pairs file (`.csv` or `.parquet` with `patient_id`, `trial_id`):
 
 ```bash
-poetry run python -m trial_project.labeling --all --no-resume
+poetry run python -m trial_project.labeling export --pairs-file ../data/processed_data/pairs_subset.csv
 ```
+
+Disable resume mode to include already labeled pairs in a new export:
+
+```bash
+poetry run python -m trial_project.labeling export --no-resume
+```
+
+After labeling the CSV, import it to parquet (`results/manual_labels.parquet` by default):
+
+```bash
+poetry run python -m trial_project.labeling import --input-csv ../results/manual_labeling_export.csv
+```
+
+CSV import requirements:
+
+- required columns: `patient_id`, `trial_id`, `label`
+- optional columns: `patient_json`, `trial_json`, `notes`
+- label values: `eligible`, `ineligible`, `skip`
+- duplicate patient/trial rows: last row wins by default (`--duplicate-policy last`)
 
 ## Synthea Usage
 

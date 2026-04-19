@@ -6,7 +6,7 @@ from trial_project.context import data_dir
 csv_dir = data_dir / "synthea_generated_patients"
 out_dir = data_dir / "processed_data"
 out_dir.mkdir(parents=True, exist_ok=True)
-AGE_REFERENCE_DATE = pd.Timestamp("2026-04-13")
+GENERATION_DATE = pd.Timestamp("2026-04-13")
 
 # ---- WHICH COLUMNS TO KEEP ----
 # make sure age years is in w/e df cols thing bc not in keep fields
@@ -176,7 +176,7 @@ def load_synthea_tables(n_patients=None):
     if n_patients is not None:
         patients = patients.head(n_patients)
 
-    patients["AGE_YEARS"] = compute_age_years(patients["BIRTHDATE"], AGE_REFERENCE_DATE)
+    patients["AGE_YEARS"] = compute_age_years(patients["BIRTHDATE"], GENERATION_DATE)
 
     # Get selected patient IDs
     patient_ids = set(patients["Id"])
