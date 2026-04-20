@@ -3,6 +3,7 @@
 from trial_project.data.patients.process import GENERATION_DATE
 
 
+# should be adjusted to use the given age value, however that would require rerunning all the matching with the new prompt
 def get_criterion_matching_prompt() -> str:
     """Return instructions for criterion-only matching between trial and patient evidence."""
     screening_date = GENERATION_DATE.date().isoformat()

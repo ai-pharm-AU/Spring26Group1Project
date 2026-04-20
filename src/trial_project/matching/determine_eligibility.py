@@ -12,6 +12,7 @@ from trial_project.data.trials.eligibility_verification import (
 )
 from trial_project.matching.save_eligibility import (
     EligibilityDecision,
+    load_eligibility_decision,
     load_saved_criterion_matches,
     save_criterion_matches,
     save_eligibility_decision,
@@ -240,7 +241,7 @@ def main() -> int:
     conflict_group.add_argument(
         "--skip-existing",
         action="store_true",
-        help="Skip existing rows for the same patient_id, trial_id, data_generation_model, criteria_matching_model, and overall_matching_model",
+        help="Skip patient/trial pairs that already have a saved decision for the same data_generation_model, criteria_matching_model, and overall_matching_model",
     )
     parser.add_argument(
         "--data-generation-model",
@@ -292,6 +293,7 @@ def main() -> int:
     skipped_criterion_rows = 0
     written_decision_rows = 0
     skipped_decision_rows = 0
+    skipped_existing_pairs = 0
     failed_pairs = 0
 
     for idx, patient_row in patients_df.iterrows():
@@ -319,6 +321,26 @@ def main() -> int:
         # Determine eligibility for each trial
         for trial_id in trial_ids:
             try:
+                if args.skip_existing:
+                    existing_decision = load_eligibility_decision(
+                        patient_id=patient_id,
+                        trial_id=trial_id,
+                        data_generation_model=data_generation_model,
+                        criteria_matching_model=criteria_matching_model,
+                        overall_matching_model=overall_matching_model,
+                    )
+                    if existing_decision is not None:
+                        skipped_existing_pairs += 1
+                        logger.info(
+                            "Skipping existing patient %s and trial %s for models %s/%s/%s",
+                            patient_id,
+                            trial_id,
+                            data_generation_model,
+                            criteria_matching_model,
+                            overall_matching_model,
+                        )
+                        continue
+
                 criterion_result, overall_result = determine_eligibility(
                     patient_id,
                     trial_id,
@@ -379,12 +401,14 @@ def main() -> int:
     logger.info(
         (
             "Completed! Criterion rows written: %s, skipped existing: %s, "
-            "decision rows written: %s, decision rows skipped existing: %s, failed pairs: %s"
+            "decision rows written: %s, decision rows skipped existing: %s, "
+            "skipped existing pairs: %s, failed pairs: %s"
         ),
         written_criterion_rows,
         skipped_criterion_rows,
         written_decision_rows,
         skipped_decision_rows,
+        skipped_existing_pairs,
         failed_pairs,
     )
     return 0 if failed_pairs == 0 else 1

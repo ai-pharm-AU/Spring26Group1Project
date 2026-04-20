@@ -313,6 +313,55 @@ def _criterion_row_to_match(row: pd.Series) -> CriterionMatch:
     )
 
 
+def _decision_row_to_model(row: pd.Series) -> EligibilityDecision:
+    overall_confidence_score = row.get("overall_confidence_score")
+    if pd.isna(overall_confidence_score):
+        overall_confidence_score = None
+
+    confidence_value = row.get("confidence")
+    if pd.isna(confidence_value):
+        confidence_value = None
+
+    evaluated_at = row.get("evaluated_at")
+    if pd.isna(evaluated_at):
+        evaluated_at = None
+
+    return EligibilityDecision(
+        patient_id=str(row.get("patient_id", "")),
+        trial_id=str(row.get("trial_id", "")),
+        overall_decision=str(row.get("overall_decision", "indeterminate")),
+        overall_confidence_score=overall_confidence_score,
+        overall_rationale=row.get("overall_rationale"),
+        hard_stops=[
+            str(item)
+            for item in _parse_json_list(row.get("hard_stops"))
+            if item is not None
+        ],
+        manual_review_flags=[
+            str(item)
+            for item in _parse_json_list(row.get("manual_review_flags"))
+            if item is not None
+        ],
+        matching_notes=[
+            str(item)
+            for item in _parse_json_list(row.get("matching_notes"))
+            if item is not None
+        ],
+        eligible=row.get("eligible") if not pd.isna(row.get("eligible")) else None,
+        exclusion_rule_hit=bool(row.get("exclusion_rule_hit", False)),
+        llm_checked=bool(row.get("llm_checked", True)),
+        decision_source=str(row.get("decision_source", "llm")),
+        reasoning=row.get("reasoning"),
+        confidence=confidence_value,
+        model_name=row.get("model_name"),
+        criteria_model=row.get("criteria_model"),
+        data_generation_model=row.get("data_generation_model"),
+        criteria_matching_model=row.get("criteria_matching_model"),
+        overall_matching_model=row.get("overall_matching_model"),
+        evaluated_at=evaluated_at,
+    )
+
+
 def load_saved_criterion_matches(
     patient_id: str,
     trial_id: str,
@@ -361,8 +410,74 @@ def load_saved_criterion_matches(
 
     return matches
 
-def load_eligibility_decision(patient_id: str, trial_id: str) -> EligibilityDecision | None:
-    """Return one decision if present."""
+def load_eligibility_decision(
+    patient_id: str,
+    trial_id: str,
+    data_generation_model: str | None = None,
+    criteria_matching_model: str | None = None,
+    overall_matching_model: str | None = None,
+) -> EligibilityDecision | None:
+    """Return one decision for the requested patient/trial/model combination if present."""
+    if not eligibility_file.exists():
+        return None
+
+    df = pd.read_parquet(eligibility_file)
+    if df.empty:
+        return None
+
+    for column in ["patient_id", "trial_id", "overall_decision"]:
+        if column not in df.columns:
+            return None
+
+    matching_df = df[(df["patient_id"] == patient_id) & (df["trial_id"] == trial_id)]
+    if matching_df.empty:
+        return None
+
+    if data_generation_model is not None:
+        if "data_generation_model" not in matching_df.columns:
+            return None
+        matching_df = matching_df[
+            matching_df["data_generation_model"].apply(_normalize_model_name)
+            == _normalize_model_name(data_generation_model)
+        ]
+
+    if criteria_matching_model is not None:
+        criteria_column = None
+        if "criteria_matching_model" in matching_df.columns:
+            criteria_column = "criteria_matching_model"
+        elif "criteria_model" in matching_df.columns:
+            criteria_column = "criteria_model"
+        if criteria_column is None:
+            return None
+        matching_df = matching_df[
+            matching_df[criteria_column].apply(_normalize_model_name)
+            == _normalize_model_name(criteria_matching_model)
+        ]
+
+    if overall_matching_model is not None:
+        overall_column = None
+        if "overall_matching_model" in matching_df.columns:
+            overall_column = "overall_matching_model"
+        elif "model_name" in matching_df.columns:
+            overall_column = "model_name"
+        if overall_column is None:
+            return None
+        matching_df = matching_df[
+            matching_df[overall_column].apply(_normalize_model_name)
+            == _normalize_model_name(overall_matching_model)
+        ]
+
+    if matching_df.empty:
+        return None
+
+    sort_columns = [col for col in ["evaluated_at"] if col in matching_df.columns]
+    if sort_columns:
+        matching_df = matching_df.sort_values(by=sort_columns, ascending=False)
+
+    try:
+        return _decision_row_to_model(matching_df.iloc[0])
+    except Exception:
+        return None
 
 def load_patient_eligibility(patient_id: str) -> pd.DataFrame:
     """All trial decisions for one patient."""
