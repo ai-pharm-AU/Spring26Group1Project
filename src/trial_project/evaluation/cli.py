@@ -22,16 +22,22 @@ def build_parser() -> argparse.ArgumentParser:
         description="Evaluate LLM eligibility decisions against manual labels."
     )
     parser.add_argument(
-        "--model-name",
+        "--overall-matching-model",
         type=str,
         default="gpt-5-mini",
-        help="Overall model name to filter eligibility decisions (default: gpt-5-mini).",
+        help="Overall matching model to filter eligibility decisions (default: gpt-5-mini).",
     )
     parser.add_argument(
-        "--criteria-model",
+        "--criteria-matching-model",
         type=str,
         default=None,
-        help="Criteria model name to filter eligibility decisions (default: None, meaning no criteria model filtering).",
+        help="Criteria matching model to filter eligibility decisions (default: None, meaning no criteria model filtering).",
+    )
+    parser.add_argument(
+        "--data-generation-model",
+        type=str,
+        default=None,
+        help="Data generation model to filter eligibility decisions (default: None, meaning no data generation model filtering).",
     )
     parser.add_argument(
         "--output-dir",
@@ -67,13 +73,24 @@ def main() -> None:
 
     try:
         logger.info(
-            f"Starting evaluation with model_name='{args.model_name}'"
-            + (f" and criteria_model='{args.criteria_model}'" if args.criteria_model else "")
+            f"Starting evaluation with overall_matching_model='{args.overall_matching_model}'"
+            + (
+                f" and criteria_matching_model='{args.criteria_matching_model}'"
+                if args.criteria_matching_model
+                else ""
+            )
+            + (
+                f" and data_generation_model='{args.data_generation_model}'"
+                if args.data_generation_model
+                else ""
+            )
         )
 
         # Compute metrics
         metrics, mismatches = compare_decisions_with_mismatches(
-            model_name=args.model_name, criteria_model=args.criteria_model
+            overall_matching_model=args.overall_matching_model,
+            criteria_matching_model=args.criteria_matching_model,
+            data_generation_model=args.data_generation_model,
         )
 
         # Determine output path
@@ -86,7 +103,7 @@ def main() -> None:
 
             timestamp = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
             output_path = (
-                args.output_dir / f"evaluation_metrics_{args.model_name}_{timestamp}.json"
+                args.output_dir / f"evaluation_metrics_{args.overall_matching_model}_{timestamp}.json"
             )
 
         # Save metrics

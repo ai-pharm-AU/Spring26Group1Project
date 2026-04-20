@@ -83,12 +83,13 @@ def _extract_trial_criterion_ids(trial_eligibility_json: str) -> list[str]:
 def evaluate_trial_criteria_llm(
   patient_id,
   trial_id,
-  model_name: str = "gpt-5-mini",
+  data_generation_model: str = "gpt-5-mini",
+  criteria_matching_model: str = "gpt-5-mini",
 ) -> TrialEligibilityLLMResult:
 
   trial_eligibility = get_trial_eligibility_verification(
     trial_id=trial_id,
-    model_name=model_name,
+    model_name=data_generation_model,
     use_cache=True,
   )
   patient_evidence = load_patient_evidence(patient_id)
@@ -98,7 +99,7 @@ def evaluate_trial_criteria_llm(
   input = f"Trial eligibility criteria: {trial_eligibility}\nPatient evidence profile: {patient_evidence}"
 
   response = client.responses.parse(
-    model=model_name,
+    model=criteria_matching_model,
     instructions=get_criterion_matching_prompt(),
     input=input,
     text_format=TrialEligibilityLLMResult,

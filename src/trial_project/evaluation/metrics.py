@@ -114,7 +114,11 @@ def _read_manual_labels() -> pd.DataFrame:
     return labels_df.reset_index(drop=True)
 
 
-def _read_decisions(model_name: str, criteria_model: str | None = None) -> pd.DataFrame:
+def _read_decisions(
+    overall_matching_model: str,
+    criteria_matching_model: str | None = None,
+    data_generation_model: str | None = None,
+) -> pd.DataFrame:
     if not eligibility_file.exists():
         raise ValueError(f"Eligibility decisions file not found: {eligibility_file}")
 
@@ -122,34 +126,62 @@ def _read_decisions(model_name: str, criteria_model: str | None = None) -> pd.Da
     if decisions_df.empty:
         return decisions_df
 
-    _require_columns(
-        decisions_df,
-        {"patient_id", "trial_id", "model_name"},
-        "Eligibility decisions",
-    )
+    _require_columns(decisions_df, {"patient_id", "trial_id"}, "Eligibility decisions")
 
     decisions_df["patient_id"] = decisions_df["patient_id"].apply(_normalize_key)
     decisions_df["trial_id"] = decisions_df["trial_id"].apply(_normalize_key)
-    decisions_df["model_name"] = decisions_df["model_name"].apply(_normalize_key)
+    if "overall_matching_model" not in decisions_df.columns:
+        if "model_name" in decisions_df.columns:
+            decisions_df["overall_matching_model"] = decisions_df["model_name"]
+        else:
+            decisions_df["overall_matching_model"] = ""
+
+    if "criteria_matching_model" not in decisions_df.columns:
+        if "criteria_model" in decisions_df.columns:
+            decisions_df["criteria_matching_model"] = decisions_df["criteria_model"]
+        else:
+            decisions_df["criteria_matching_model"] = ""
+
+    if "data_generation_model" not in decisions_df.columns:
+        decisions_df["data_generation_model"] = ""
+
+    decisions_df["overall_matching_model"] = decisions_df["overall_matching_model"].apply(_normalize_key)
+    decisions_df["criteria_matching_model"] = decisions_df["criteria_matching_model"].apply(_normalize_key)
+    decisions_df["data_generation_model"] = decisions_df["data_generation_model"].apply(_normalize_key)
 
     # Filter by overall model name
-    decisions_df = decisions_df[decisions_df["model_name"] == _normalize_key(model_name)].copy()
+    decisions_df = decisions_df[
+        decisions_df["overall_matching_model"] == _normalize_key(overall_matching_model)
+    ].copy()
     if decisions_df.empty:
-        raise ValueError(f"No eligibility decisions found for model_name='{model_name}'")
+        raise ValueError(
+            "No eligibility decisions found for "
+            f"overall_matching_model='{overall_matching_model}'"
+        )
 
     # Filter by criteria model if specified
-    if criteria_model is not None:
-        if "criteria_model" in decisions_df.columns:
-            decisions_df["criteria_model"] = decisions_df["criteria_model"].apply(_normalize_key)
-            decisions_df = decisions_df[decisions_df["criteria_model"] == _normalize_key(criteria_model)].copy()
-            if decisions_df.empty:
-                raise ValueError(
-                    f"No eligibility decisions found for model_name='{model_name}' and criteria_model='{criteria_model}'"
-                )
-        else:
-            logger.warning(
-                "criteria_model filter requested but 'criteria_model' column not found in decisions. "
-                "Proceeding with model_name filter only."
+    if criteria_matching_model is not None:
+        decisions_df = decisions_df[
+            decisions_df["criteria_matching_model"] == _normalize_key(criteria_matching_model)
+        ].copy()
+        if decisions_df.empty:
+            raise ValueError(
+                "No eligibility decisions found for "
+                f"overall_matching_model='{overall_matching_model}' and "
+                f"criteria_matching_model='{criteria_matching_model}'"
+            )
+
+    # Filter by data generation model if specified
+    if data_generation_model is not None:
+        decisions_df = decisions_df[
+            decisions_df["data_generation_model"] == _normalize_key(data_generation_model)
+        ].copy()
+        if decisions_df.empty:
+            raise ValueError(
+                "No eligibility decisions found for "
+                f"overall_matching_model='{overall_matching_model}', "
+                f"criteria_matching_model='{criteria_matching_model}', and "
+                f"data_generation_model='{data_generation_model}'"
             )
 
     if "overall_decision" in decisions_df.columns:
@@ -173,9 +205,11 @@ def _read_decisions(model_name: str, criteria_model: str | None = None) -> pd.Da
             f"Invalid eligibility decisions found: {invalid_decisions}. Allowed decisions: {list(EVALUATION_CLASSES)}"
         )
 
-    filter_desc = f"model_name='{model_name}'"
-    if criteria_model is not None:
-        filter_desc += f" and criteria_model='{criteria_model}'"
+    filter_desc = f"overall_matching_model='{overall_matching_model}'"
+    if criteria_matching_model is not None:
+        filter_desc += f" and criteria_matching_model='{criteria_matching_model}'"
+    if data_generation_model is not None:
+        filter_desc += f" and data_generation_model='{data_generation_model}'"
     _ensure_unique_pairs(decisions_df, f"eligibility decisions for {filter_desc}")
     return decisions_df.reset_index(drop=True)
 
@@ -344,13 +378,16 @@ def evaluate_decisions(
 
 
 def compare_decisions_with_mismatches(
-    model_name: str = "gpt-5-mini", criteria_model: str | None = None
+    overall_matching_model: str = "gpt-5-mini",
+    criteria_matching_model: str | None = None,
+    data_generation_model: str | None = None,
 ) -> tuple[MetricsResult, pd.DataFrame]:
     """Compare LLM eligibility decisions with manual labels and return mismatches.
     
     Args:
-        model_name: Overall model name used for eligibility decisions.
-        criteria_model: Criteria model name for filtering. If None, no criteria model filtering applied.
+        overall_matching_model: Overall matching model used for eligibility decisions.
+        criteria_matching_model: Criteria matching model used for filtering. If None, no filtering applied.
+        data_generation_model: Trial criteria data generation model used for filtering. If None, no filtering applied.
     """
     labels_df = _read_manual_labels()
     if labels_df.empty:
@@ -358,23 +395,38 @@ def compare_decisions_with_mismatches(
 
     logger.info("Loaded %s total labels", len(labels_df))
 
-    decisions_df = _read_decisions(model_name=model_name, criteria_model=criteria_model)
-    filter_desc = f"model '{model_name}'"
-    if criteria_model is not None:
-        filter_desc += f" with criteria model '{criteria_model}'"
+    decisions_df = _read_decisions(
+        overall_matching_model=overall_matching_model,
+        criteria_matching_model=criteria_matching_model,
+        data_generation_model=data_generation_model,
+    )
+    filter_desc = f"overall matching model '{overall_matching_model}'"
+    if criteria_matching_model is not None:
+        filter_desc += f" with criteria matching model '{criteria_matching_model}'"
+    if data_generation_model is not None:
+        filter_desc += f" and data generation model '{data_generation_model}'"
     logger.info("Loaded %s decisions for %s", len(decisions_df), filter_desc)
 
     return evaluate_decisions(labels_df, decisions_df)
 
 
-def compare_decisions(model_name: str = "gpt-5-mini", criteria_model: str | None = None) -> MetricsResult:
+def compare_decisions(
+    overall_matching_model: str = "gpt-5-mini",
+    criteria_matching_model: str | None = None,
+    data_generation_model: str | None = None,
+) -> MetricsResult:
     """Compare LLM eligibility decisions with manual labels.
     
     Args:
-        model_name: Overall model name used for eligibility decisions.
-        criteria_model: Criteria model name for filtering. If None, no criteria model filtering applied.
+        overall_matching_model: Overall matching model used for eligibility decisions.
+        criteria_matching_model: Criteria matching model used for filtering. If None, no filtering applied.
+        data_generation_model: Trial criteria data generation model used for filtering. If None, no filtering applied.
     """
-    metrics, _ = compare_decisions_with_mismatches(model_name=model_name, criteria_model=criteria_model)
+    metrics, _ = compare_decisions_with_mismatches(
+        overall_matching_model=overall_matching_model,
+        criteria_matching_model=criteria_matching_model,
+        data_generation_model=data_generation_model,
+    )
     return metrics
 
 

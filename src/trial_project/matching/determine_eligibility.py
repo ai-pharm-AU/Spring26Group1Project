@@ -46,11 +46,12 @@ def _expected_criterion_ids(trial_eligibility_json: str | None) -> set[str]:
 def _load_cached_criterion_result(
     patient_id: str,
     trial_id: str,
-    criterion_model_name: str,
+    data_generation_model: str,
+    criteria_matching_model: str,
 ) -> TrialEligibilityLLMResult | None:
     trial_eligibility_json = load_trial_eligibility_verification(
         trial_id=trial_id,
-        model_name=criterion_model_name,
+        model_name=data_generation_model,
     )
     expected_criterion_ids = _expected_criterion_ids(trial_eligibility_json)
     if not expected_criterion_ids:
@@ -59,7 +60,8 @@ def _load_cached_criterion_result(
     saved_matches = load_saved_criterion_matches(
         patient_id=patient_id,
         trial_id=trial_id,
-        model_name=criterion_model_name,
+        model_name=criteria_matching_model,
+        trial_criteria_model=data_generation_model,
     )
     if not saved_matches:
         return None
@@ -183,27 +185,27 @@ Input criterion matches:
 def determine_eligibility(
     patient_id: str,
     trial_id: str,
-    model_name: str = "gpt-5-mini",
-    overall_model_name: str | None = None,
+    data_generation_model: str = "gpt-5-mini",
+    criteria_matching_model: str = "gpt-5-mini",
+    overall_matching_model: str = "gpt-5-mini",
 ) -> tuple[TrialEligibilityLLMResult, OverallTrialEligibilityLLMResult]:
     # returns criterion-level and overall match output for one patient/trial pair
   # rule_based_result = is_patient_excluded_rule_based(patient_id, trial_id)
   # if rule_based_result.eligible == False:
   #   return rule_based_result
   # otherwise check with llm
-    criterion_model_name = model_name
-    overall_model_name = overall_model_name or model_name
-
     criterion_result = _load_cached_criterion_result(
         patient_id=patient_id,
         trial_id=trial_id,
-        criterion_model_name=criterion_model_name,
+        data_generation_model=data_generation_model,
+        criteria_matching_model=criteria_matching_model,
     )
     if criterion_result is None:
         criterion_result = evaluate_trial_criteria_llm(
             patient_id,
             trial_id,
-            model_name=criterion_model_name,
+            data_generation_model=data_generation_model,
+            criteria_matching_model=criteria_matching_model,
         )
 
     overall_result = evaluate_overall_trial_eligibility_llm(
@@ -211,7 +213,7 @@ def determine_eligibility(
         trial_id=trial_id,
         criterion_matches=criterion_result.criterion_matches,
         overall_prompt=overall_eligibility_prompt,
-        model_name=overall_model_name,
+        model_name=overall_matching_model,
     )
     return criterion_result, overall_result
 
@@ -226,41 +228,41 @@ def main() -> int:
         epilog=(
             "Examples:\n"
             "  python -m trial_project.matching.determine_eligibility\n"
-            "  python -m trial_project.matching.determine_eligibility --criterion-model-name gpt-5-mini --overall-model-name gpt-5.4\n"
-            "  python -m trial_project.matching.determine_eligibility --model-name gpt-5-mini"
+            "  python -m trial_project.matching.determine_eligibility --data-generation-model gpt-5-mini --criteria-matching-model gpt-5.4 --overall-matching-model gpt-5.4"
         ),
     )
     conflict_group = parser.add_mutually_exclusive_group()
     conflict_group.add_argument(
         "--overwrite",
         action="store_true",
-        help="Overwrite existing rows for the same patient_id, trial_id, and model_name",
+        help="Overwrite existing rows for the same patient_id, trial_id, data_generation_model, criteria_matching_model, and overall_matching_model",
     )
     conflict_group.add_argument(
         "--skip-existing",
         action="store_true",
-        help="Skip existing rows for the same patient_id, trial_id, and model_name",
+        help="Skip existing rows for the same patient_id, trial_id, data_generation_model, criteria_matching_model, and overall_matching_model",
     )
     parser.add_argument(
-        "--model-name",
+        "--data-generation-model",
         default="gpt-5-mini",
-        help="Default model name used when the specific model flags are not provided",
+        help="Model name used to generate trial eligibility criteria",
     )
     parser.add_argument(
-        "--criterion-model-name",
-        default=None,
-        help="Model name to use for criterion matching; falls back to --model-name if omitted",
+        "--criteria-matching-model",
+        default="gpt-5-mini",
+        help="Model name used to evaluate each criterion against patient evidence",
     )
     parser.add_argument(
-        "--overall-model-name",
-        default=None,
-        help="Model name to use for overall matching; falls back to --model-name if omitted",
+        "--overall-matching-model",
+        default="gpt-5-mini",
+        help="Model name used to determine overall trial eligibility",
     )
     args = parser.parse_args()
 
     conflict_policy = "overwrite" if args.overwrite else "skip"
-    criterion_model_name = args.criterion_model_name or args.model_name
-    overall_model_name = args.overall_model_name or args.model_name
+    data_generation_model = args.data_generation_model
+    criteria_matching_model = args.criteria_matching_model
+    overall_matching_model = args.overall_matching_model
 
     # Load all patients
     logger.info("Loading all patients...")
@@ -320,15 +322,17 @@ def main() -> int:
                 criterion_result, overall_result = determine_eligibility(
                     patient_id,
                     trial_id,
-                    model_name=criterion_model_name,
-                    overall_model_name=overall_model_name,
+                    data_generation_model=data_generation_model,
+                    criteria_matching_model=criteria_matching_model,
+                    overall_matching_model=overall_matching_model,
                 )
 
                 written_count, skipped_count = save_criterion_matches(
                     patient_id=patient_id,
                     trial_id=trial_id,
                     criterion_matches=criterion_result.criterion_matches,
-                    model_name=criterion_model_name,
+                    model_name=criteria_matching_model,
+                    trial_criteria_model=data_generation_model,
                     conflict_policy=conflict_policy,
                 )
 
@@ -342,8 +346,9 @@ def main() -> int:
                         hard_stops=overall_result.hard_stops,
                         manual_review_flags=overall_result.manual_review_flags,
                         matching_notes=overall_result.matching_notes,
-                        model_name=overall_model_name,
-                        criteria_model=criterion_model_name,
+                        data_generation_model=data_generation_model,
+                        criteria_matching_model=criteria_matching_model,
+                        overall_matching_model=overall_matching_model,
                     ),
                     conflict_policy=conflict_policy,
                 )

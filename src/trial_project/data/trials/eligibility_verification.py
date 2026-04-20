@@ -357,7 +357,7 @@ def generate_trial_eligibility_verification(
 ) -> tuple[str, str]:
    """Generate verification JSON and corrected trial eligibility JSON for one trial."""
    client = generate_client()
-   trial_eligibility = get_trial_eligibility_llm(trial_id)
+   trial_eligibility = get_trial_eligibility_llm(trial_id, model_name=model_name)
    trial_record_json = load_trial_json_llm(trial_id)
    verification_input = _verification_input(
       trial_id=trial_id,

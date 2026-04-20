@@ -34,6 +34,9 @@ class EligibilityDecision(BaseModel):
     confidence: float | None = Field(default=None, ge=0.0, le=1.0)
     model_name: str | None = None
     criteria_model: str | None = None
+    data_generation_model: str | None = None
+    criteria_matching_model: str | None = None
+    overall_matching_model: str | None = None
     evaluated_at: datetime | None = None
 
     def to_row(self) -> dict:
@@ -50,6 +53,8 @@ class EligibilityDecision(BaseModel):
             if self.confidence is not None
             else self.overall_confidence_score
         )
+        overall_matching_model = self.overall_matching_model or self.model_name
+        criteria_matching_model = self.criteria_matching_model or self.criteria_model
 
         return {
             "patient_id": self.patient_id,
@@ -66,8 +71,11 @@ class EligibilityDecision(BaseModel):
             "decision_source": self.decision_source,
             "reasoning": reasoning_value,
             "confidence": confidence_value,
-            "model_name": self.model_name,
-            "criteria_model": self.criteria_model,
+            "model_name": overall_matching_model,
+            "criteria_model": criteria_matching_model,
+            "data_generation_model": self.data_generation_model,
+            "criteria_matching_model": criteria_matching_model,
+            "overall_matching_model": overall_matching_model,
             "evaluated_at": self.evaluated_at or datetime.utcnow(),
         }
 
@@ -93,6 +101,7 @@ class CriterionEvaluation(BaseModel):
     reasoning: str | None = None
     confidence: float | None = None
     model_name: str | None = None
+    trial_criteria_model: str | None = None
     evaluated_at: datetime | None = None
 
     @classmethod
@@ -103,6 +112,7 @@ class CriterionEvaluation(BaseModel):
         trial_id: str,
         criterion: CriterionMatch,
         model_name: str | None,
+        trial_criteria_model: str | None,
         evaluated_at: datetime,
     ) -> "CriterionEvaluation":
         return cls(
@@ -121,6 +131,7 @@ class CriterionEvaluation(BaseModel):
             reasoning=criterion.reasoning,
             confidence=criterion.confidence,
             model_name=model_name,
+            trial_criteria_model=trial_criteria_model,
             evaluated_at=evaluated_at,
         )
 
@@ -157,12 +168,23 @@ def save_eligibility_decision(
             if col not in df.columns:
                 df[col] = None
 
-        model_key = _normalize_model_name(decision.model_name)
-        existing_model_key = df["model_name"].apply(_normalize_model_name)
+        data_generation_key = _normalize_model_name(decision.data_generation_model)
+        criteria_matching_key = _normalize_model_name(
+            decision.criteria_matching_model or decision.criteria_model
+        )
+        overall_matching_key = _normalize_model_name(
+            decision.overall_matching_model or decision.model_name
+        )
+
+        existing_data_generation_key = df["data_generation_model"].apply(_normalize_model_name)
+        existing_criteria_matching_key = df["criteria_matching_model"].apply(_normalize_model_name)
+        existing_overall_matching_key = df["overall_matching_model"].apply(_normalize_model_name)
         mask = (
             (df["patient_id"] == decision.patient_id)
             & (df["trial_id"] == decision.trial_id)
-            & (existing_model_key == model_key)
+            & (existing_data_generation_key == data_generation_key)
+            & (existing_criteria_matching_key == criteria_matching_key)
+            & (existing_overall_matching_key == overall_matching_key)
         )
 
         if conflict_policy == "skip" and mask.any():
@@ -180,6 +202,7 @@ def save_criterion_matches(
     trial_id: str,
     criterion_matches: list[CriterionMatch],
     model_name: str | None,
+    trial_criteria_model: str | None,
     conflict_policy: str = "skip",
 ) -> tuple[int, int]:
     """Persist criterion-level rows; returns (written_count, skipped_count)."""
@@ -194,6 +217,7 @@ def save_criterion_matches(
             trial_id=trial_id,
             criterion=criterion,
             model_name=model_name,
+            trial_criteria_model=trial_criteria_model,
             evaluated_at=now,
         )
         rows.append(criterion_row.model_dump())
@@ -217,14 +241,17 @@ def save_criterion_matches(
         written_count = 0
         skipped_count = 0
         model_key = _normalize_model_name(model_name)
+        trial_criteria_model_key = _normalize_model_name(trial_criteria_model)
 
         for row in rows:
             existing_model_key = df["model_name"].apply(_normalize_model_name)
+            existing_trial_criteria_key = df["trial_criteria_model"].apply(_normalize_model_name)
             mask = (
                 (df["patient_id"] == row["patient_id"])
                 & (df["trial_id"] == row["trial_id"])
                 & (df["criterion_id"] == row["criterion_id"])
                 & (existing_model_key == model_key)
+                & (existing_trial_criteria_key == trial_criteria_model_key)
             )
 
             if conflict_policy == "skip" and mask.any():
@@ -290,6 +317,7 @@ def load_saved_criterion_matches(
     patient_id: str,
     trial_id: str,
     model_name: str | None,
+    trial_criteria_model: str | None,
 ) -> list[CriterionMatch]:
     """Load saved criterion matches for one patient/trial/model combination."""
     if not criterion_file.exists():
@@ -299,16 +327,25 @@ def load_saved_criterion_matches(
     if df.empty:
         return []
 
-    for column in ["patient_id", "trial_id", "criterion_id", "model_name"]:
+    for column in [
+        "patient_id",
+        "trial_id",
+        "criterion_id",
+        "model_name",
+        "trial_criteria_model",
+    ]:
         if column not in df.columns:
             return []
 
     model_key = _normalize_model_name(model_name)
+    trial_criteria_model_key = _normalize_model_name(trial_criteria_model)
     existing_model_key = df["model_name"].apply(_normalize_model_name)
+    existing_trial_criteria_key = df["trial_criteria_model"].apply(_normalize_model_name)
     matches_df = df[
         (df["patient_id"] == patient_id)
         & (df["trial_id"] == trial_id)
         & (existing_model_key == model_key)
+        & (existing_trial_criteria_key == trial_criteria_model_key)
     ]
 
     if matches_df.empty:
