@@ -1,6 +1,6 @@
-"""
-Save patient trial eligibility results
-"""
+"""Save patient trial eligibility results."""
+
+from __future__ import annotations
 
 from datetime import datetime
 import json
@@ -12,6 +12,7 @@ from typing import Literal
 
 from trial_project.context import results_dir
 from trial_project.matching.llm import CriterionMatch, MatchedPatientEvidence
+
 
 class EligibilityDecision(BaseModel):
     model_config = ConfigDict(extra="forbid")
@@ -135,8 +136,10 @@ class CriterionEvaluation(BaseModel):
             evaluated_at=evaluated_at,
         )
 
+
 eligibility_file = results_dir / "eligibility_decisions.parquet"
 criterion_file = results_dir / "criterion_matches.parquet"
+
 
 def _normalize_model_name(model_name: str | None) -> str:
     if model_name is None or pd.isna(model_name):
@@ -153,10 +156,8 @@ def save_eligibility_decision(
         raise ValueError("conflict_policy must be one of: skip, overwrite")
 
     row = decision.to_row()
-
     expected_columns = list(row.keys())
-    
-    # Use file locking to prevent concurrent writes from corrupting the parquet file
+
     lock_file = eligibility_file.parent / (eligibility_file.stem + ".lock")
     with FileLock(str(lock_file)):
         if eligibility_file.exists():
@@ -180,8 +181,8 @@ def save_eligibility_decision(
         existing_criteria_matching_key = df["criteria_matching_model"].apply(_normalize_model_name)
         existing_overall_matching_key = df["overall_matching_model"].apply(_normalize_model_name)
         mask = (
-            (df["patient_id"] == decision.patient_id)
-            & (df["trial_id"] == decision.trial_id)
+            (df["patient_id"].astype(str) == str(decision.patient_id))
+            & (df["trial_id"].astype(str) == str(decision.trial_id))
             & (existing_data_generation_key == data_generation_key)
             & (existing_criteria_matching_key == criteria_matching_key)
             & (existing_overall_matching_key == overall_matching_key)
@@ -191,7 +192,6 @@ def save_eligibility_decision(
             return False
 
         df = df.loc[~mask]
-
         df = pd.concat([df, pd.DataFrame([row])], ignore_index=True)
         df.to_parquet(eligibility_file, index=False)
         return True
@@ -247,9 +247,9 @@ def save_criterion_matches(
             existing_model_key = df["model_name"].apply(_normalize_model_name)
             existing_trial_criteria_key = df["trial_criteria_model"].apply(_normalize_model_name)
             mask = (
-                (df["patient_id"] == row["patient_id"])
-                & (df["trial_id"] == row["trial_id"])
-                & (df["criterion_id"] == row["criterion_id"])
+                (df["patient_id"].astype(str) == str(row["patient_id"]))
+                & (df["trial_id"].astype(str) == str(row["trial_id"]))
+                & (df["criterion_id"].astype(str) == str(row["criterion_id"]))
                 & (existing_model_key == model_key)
                 & (existing_trial_criteria_key == trial_criteria_model_key)
             )
@@ -391,8 +391,8 @@ def load_saved_criterion_matches(
     existing_model_key = df["model_name"].apply(_normalize_model_name)
     existing_trial_criteria_key = df["trial_criteria_model"].apply(_normalize_model_name)
     matches_df = df[
-        (df["patient_id"] == patient_id)
-        & (df["trial_id"] == trial_id)
+        (df["patient_id"].astype(str) == str(patient_id))
+        & (df["trial_id"].astype(str) == str(trial_id))
         & (existing_model_key == model_key)
         & (existing_trial_criteria_key == trial_criteria_model_key)
     ]
@@ -409,6 +409,7 @@ def load_saved_criterion_matches(
             return []
 
     return matches
+
 
 def load_eligibility_decision(
     patient_id: str,
@@ -429,7 +430,7 @@ def load_eligibility_decision(
         if column not in df.columns:
             return None
 
-    matching_df = df[(df["patient_id"] == patient_id) & (df["trial_id"] == trial_id)]
+    matching_df = df[(df["patient_id"].astype(str) == str(patient_id)) & (df["trial_id"].astype(str) == str(trial_id))]
     if matching_df.empty:
         return None
 
@@ -479,8 +480,113 @@ def load_eligibility_decision(
     except Exception:
         return None
 
-def load_patient_eligibility(patient_id: str) -> pd.DataFrame:
-    """All trial decisions for one patient."""
 
-def load_trial_eligibility(trial_id: str) -> pd.DataFrame:
+def _load_eligibility_df() -> pd.DataFrame:
+    if not eligibility_file.exists():
+        return pd.DataFrame()
+
+    try:
+        return pd.read_parquet(eligibility_file)
+    except (FileNotFoundError, OSError, ValueError):
+        return pd.DataFrame()
+
+
+def _filter_eligibility_df(
+    df: pd.DataFrame,
+    *,
+    patient_id: str | None = None,
+    trial_id: str | None = None,
+    data_generation_model: str | None = None,
+    criteria_matching_model: str | None = None,
+    overall_matching_model: str | None = None,
+) -> pd.DataFrame:
+    if df.empty:
+        return df
+
+    filtered_df = df.copy()
+
+    if patient_id is not None:
+        if "patient_id" not in filtered_df.columns:
+            return pd.DataFrame(columns=filtered_df.columns)
+        filtered_df = filtered_df[filtered_df["patient_id"].astype(str) == str(patient_id)]
+
+    if trial_id is not None:
+        if "trial_id" not in filtered_df.columns:
+            return pd.DataFrame(columns=filtered_df.columns)
+        filtered_df = filtered_df[filtered_df["trial_id"].astype(str) == str(trial_id)]
+
+    if data_generation_model is not None:
+        if "data_generation_model" not in filtered_df.columns:
+            return pd.DataFrame(columns=filtered_df.columns)
+        filtered_df = filtered_df[
+            filtered_df["data_generation_model"].apply(_normalize_model_name)
+            == _normalize_model_name(data_generation_model)
+        ]
+
+    if criteria_matching_model is not None:
+        criteria_column = None
+        if "criteria_matching_model" in filtered_df.columns:
+            criteria_column = "criteria_matching_model"
+        elif "criteria_model" in filtered_df.columns:
+            criteria_column = "criteria_model"
+        if criteria_column is None:
+            return pd.DataFrame(columns=filtered_df.columns)
+        filtered_df = filtered_df[
+            filtered_df[criteria_column].apply(_normalize_model_name)
+            == _normalize_model_name(criteria_matching_model)
+        ]
+
+    if overall_matching_model is not None:
+        overall_column = None
+        if "overall_matching_model" in filtered_df.columns:
+            overall_column = "overall_matching_model"
+        elif "model_name" in filtered_df.columns:
+            overall_column = "model_name"
+        if overall_column is None:
+            return pd.DataFrame(columns=filtered_df.columns)
+        filtered_df = filtered_df[
+            filtered_df[overall_column].apply(_normalize_model_name)
+            == _normalize_model_name(overall_matching_model)
+        ]
+
+    sort_columns = [col for col in ["evaluated_at", "trial_id"] if col in filtered_df.columns]
+    if sort_columns:
+        ascending = [False] * len(sort_columns)
+        ascending[-1] = True
+        filtered_df = filtered_df.sort_values(by=sort_columns, ascending=ascending)
+
+    return filtered_df.reset_index(drop=True)
+
+
+def load_patient_eligibility(
+    patient_id: str,
+    data_generation_model: str | None = None,
+    criteria_matching_model: str | None = None,
+    overall_matching_model: str | None = None,
+) -> pd.DataFrame:
+    """All trial decisions for one patient."""
+    df = _load_eligibility_df()
+    return _filter_eligibility_df(
+        df,
+        patient_id=patient_id,
+        data_generation_model=data_generation_model,
+        criteria_matching_model=criteria_matching_model,
+        overall_matching_model=overall_matching_model,
+    )
+
+
+def load_trial_eligibility(
+    trial_id: str,
+    data_generation_model: str | None = None,
+    criteria_matching_model: str | None = None,
+    overall_matching_model: str | None = None,
+) -> pd.DataFrame:
     """All patient decisions for one trial."""
+    df = _load_eligibility_df()
+    return _filter_eligibility_df(
+        df,
+        trial_id=trial_id,
+        data_generation_model=data_generation_model,
+        criteria_matching_model=criteria_matching_model,
+        overall_matching_model=overall_matching_model,
+    )
