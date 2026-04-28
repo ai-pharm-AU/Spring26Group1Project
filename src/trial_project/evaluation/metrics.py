@@ -519,3 +519,68 @@ def print_mismatch_report(mismatches: pd.DataFrame) -> None:
         )
 
     print("\n".join(lines))
+
+
+def build_confusion_matrix(y_true: pd.Series, y_pred: pd.Series) -> pd.DataFrame:
+    """Build a confusion matrix from true and predicted labels.
+    
+    Args:
+        y_true: Series of true labels
+        y_pred: Series of predicted labels
+        
+    Returns:
+        Confusion matrix as a pandas DataFrame with classes as indices and columns.
+    """
+    classes = sorted(EVALUATION_CLASSES)
+    matrix = pd.DataFrame(0, index=classes, columns=classes)
+    
+    for true_label, pred_label in zip(y_true, y_pred):
+        matrix.loc[true_label, pred_label] += 1
+    
+    return matrix
+
+
+def print_confusion_matrix(y_true: pd.Series, y_pred: pd.Series) -> None:
+    """Print a formatted confusion matrix to console.
+    
+    Args:
+        y_true: Series of true labels
+        y_pred: Series of predicted labels
+    """
+    matrix = build_confusion_matrix(y_true, y_pred)
+    
+    lines = [
+        "",
+        "=" * 72,
+        "CONFUSION MATRIX",
+        "=" * 72,
+        "",
+        "Predicted →",
+        "True ↓",
+        "",
+    ]
+    
+    # Format header
+    classes = matrix.columns.tolist()
+    header = "         " + "".join(f"{class_name:>15}" for class_name in classes)
+    lines.append(header)
+    lines.append("-" * len(header))
+    
+    # Format rows
+    for true_label in matrix.index:
+        row_data = "".join(f"{int(matrix.loc[true_label, pred_label]):>15}" for pred_label in classes)
+        lines.append(f"{true_label:<8} {row_data}")
+    
+    lines.append("=" * 72)
+    print("\n".join(lines))
+
+
+def print_confusion_matrix_with_metrics(merged: pd.DataFrame) -> None:
+    """Print confusion matrix along with metrics report.
+    
+    Args:
+        merged: DataFrame with 'label' and 'overall_decision' columns
+    """
+    y_true = merged["label"].astype(str)
+    y_pred = merged["overall_decision"].astype(str)
+    print_confusion_matrix(y_true, y_pred)

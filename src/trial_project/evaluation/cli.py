@@ -8,9 +8,13 @@ from pathlib import Path
 
 from trial_project.evaluation.metrics import (
     compare_decisions_with_mismatches,
+    print_confusion_matrix_with_metrics,
     print_metrics_report,
     print_mismatch_report,
     save_metrics,
+    _build_evaluation_frame,
+    _read_decisions,
+    _read_manual_labels,
 )
 
 logger = logging.getLogger(__name__)
@@ -112,6 +116,17 @@ def main() -> None:
         # Print report
         print_metrics_report(metrics)
         print_mismatch_report(mismatches)
+        
+        # Print confusion matrix
+        labels_df = _read_manual_labels()
+        decisions_df = _read_decisions(
+            overall_matching_model=args.overall_matching_model,
+            criteria_matching_model=args.criteria_matching_model,
+            data_generation_model=args.data_generation_model,
+        )
+        merged = _build_evaluation_frame(labels_df, decisions_df)
+        print_confusion_matrix_with_metrics(merged)
+        
         logger.info(f"Evaluation completed successfully. Results saved to {saved_path}")
 
     except ValueError as e:
