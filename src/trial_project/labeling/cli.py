@@ -73,7 +73,8 @@ def _build_import_parser(subparsers: argparse._SubParsersAction[argparse.Argumen
 def build_parser() -> argparse.ArgumentParser:
     """Build parser for labeling CLI."""
     parser = argparse.ArgumentParser(
-        description="Export/import patient-trial labels for manual evaluation."
+        description="Export/import patient-trial labels for manual evaluation.",
+        epilog="Note: To see specific options, run 'export --help' or 'import --help'.",
     )
     subparsers = parser.add_subparsers(dest="command", required=True)
     _build_export_parser(subparsers)
