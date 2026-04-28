@@ -1,12 +1,18 @@
-import pandas as pd
+import os
+from datetime import datetime
 from pathlib import Path
+import pandas as pd
+from dotenv import load_dotenv
+
 from trial_project.context import data_dir
 
 # ---- CONFIG ----
+load_dotenv()
 csv_dir = data_dir / "synthea_generated_patients"
 out_dir = data_dir / "processed_data"
 out_dir.mkdir(parents=True, exist_ok=True)
-GENERATION_DATE = pd.Timestamp("2026-04-13")
+generation_date_str = os.getenv("GENERATION_DATE")
+GENERATION_DATE = pd.Timestamp(generation_date_str) if generation_date_str else pd.Timestamp(datetime.now())
 
 # ---- WHICH COLUMNS TO KEEP ----
 # make sure age years is in w/e df cols thing bc not in keep fields
