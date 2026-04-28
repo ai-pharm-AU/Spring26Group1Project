@@ -7,7 +7,7 @@
   wget -O data/trial_info.json https://ftp.ncbi.nlm.nih.gov/pub/lu/TrialGPT/trial_info.json
 ```
 
-Ensure the trial_info.json file is in the outermost data directory (not src/data). This parsed ClinicalTrials.gov dataset is taken from the TrialGPT project by Jin et al, 2024.
+Ensure the trial_info.json file is in the outermost data directory (project_root/data/). This parsed ClinicalTrials.gov dataset is taken from the TrialGPT project by Jin et al, 2024.
 
 ## Usage
 
